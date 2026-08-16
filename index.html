@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#5b5bd6">
+  <title>보컬 레슨 일지</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">VOCAL LESSON JOURNAL</p>
+      <h1>보컬 레슨 일지</h1>
+      <p class="subtitle">수업별 보컬 레슨 기록 관리</p>
+    </div>
+    <div class="header-actions" aria-label="데이터 관리">
+      <button class="button button-secondary" id="exportButton" type="button">데이터 백업</button>
+      <button class="button button-secondary" id="importButton" type="button">백업 불러오기</button>
+      <input id="importFile" type="file" accept="application/json,.json" hidden>
+    </div>
+  </header>
+
+  <main class="app-layout">
+    <section class="panel calendar-panel" aria-labelledby="calendarTitle">
+      <div class="calendar-toolbar">
+        <button class="icon-button" id="previousMonth" type="button" aria-label="이전 달">‹</button>
+        <h2 id="calendarTitle"></h2>
+        <button class="icon-button" id="nextMonth" type="button" aria-label="다음 달">›</button>
+        <button class="button button-small" id="todayButton" type="button">오늘</button>
+      </div>
+      <div class="weekdays" aria-hidden="true">
+        <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+      </div>
+      <div class="calendar-grid" id="calendarGrid" role="grid" aria-label="월간 달력"></div>
+      <div class="calendar-help"><span class="help-dot"></span> 기록이 있는 날짜</div>
+    </section>
+
+    <section class="panel records-panel" aria-labelledby="selectedDateTitle">
+      <div class="records-header">
+        <div>
+          <p class="section-label">선택한 날짜</p>
+          <h2 id="selectedDateTitle"></h2>
+        </div>
+        <button class="button button-primary" id="addRecordButton" type="button">+ 레슨 기록 추가</button>
+      </div>
+      <div id="recordsList" class="records-list" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="lessonFormModal">
+    <form id="lessonForm" novalidate>
+      <div class="modal-header">
+        <div>
+          <p class="section-label" id="formDateLabel"></p>
+          <h2 id="formTitle">레슨 기록 추가</h2>
+        </div>
+        <button class="close-button" data-close-form type="button" aria-label="닫기">×</button>
+      </div>
+      <div class="form-grid">
+        <label class="field field-wide">학생 이름 <span class="required">*</span>
+          <input id="studentName" name="studentName" type="text" maxlength="50" autocomplete="off" required>
+          <span class="field-error" id="studentNameError"></span>
+        </label>
+        <label class="field">레슨 시간
+          <input name="lessonTime" type="time">
+        </label>
+        <label class="field">레슨 회차
+          <input name="lessonNumber" type="number" min="1" max="999" inputmode="numeric">
+        </label>
+        <label class="field field-wide">레슨곡
+          <textarea name="songs" rows="2" placeholder="여러 곡은 줄을 나누어 입력하세요."></textarea>
+        </label>
+        <label class="field field-wide">오늘의 레슨 내용
+          <textarea name="lessonContent" rows="5"></textarea>
+        </label>
+        <label class="field">잘된 점
+          <textarea name="goodPoints" rows="4"></textarea>
+        </label>
+        <label class="field">보완할 점
+          <textarea name="improvementPoints" rows="4"></textarea>
+        </label>
+        <label class="field">다음 레슨 과제
+          <textarea name="homework" rows="4"></textarea>
+        </label>
+        <label class="field">강사 메모
+          <textarea name="instructorMemo" rows="4"></textarea>
+        </label>
+      </div>
+      <div class="modal-actions">
+        <button class="button button-secondary" data-close-form type="button">취소</button>
+        <button class="button button-primary" id="saveButton" type="submit">저장</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal detail-modal" id="detailModal">
+    <div class="modal-header">
+      <div><p class="section-label">레슨 상세</p><h2 id="detailTitle"></h2></div>
+      <button class="close-button" data-close-detail type="button" aria-label="닫기">×</button>
+    </div>
+    <div id="detailContent" class="detail-content"></div>
+    <div class="modal-actions">
+      <button class="button button-secondary" data-close-detail type="button">닫기</button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./script.js"></script>
+</body>
+</html>
