@@ -1,0 +1,44 @@
+# 폰만으로 유튜브 로그인: 실행하면 로그에 코드가 나오고, google.com/device 에서 입력하면 끝.
+# 로그인 후 대기열 업로드까지 바로 실행한다.
+# 필요한 저장소 Secrets: YOUTUBE_CLIENT_ID, YOUTUBE_CLIENT_SECRET ('TV 및 입력 제한 기기' 유형 OAuth 클라이언트)
+name: horror-youtube-auth
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: horror-upload
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pyyaml pillow requests cryptography google-api-python-client google-auth-oauthlib
+      - name: YouTube device login (google.com/device 에 코드 입력)
+        run: python -u -m horror_shorts.yt_auth
+      - name: Save token
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add upload_queue/.youtube_token.enc
+          git commit -m "유튜브 로그인 토큰(암호화) 저장 [skip ci]"
+          git pull --rebase && git push
+      - name: Upload queued shorts
+        run: python -m horror_shorts upload-queue
+      - name: Record results
+        if: always()
+        run: |
+          git add -A upload_queue
+          git diff --cached --quiet || (git commit -m "자동 게시 결과 기록 [skip ci]" && git pull --rebase && git push)

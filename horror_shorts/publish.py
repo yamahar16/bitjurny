@@ -60,10 +60,20 @@ def thumbnail(job: Path, script: dict, cfg: dict) -> Path:
     return out
 
 
+def _stored_refresh_token() -> str | None:
+    """폰 로그인(yt_auth, 기기 코드 방식)으로 저장된 암호화 토큰."""
+    import os
+
+    from .yt_auth import load_refresh_token
+
+    return load_refresh_token(os.environ["YOUTUBE_CLIENT_SECRET"].strip())
+
+
 def youtube_client(cfg: dict):
     """YouTube API 클라이언트. 인증 정보 우선순위:
       1) YOUTUBE_TOKEN_JSON  : PC에서 받은 토큰 파일(json) 내용 전체 (refresh_token·client_id·client_secret 포함)
-      2) YOUTUBE_REFRESH_TOKEN + YOUTUBE_CLIENT_ID + YOUTUBE_CLIENT_SECRET
+      2) YOUTUBE_CLIENT_ID + YOUTUBE_CLIENT_SECRET + (YOUTUBE_REFRESH_TOKEN 또는 폰 로그인으로 저장된
+         upload_queue/.youtube_token.enc — horror-youtube-auth 워크플로)
       3) youtube_token.json 파일 / client_secret.json 으로 브라우저 로그인 (PC)
     클라우드·GitHub Actions 에서는 1) 또는 2)를 비밀값(Secrets)으로 넣는다."""
     try:
@@ -83,8 +93,10 @@ def youtube_client(cfg: dict):
     if os.environ.get("YOUTUBE_TOKEN_JSON", "").strip():
         info = json.loads(os.environ["YOUTUBE_TOKEN_JSON"])
         creds = Credentials.from_authorized_user_info(info, info.get("scopes") or scopes)
-    elif os.environ.get("YOUTUBE_REFRESH_TOKEN", "").strip():
-        creds = Credentials(None, refresh_token=os.environ["YOUTUBE_REFRESH_TOKEN"].strip(),
+    elif os.environ.get("YOUTUBE_CLIENT_SECRET", "").strip() and (
+            os.environ.get("YOUTUBE_REFRESH_TOKEN", "").strip() or _stored_refresh_token()):
+        rt = os.environ.get("YOUTUBE_REFRESH_TOKEN", "").strip() or _stored_refresh_token()
+        creds = Credentials(None, refresh_token=rt,
                             token_uri="https://oauth2.googleapis.com/token",
                             client_id=os.environ["YOUTUBE_CLIENT_ID"].strip(),
                             client_secret=os.environ["YOUTUBE_CLIENT_SECRET"].strip())

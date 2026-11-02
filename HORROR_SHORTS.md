@@ -77,3 +77,9 @@ git add upload_queue && git commit -m "대기열" && git push
 - 비밀값이 없으면 Actions는 경고만 남기고 영상은 대기열에 그대로 둡니다. 비밀값을 넣은 뒤 Actions 탭에서 `horror-upload` → Run workflow.
 - 주의: 구글 OAuth 앱이 "테스트" 상태면 refresh token이 7일 뒤 만료됩니다 → OAuth 동의 화면에서 "프로덕션으로 게시".
   API 감사를 받지 않은 새 Google Cloud 프로젝트로 올린 영상은 유튜브가 비공개로 고정할 수 있으니, 기존에 쓰던 프로젝트의 클라이언트를 쓰세요.
+
+### 폰만으로 유튜브 로그인 (PC 없이, 한 번만)
+1. Google Cloud 콘솔(폰 브라우저) → 기존에 쓰던 프로젝트 → API 및 서비스 → 사용자 인증 정보 → 사용자 인증 정보 만들기 → OAuth 클라이언트 ID → 유형 **TV 및 입력 제한 기기** → 클라이언트 ID·보안 비밀 확인
+2. GitHub 저장소 → Settings → Secrets and variables → Actions 에 `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET` 추가
+3. Actions 탭 → `horror-youtube-auth` → Run workflow → 로그에 나온 코드를 폰에서 google.com/device 에 입력 → 허용
+4. 토큰이 암호화돼 `upload_queue/.youtube_token.enc` 로 저장되고, 이후 업로드는 전부 자동
