@@ -91,6 +91,13 @@ PLACES: dict[str, dict] = {
         "layout": "corridor",
         "tint": (150, 175, 150),
     },
+    "arcade": {
+        "name": "지하상가 야간 경비",
+        "rulebook": "야간 경비 인수인계 메모",
+        "visual": "Korean underground shopping arcade at night, all shop shutters down, long tiled corridor, stopped escalator, small glass security booth",
+        "layout": "aisle",
+        "tint": (160, 170, 160),
+    },
     "parking": {
         "name": "지하 주차장 B∞층",
         "rulebook": "지하 주차장 이용 안내",
