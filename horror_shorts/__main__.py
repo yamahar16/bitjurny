@@ -57,6 +57,7 @@ def cmd_make(args, cfg) -> None:
             "idea": args.idea,
             "images": args.images,
             "videos": args.videos,
+            "style": args.style,
             "avoid": previous[-5:],
         }
         job = pipeline.new_job(meta)
@@ -97,6 +98,7 @@ def main(argv: list[str] | None = None) -> None:
     mk.add_argument("--idea", default="", help="추가 아이디어")
     mk.add_argument("--images", default=None, choices=["procedural", "kling", "manual"])
     mk.add_argument("--videos", default=None, choices=["kling", "manual", "none"], help="장면 영상 (기본: 모든 장면 Kling 영상)")
+    mk.add_argument("--style", default=None, choices=["ps1", "realistic"], help="화풍 (기본: ps1 레트로 공포 게임)")
     mk.add_argument("--count", type=int, default=1, help="연속 생성 편수")
     mk.add_argument("--upload", action="store_true", help="유튜브 업로드까지 (기본 비공개)")
 
