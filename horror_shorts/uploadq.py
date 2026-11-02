@@ -92,7 +92,8 @@ def next_slot(cfg: dict, now: datetime | None = None) -> str | None:
 
 def pending() -> list[Path]:
     return sorted(d for d in QUEUE_DIR.iterdir()
-                  if d.is_dir() and (d / "video.mp4").exists() and not (d / "uploaded.json").exists()) \
+                  if d.is_dir() and (d / "video.mp4").exists()
+                  and (not (d / "uploaded.json").exists() or (d / "replace").exists())) \
         if QUEUE_DIR.exists() else []
 
 
@@ -107,12 +108,31 @@ def upload_all(cfg: dict, log=print) -> int:
     n = 0
     for d in items:
         meta = json.loads((d / "upload.json").read_text(encoding="utf-8"))
-        at = next_slot(cfg)
-        log(f"▶ 업로드: {meta['title']}" + (f" (공개 예약 {at})" if at else ""))
+        # replace 파일이 있으면: 이미 올린 영상을 새 버전으로 교체 (같은 공개 예약 시각 유지 → 새로 올린 뒤 옛 영상 삭제)
+        old = None
+        if (d / "replace").exists() and (d / "uploaded.json").exists():
+            old = json.loads((d / "uploaded.json").read_text(encoding="utf-8"))
+            (d / "uploaded.json").unlink()  # 옛 예약 시각을 '사용 중'에서 빼고 그대로 다시 쓴다
+        at = None
+        if old and old.get("publish_at"):
+            t = datetime.fromisoformat(old["publish_at"].replace("Z", "+00:00"))
+            if t > datetime.now(timezone.utc) + timedelta(minutes=30):
+                at = old["publish_at"]
+        at = at or next_slot(cfg)
+        log(f"▶ 업로드: {meta['title']}" + (f" (공개 예약 {at})" if at else "") + (" — 교체" if old else ""))
         vid = upload_video(yt, d / "video.mp4", meta, cfg, d / "thumbnail.jpg", publish_at=at, log=log)
         info = {"video_id": vid, "url": f"https://youtu.be/{vid}", "studio": f"https://studio.youtube.com/video/{vid}/edit",
                 "title": meta["title"], "publish_at": at, "privacy": "private" if at else cfg["upload"]["privacy"],
                 "uploaded_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
+        if old:
+            info["replaced"] = old["video_id"]
+            try:
+                yt.videos().delete(id=old["video_id"]).execute()
+                log(f"  옛 영상 삭제: {old['video_id']}")
+            except Exception as e:  # 삭제 권한이 없으면 Studio에서 직접 지워야 한다 (안 지우면 같은 시각에 2개 공개됨)
+                info["old_delete_failed"] = str(e)[:300]
+                log(f"::warning::옛 영상 {old['video_id']} 삭제 실패 — Studio에서 직접 삭제하세요: {e}")
+            (d / "replace").unlink()
         (d / "uploaded.json").write_text(json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
         (d / "video.mp4").unlink()  # 올린 영상은 저장소에서 지운다 (용량)
         log(f"  ✅ {info['url']}")
