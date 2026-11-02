@@ -68,8 +68,8 @@ python -m horror_shorts queue jobs/<폴더>     # upload_queue/<폴더>/ 에 업
 git add upload_queue && git commit -m "대기열" && git push
 ```
 
-- 공개 방식: 비공개로 올린 뒤 **매일 19:00(한국시간)에 1편씩 자동 공개 예약** (`upload.schedule`, `upload.per_day`).
-  예약 전에는 YouTube Studio 앱에서 확인·취소할 수 있습니다. `schedule: ""` 이면 `upload.privacy` 그대로 올립니다.
+- 공개 방식: 비공개로 올린 뒤 **매일 06:00·12:00·18:00(한국시간)에 1편씩 자동 공개 예약** (`upload.schedule`, `upload.start_date`).
+  예약 전에는 YouTube Studio 앱에서 확인·취소할 수 있습니다. `schedule: []` 이면 `upload.privacy` 그대로 올립니다.
 - 올린 뒤 `upload_queue/<폴더>/uploaded.json`(영상 주소·공개 시각)이 기록되고 영상 파일은 대기열에서 지워집니다.
 - 필요한 저장소 Secrets (GitHub → Settings → Secrets and variables → Actions → New repository secret):
   - `YOUTUBE_TOKEN_JSON` : PC의 `youtube_token.json` 내용 전체 (가장 간단), 또는

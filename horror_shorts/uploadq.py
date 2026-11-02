@@ -6,7 +6,7 @@
 대기열 폴더를 git push 하면 .github/workflows/horror-upload.yml 이 GitHub 비밀값(Secrets)으로 업로드한다.
 PC·클라우드 세션이 꺼져 있어도 GitHub 서버에서 올라가므로 폰만으로 운영할 수 있다.
 
-예약 공개: config upload.schedule (기본 "19:00", 한국시간) — 하루 upload.per_day 편씩 다음 빈 시간에 공개 예약.
+예약 공개: config upload.schedule (기본 06:00·12:00·18:00, 한국시간) — 대기열 순서대로 다음 빈 시간에 공개 예약.
 schedule 을 비우면 upload.privacy 그대로 올린다.
 """
 from __future__ import annotations
@@ -53,19 +53,23 @@ def _taken_slots() -> list[datetime]:
 
 
 def next_slot(cfg: dict, now: datetime | None = None) -> str | None:
-    """하루 per_day 편, schedule 시각(한국시간)부터 2시간 간격으로 다음 빈 공개 시각 (UTC ISO)."""
+    """다음 빈 공개 시각 (UTC ISO). upload.schedule: "19:00" 또는 ["06:00","12:00","18:00"] (한국시간),
+    upload.start_date: "2026-11-04" 처럼 이 날짜 이전 슬롯은 쓰지 않음."""
     ucfg = cfg["upload"]
-    sched = (ucfg.get("schedule") or "").strip()
+    sched = ucfg.get("schedule") or []
+    if isinstance(sched, str):
+        sched = [x.strip() for x in sched.split(",") if x.strip()]
     if not sched:
         return None
-    hh, mm = map(int, sched.split(":"))
-    per_day = max(1, int(ucfg.get("per_day", 1)))
+    times = sorted(tuple(map(int, t.split(":"))) for t in sched)
     now = (now or datetime.now(timezone.utc)).astimezone(KST)
     taken = {s.astimezone(KST).replace(second=0, microsecond=0) for s in _taken_slots()}
     day = now.date()
+    if ucfg.get("start_date"):
+        day = max(day, datetime.strptime(str(ucfg["start_date"]), "%Y-%m-%d").date())
     for _ in range(366):
-        for k in range(per_day):
-            t = datetime(day.year, day.month, day.day, hh, mm, tzinfo=KST) + timedelta(hours=2 * k)
+        for hh, mm in times:
+            t = datetime(day.year, day.month, day.day, hh, mm, tzinfo=KST)
             if t > now + timedelta(minutes=30) and t not in taken:
                 return t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         day += timedelta(days=1)

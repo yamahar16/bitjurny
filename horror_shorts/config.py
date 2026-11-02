@@ -68,9 +68,9 @@ DEFAULTS: dict = {
         "category_id": "24",
         "client_secret": "client_secret.json",
         "token": "youtube_token.json",
-        # 자동 게시: 대기열(upload_queue) 업로드 시 이 시각(한국시간)에 공개 예약. 비우면 privacy 그대로 업로드
-        "schedule": "19:00",
-        "per_day": 1,
+        # 자동 게시: 대기열(upload_queue) 영상을 이 시각들(한국시간)에 1편씩 공개 예약. 비우면 privacy 그대로 업로드
+        "schedule": ["06:00", "12:00", "18:00"],
+        "start_date": "2026-11-04",
         "queue_encode": {"crf": 25, "maxrate": "3300k", "bufsize": "6600k"},
     },
 }
