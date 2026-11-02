@@ -1,0 +1,137 @@
+{
+  "title": "막차에서 역무원이 표를 보여달라고 하면",
+  "title_options": [
+    "심야 막차 승객 수칙 4번을 어기면",
+    "종착역이라는 방송이 나와도 절대 내리지 마세요",
+    "지하철 막차에 표 없이 탔을 때 생기는 일"
+  ],
+  "hook": "덜컹. 머리를 창문에 부딪히며 눈을 떴다.",
+  "rulebook_title": "심야 열차 승객 안전 수칙",
+  "rules": [
+    {
+      "number": 1,
+      "text": "종착역이라는 방송이 나와도 절대 내리지 마십시오.",
+      "violation_result": "승강장의 그것들이 당신을 데려갑니다."
+    },
+    {
+      "number": 2,
+      "text": "옆자리에 누가 앉으면, 그쪽을 보지 마십시오.",
+      "violation_result": "그것과 끝까지 함께 가게 됩니다."
+    },
+    {
+      "number": 3,
+      "text": "창문 속 당신이 먼저 움직이면, 눈을 감고 열까지 세십시오.",
+      "violation_result": "창문 속의 당신이 자리를 바꿉니다."
+    },
+    {
+      "number": 4,
+      "text": "역무원이 표를 확인하면, 이미 냈다고만 답하십시오.",
+      "violation_result": "표 대신 당신이 남습니다."
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "덜컹. 머리를 창문에 부딪히며 눈을 떴다. 막차 안에는, *나 혼자*였다.",
+      "caption": "막차",
+      "image_prompt": "first person view waking up slumped in a seat of an empty late-night subway car, rows of empty seats, black windows reflecting the interior, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the camera jolts as if waking up, the subway car sways, fluorescent lights flicker, empty seats rattle, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "다음 역 안내판엔 *읽을 수 없는 글자*가 떠 있었다. 열차는 20분째 멈추지 않았다.",
+      "caption": "",
+      "image_prompt": "close-up of a subway car LED destination board glowing red with scrambled unreadable glyphs, empty subway car behind, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the red LED glyphs scroll and glitch, the train shakes steadily, lights in the car dim and brighten, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "손잡이 기둥에, 코팅된 안내문이 묶여 있었다.",
+      "caption": "",
+      "image_prompt": "a laminated paper notice tied with string to a metal handrail pole inside an empty subway car, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the laminated notice swinging slightly on the pole with the train motion, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. \"이번 역은 종착역입니다.\" 문이 열렸다. 승강장은 *새까맸다*. 나는 내리지 않았다.",
+      "caption": "",
+      "image_prompt": "subway doors open onto a pitch black platform, faint silhouettes of motionless people standing in the dark facing the train, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the doors slide open, the dark silhouettes on the platform slowly turn their heads toward the camera, then the doors close, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "chime",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 빈 옆자리 시트가, 천천히 *꺼졌다*. \"이 열차, 어디로 가요?\" 나는 앞만 봤다.",
+      "caption": "",
+      "image_prompt": "empty subway bench seat next to the camera with its cushion pressed down as if someone invisible is sitting there, dim light, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the seat cushion slowly sinks deeper as if someone heavy sits down, the hand strap above swings by itself, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "heartbeat",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. 창문에 비친 내가, *먼저 고개를 돌렸다*. 나는 눈을 감고 열까지 셌다.",
+      "caption": "",
+      "image_prompt": "dark subway window reflecting a seated passenger whose reflection has turned its head toward the camera with a wide grin, while the tunnel rushes by outside, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the reflection in the window slowly grins wider and presses a hand on the glass, tunnel lights streak by, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "riser",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번. 객실 문이 열리고, *역무원*이 들어왔다. \"손님, 승차권 확인하겠습니다.\"",
+      "caption": "",
+      "image_prompt": "a subway conductor in a dark navy uniform and cap walking down the empty aisle toward the camera, pale mannequin-like face with an unnaturally wide grin, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the grinning conductor walks slowly down the aisle toward the camera, his head tilting, lights flickering above him, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "주머니엔 표가 없었다. 나는 *표가 없다고* 말해버렸다. \"그럼, 대신 일하셔야죠.\"",
+      "caption": "",
+      "image_prompt": "extreme close-up of the grinning subway conductor leaning toward the camera, holding out a white gloved hand, harsh flickering light, red emergency light tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the conductor leans in fast toward the camera, his grin stretching unnaturally wide, red emergency light strobes, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 4
+    },
+    {
+      "stage": "끝",
+      "narration": "다음 날 밤, 막차. 나는 *역무원 모자*를 쓰고 있었다. \"손님, 승차권 확인하겠습니다.\"",
+      "caption": "다음 막차",
+      "image_prompt": "a new conductor wearing a navy uniform and cap standing in an empty subway car aisle facing the camera, pale face with a fixed wide grin, a sleeping passenger in a seat, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the conductor slowly raises a gloved hand toward the camera and grins, lights flicker, the train sways, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 4,
+  "thumbnail_text": "표가 없으면\n대신 일한다",
+  "thumbnail_prompt": "grinning subway conductor close-up, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+  "description": "막차에서 눈을 떴다. 손잡이 기둥에 묶인 승객 수칙 네 줄. 마지막 수칙만은 지켜야 했다.\n당신은 막차에서 표를 보여줄 수 있나요?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#나폴리탄",
+    "#지하철괴담",
+    "#막차",
+    "#공포",
+    "#shorts"
+  ]
+}
