@@ -31,7 +31,21 @@ def enqueue(job: Path, cfg: dict, log=print) -> Path:
     out = QUEUE_DIR / job.name
     out.mkdir(parents=True, exist_ok=True)
     qc = cfg["upload"].get("queue_encode", {})
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(job / "final.mp4"),
+    # 쇼츠는 API로 썸네일을 못 정하므로, 맨 끝에 썸네일을 잠깐(기본 0.2초) 붙여 두고 앱에서 그 프레임을 커버로 고른다
+    tail = float(cfg["upload"].get("end_thumbnail_seconds", 0.2))
+    thumb = job / "thumbnail.jpg"
+    W, H, fps = cfg["render"]["width"], cfg["render"]["height"], cfg["render"]["fps"]
+    if tail > 0 and thumb.exists():
+        inputs = ["-i", str(job / "final.mp4"), "-loop", "1", "-framerate", str(fps), "-t", f"{tail}", "-i", str(thumb),
+                  "-f", "lavfi", "-t", f"{tail}", "-i", "anullsrc=r=44100:cl=stereo"]
+        fc = (f"[0:v]fps={fps},scale={W}:{H},setsar=1,format=yuv420p[v0];"
+              f"[1:v]fps={fps},scale={W}:{H},setsar=1,format=yuv420p[v1];"
+              "[0:a]aresample=44100,aformat=channel_layouts=stereo[a0];[2:a]aformat=channel_layouts=stereo[a1];"
+              "[v0][a0][v1][a1]concat=n=2:v=1:a=1[v][a]")
+        mapping = ["-filter_complex", fc, "-map", "[v]", "-map", "[a]"]
+    else:
+        inputs, mapping = ["-i", str(job / "final.mp4")], []
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, *mapping,
                     "-c:v", "libx264", "-preset", "slow", "-crf", str(qc.get("crf", 25)),
                     "-maxrate", qc.get("maxrate", "3300k"), "-bufsize", qc.get("bufsize", "6600k"),
                     "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart",
