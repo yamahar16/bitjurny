@@ -84,6 +84,13 @@ PLACES: dict[str, dict] = {
         "layout": "room",
         "tint": (130, 190, 200),
     },
+    "stairwell": {
+        "name": "아파트 무한 비상계단",
+        "rulebook": "비상계단 이용 안내 (관리사무소)",
+        "visual": "Korean apartment emergency stairwell at night, concrete stairs spiraling down, green exit sign, motion-sensor light, steel fire doors",
+        "layout": "corridor",
+        "tint": (150, 175, 150),
+    },
     "parking": {
         "name": "지하 주차장 B∞층",
         "rulebook": "지하 주차장 이용 안내",
