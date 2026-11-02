@@ -125,32 +125,48 @@ def rulebook(size: tuple[int, int], title: str, rules: list[dict], world: str, s
     return canvas
 
 
-def rule_card(size: tuple[int, int], number: int, text: str, violated: bool = False) -> Image.Image:
-    """수칙연출/규칙위반 장면 상단 카드."""
+def rule_card(size: tuple[int, int], number: int, text: str, violated: bool = False, seed: int = 3) -> Image.Image:
+    """수칙연출/규칙위반 장면 상단 — 수칙 종이에서 찢어낸 듯한 종이 조각."""
     W, H = size
-    nf, tf = _font("gothic", 40), _font("myeongjo", 52)
-    lines = wrap(text, tf, W - 220)
-    ch = 60 + 56 + len(lines) * 70 + 40
-    card = Image.new("RGBA", (W - 120, ch), (0, 0, 0, 0))
-    d = ImageDraw.Draw(card)
-    d.rounded_rectangle([0, 0, card.width - 1, ch - 1], radius=18, fill=(8, 8, 10, 175), outline=(200, 200, 190, 60), width=2)
-    d.text((50, 42), f"수칙 {number}", font=nf, fill=RED + (255,))
-    y = 42 + 66
+    nf, tf = _font("myeongjo", 40), _font("myeongjo", 50)
+    pw = W - 170
+    lines = wrap(text, tf, pw - 110)
+    ph = 46 + 54 + len(lines) * 66 + 40
+    paper = _paper_texture(pw, ph, seed + number).convert("RGBA")
+    d = ImageDraw.Draw(paper)
+    d.text((54, 40), f"수칙 {number}.", font=nf, fill=RED + (255,))
+    y = 40 + 58
     for ln in lines:
-        d.text((50, y), ln, font=tf, fill=(238, 232, 220, 255))
-        y += 70
+        d.text((54, y), ln, font=tf, fill=INK + (255,))
+        y += 66
+    # 아래쪽 찢어진 가장자리
+    rng = random.Random(seed + number)
+    edge = [(0, ph)]
+    x = 0
+    while x < pw:
+        x += rng.randint(14, 30)
+        edge.append((min(x, pw), ph - rng.randint(0, 14)))
+    edge.append((pw, ph))
+    d.polygon(edge, fill=(0, 0, 0, 0))
     if violated:
-        stamp = Image.new("RGBA", (300, 130), (0, 0, 0, 0))
+        d.line([44, 40 + 58 + 30, pw - 40, 40 + 58 + 30 + (len(lines) - 1) * 66], fill=RED + (230,), width=7)
+        stamp = Image.new("RGBA", (290, 128), (0, 0, 0, 0))
         sd = ImageDraw.Draw(stamp)
-        sd.rectangle([5, 5, 295, 125], outline=RED + (235,), width=8)
-        sf = _font("gothic", 78)
-        sd.text(((300 - sf.getlength("위반")) / 2, 18), "위반", font=sf, fill=RED + (235,))
+        sd.rectangle([5, 5, 285, 123], outline=RED + (235,), width=8)
+        sf = _font("gothic", 76)
+        sd.text(((290 - sf.getlength("위반")) / 2, 18), "위반", font=sf, fill=RED + (235,))
         stamp = stamp.rotate(-12, expand=True, resample=Image.BICUBIC)
-        card.alpha_composite(stamp, (card.width - stamp.width - 20, max(0, ch - stamp.height + 10)))
-        # 취소선
-        d.line([40, 42 + 66 + 34, card.width - 60, 42 + 66 + 34 + (len(lines) - 1) * 70], fill=RED + (220,), width=6)
+        paper.alpha_composite(stamp, (pw - stamp.width - 10, max(0, ph - stamp.height + 4)))
+    tape = Image.new("RGBA", (150, 46), (230, 225, 200, 140))
+    paper.alpha_composite(tape.rotate(6, expand=True), (pw // 2 - 75, -4))
+    paper = paper.rotate(1.2 if number % 2 else -1.2, expand=True, resample=Image.BICUBIC)
+    shadow = Image.new("RGBA", paper.size, (0, 0, 0, 0))
+    shadow.paste((0, 0, 0, 160), mask=paper.split()[3])
+    shadow = shadow.filter(ImageFilter.GaussianBlur(14))
     canvas = Image.new("RGBA", size, (0, 0, 0, 0))
-    canvas.alpha_composite(card, (60, int(H * 0.11)))
+    x, y0 = (W - paper.width) // 2, int(H * 0.095)
+    canvas.alpha_composite(shadow, (x + 10, y0 + 16))
+    canvas.alpha_composite(paper, (x, y0))
     return canvas
 
 

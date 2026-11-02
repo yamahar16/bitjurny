@@ -92,6 +92,7 @@ SCP 재단 세계관과 디시인사이드 나폴리탄 갤러리식 규칙 괴�
 - 1인칭 나레이션, 짧은 문장. 한 장면 1~3문장.
 - 한국어 TTS는 장면·문장 사이 쉼까지 포함해 초당 약 4.8음절로 읽힌다. 전체 나레이션의 공백 제외 글자 수 ≈ 목표 초 × 4.8 (55초면 약 260자). 넘치면 문장을 줄인다.
 - 고어 묘사 대신 '이상함'과 '암시'로 공포를 만든다 (유튜브 정책).
+- narration 안에서 가장 무서운 핵심 단어 1개(많아야 2개)를 *별표*로 감싼다. 자막에서 빨간색으로 강조된다. 예: "나는 *물속*에 있었다." (마침표는 별표 밖에)
 - caption: 화면 상단 강조 문구, 12자 이내. 수칙연출이면 "수칙 N", 기상이면 짧은 훅.
 - image_prompt: 영어, 정지 이미지용. 장면의 구도·피사체를 구체적으로 쓰고 맨 끝에 반드시 다음 스타일 문구를 붙인다: "{STYLE_SUFFIX}"
 - video_prompt: 영어. image_prompt 이미지를 첫 프레임으로 5초간 움직이는 지시. 카메라 움직임 1개 + 피사체/환경 움직임 1~2개 (예: "slow dolly forward down the aisle, fluorescent light flickers, a figure at the far end slowly turns its head"). 끝에 "subtle film grain, no cuts, no text"를 붙인다. 공포는 갑작스러운 점프보다 '천천히 다가오는 이상함'.
@@ -163,7 +164,7 @@ def validate(script: dict, rules_expected: int | None = None) -> list[str]:
 
 
 def estimate_seconds(script: dict, syllables_per_sec: float = 4.8) -> float:
-    chars = sum(len(s["narration"].replace(" ", "")) for s in script["scenes"])
+    chars = sum(len(s["narration"].replace(" ", "").replace("*", "")) for s in script["scenes"])
     return chars / syllables_per_sec
 
 

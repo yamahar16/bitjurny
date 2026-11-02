@@ -199,47 +199,91 @@ def _srt_time(t: float) -> str:
     return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
 
 
-def _chunks(text: str, max_chars: int = 15) -> list[str]:
-    """자막 한 화면 = 최대 2줄. 긴 문장은 어절 단위로 쪼갠다."""
-    words, lines, cur = text.split(), [], ""
-    for w in words:
-        if len((cur + " " + w).strip()) <= max_chars:
-            cur = (cur + " " + w).strip()
-        else:
-            if cur:
-                lines.append(cur)
-            cur = w
+RED_TXT = "&H002828D8&"      # ASS 색 (&HBBGGRR)
+WHITE_TXT = "&H00E6EBEE&"
+
+
+def _tokens(text: str) -> list[tuple[str, bool]]:
+    """'*강조*' 표시를 단어별 (단어, 빨간색?) 로 바꾼다."""
+    out, red = [], False
+    for w in text.split():
+        cur, buf = red, ""
+        word_red = red
+        for ch in w:
+            if ch == "*":
+                red = not red
+                word_red = word_red or red
+                continue
+            buf += ch
+        if buf:
+            out.append((buf, word_red or cur))
+    return out
+
+
+def _chunks(text: str, max_chars: int = 14) -> list[list[list[tuple[str, bool]]]]:
+    """자막 한 화면 = 최대 2줄. 어절 단위로 쪼갠다. 반환: 화면 > 줄 > (단어, 강조)"""
+    lines, cur, n = [], [], 0
+    for w, red in _tokens(text):
+        add = len(w) + (1 if cur else 0)
+        if cur and n + add > max_chars:
+            lines.append(cur)
+            cur, n = [], 0
+            add = len(w)
+        cur.append((w, red))
+        n += add
     if cur:
         lines.append(cur)
-    return ["\\N".join(lines[i:i + 2]) for i in range(0, len(lines), 2)]
+    return [lines[i:i + 2] for i in range(0, len(lines), 2)]
 
 
-def subtitle_events(script: dict, timing: list[dict], durs: list[float]) -> list[tuple[float, float, str]]:
+def _ass_line(screen: list[list[tuple[str, bool]]], base: str = WHITE_TXT) -> str:
+    out = []
+    for line in screen:
+        parts, red = ["{\\c%s}" % base] if out else [], False  # 줄마다 색 초기화 (빨강이 다음 줄로 번지지 않게)
+        for w, r in line:
+            if r != red:
+                parts.append("{\\c%s}" % (RED_TXT if r else base))
+                red = r
+            parts.append(w)
+            parts.append(" ")
+        out.append("".join(parts).rstrip())
+    return "\\N".join(out)
+
+
+def _plain(screen) -> str:
+    return "\n".join(" ".join(w for w, _ in line) for line in screen)
+
+
+def subtitle_events(script: dict, timing: list[dict], durs: list[float]) -> list[tuple[float, float, list, str]]:
+    from .voice import split_sentences
+
     events = []
     offset = 0.0
     for s, t, d in zip(script["scenes"], timing, durs):
-        for sent in t["sentences"]:
-            parts = _chunks(sent["text"])
+        marked = split_sentences(s["narration"])
+        use_marked = len(marked) == len(t["sentences"])
+        for k, sent in enumerate(t["sentences"]):
+            screens = _chunks(marked[k] if use_marked else sent["text"])
             span = max(sent["end"] - sent["start"], 0.3)
-            weights = [max(len(p.replace("\\N", "")), 1) for p in parts]
+            weights = [max(sum(len(w) for line in sc for w, _ in line), 1) for sc in screens]
             cur = sent["start"]
-            for p, w in zip(parts, weights):
+            for sc, w in zip(screens, weights):
                 dt = span * w / sum(weights)
-                events.append((offset + cur, offset + cur + dt, p))
+                events.append((offset + cur, offset + cur + dt, sc, s["stage"]))
                 cur += dt
         offset += d
-    # 다음 자막과 겹치지 않게 정리
     fixed = []
-    for i, (a, b, txt) in enumerate(events):
+    for i, (a, b, sc, st) in enumerate(events):
         if i + 1 < len(events):
             b = min(b + 0.15, events[i + 1][0] - 0.02)
-        fixed.append((a, max(b, a + 0.2), txt))
+        fixed.append((a, max(b, a + 0.2), sc, st))
     return fixed
 
 
 def write_subtitles(job: Path, script: dict, timing: list[dict], durs: list[float], cfg: dict) -> Path:
     rc = cfg["render"]
     W, H = rc["width"], rc["height"]
+    X, Y = W // 2, H - 560
     ev = subtitle_events(script, timing, durs)
     head = f"""[Script Info]
 ScriptType: v4.00+
@@ -250,28 +294,42 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Sub,{FAMILY['gothic']},66,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,0,0,1,5,2,2,70,70,560,1
-Style: Cap,{FAMILY['myeongjo']},96,&H002A2AE0,&H002A2AE0,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,5,0,8,60,60,290,1
+Style: Sub,{FAMILY['myeongjo']},74,{WHITE_TXT},{WHITE_TXT},&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,4,3,2,60,60,560,1
+Style: Ghost,{FAMILY['myeongjo']},74,&H002020E0&,&H002020E0&,&H002020E0&,&H00000000,0,0,0,0,100,100,1,0,1,1,0,2,60,60,560,1
+Style: Cap,{FAMILY['myeongjo']},104,{RED_TXT},{RED_TXT},&H00000000,&H00000000,0,0,0,0,100,100,8,0,1,3,0,8,60,60,300,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     lines = [head]
-    for a, b, txt in ev:
-        lines.append(f"Dialogue: 0,{_ass_time(a)},{_ass_time(b)},Sub,,0,0,0,,{txt}\n")
-    # 강조 문구: 수칙 카드/종이가 없는 장면에만 (기상·상황파악·끝)
+    for a, b, sc, stage in ev:
+        A, B = _ass_time(a), _ass_time(b)
+        if stage == "규칙위반":
+            # 빨갛게 번지며 떨리는 글리치: 본 자막 + 빨강/청록 잔상 2겹
+            txt = _ass_line(sc, base="&H00D0D0F0&")
+            plain = _ass_line([[(w, False) for w, _ in line] for line in sc])
+            lines.append(f"Dialogue: 0,{A},{B},Ghost,,0,0,0,,{{\\an2\\move({X + 9},{Y},{X - 6},{Y + 2})\\alpha&H60&\\blur3\\fad(60,60)}}{plain}\n")
+            lines.append(f"Dialogue: 0,{A},{B},Ghost,,0,0,0,,{{\\an2\\move({X - 8},{Y + 1},{X + 5},{Y})\\c&H00C8C800&\\3c&H00C8C800&\\alpha&H78&\\blur3\\fad(60,60)}}{plain}\n")
+            lines.append(f"Dialogue: 1,{A},{B},Sub,,0,0,0,,{{\\an2\\pos({X},{Y})\\fad(60,60)\\blur4\\t(0,120,\\blur1)}}{txt}\n")
+        elif stage == "끝":
+            lines.append(f"Dialogue: 1,{A},{B},Sub,,0,0,0,,{{\\an2\\pos({X},{Y})\\fad(320,420)\\blur9\\fsp4\\t(0,500,\\blur1.2\\fsp1)}}{_ass_line(sc)}\n")
+        else:
+            # 흐릿하게 번졌다가 또렷해지는 등장
+            lines.append(f"Dialogue: 1,{A},{B},Sub,,0,0,0,,{{\\an2\\pos({X},{Y})\\fad(150,90)\\blur7\\t(0,230,\\blur1.2)}}{_ass_line(sc)}\n")
+    # 강조 문구 (기상·상황파악·끝): 형광등처럼 깜빡이며 등장
     offset = 0.0
+    flicker = "\\alpha&HFF&\\t(0,40,\\alpha&H00&)\\t(70,110,\\alpha&HA0&)\\t(140,180,\\alpha&H00&)\\t(260,290,\\alpha&H70&)\\t(300,330,\\alpha&H00&)"
     for s, d in zip(script["scenes"], durs):
-        cap = (s.get("caption") or "").strip()
+        cap = (s.get("caption") or "").replace("*", "").strip()
         if cap and s["stage"] in ("기상", "상황파악", "끝"):
-            lines.append(f"Dialogue: 1,{_ass_time(offset + 0.1)},{_ass_time(offset + min(d, 2.6))},Cap,,0,0,0,"
-                         f",{{\\fad(200,300)}}{cap}\n")
+            lines.append(f"Dialogue: 2,{_ass_time(offset + 0.1)},{_ass_time(offset + min(d, 2.8))},Cap,,0,0,0,"
+                         f",{{\\fad(0,400)\\blur2{flicker}}}{cap}\n")
         offset += d
     ass = job / "subtitles.ass"
     ass.write_text("".join(lines), encoding="utf-8")
     srt = job / "subtitles.srt"
-    srt.write_text("".join(f"{i}\n{_srt_time(a)} --> {_srt_time(b)}\n{t.replace(chr(92) + 'N', chr(10))}\n\n"
-                           for i, (a, b, t) in enumerate(ev, 1)), encoding="utf-8")
+    srt.write_text("".join(f"{i}\n{_srt_time(a)} --> {_srt_time(b)}\n{_plain(sc)}\n\n"
+                           for i, (a, b, sc, _) in enumerate(ev, 1)), encoding="utf-8")
     return ass
 
 

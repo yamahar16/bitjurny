@@ -14,7 +14,7 @@ FONTS = {
     "pen": ("NanumPenScript-Regular.ttf", f"{_BASE}/nanumpenscript/NanumPenScript-Regular.ttf"),
 }
 # ASS 자막에서 쓰는 폰트 패밀리 이름
-FAMILY = {"gothic": "NanumGothic ExtraBold", "myeongjo": "NanumMyeongjo ExtraBold", "pen": "Nanum Pen Script"}
+FAMILY = {"gothic": "NanumGothicExtraBold", "myeongjo": "NanumMyeongjoExtraBold", "pen": "Nanum Pen"}
 
 
 def ensure_fonts() -> dict[str, Path]:

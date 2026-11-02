@@ -58,7 +58,7 @@ def synth_scene(text: str, out_wav: Path, vcfg: dict, log=print) -> list[dict]:
         mp3, wav = tmp / f"{j}.mp3", tmp / f"{j}.wav"
         for attempt in range(3):
             try:
-                asyncio.run(_tts(sent, mp3, vcfg["voice"], vcfg["rate"], vcfg["pitch"]))
+                asyncio.run(_tts(sent.replace("*", ""), mp3, vcfg["voice"], vcfg["rate"], vcfg["pitch"]))
                 break
             except Exception as e:  # 네트워크 일시 오류 재시도
                 if attempt == 2:
