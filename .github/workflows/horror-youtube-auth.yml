@@ -5,6 +5,9 @@ name: horror-youtube-auth
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - "upload_queue/.login_request"   # 이 파일을 바꿔 push 하면 로그인 시작 (기본 브랜치가 아니어도 동작)
 
 concurrency:
   group: horror-upload

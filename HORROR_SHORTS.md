@@ -81,5 +81,5 @@ git add upload_queue && git commit -m "대기열" && git push
 ### 폰만으로 유튜브 로그인 (PC 없이, 한 번만)
 1. Google Cloud 콘솔(폰 브라우저) → 기존에 쓰던 프로젝트 → API 및 서비스 → 사용자 인증 정보 → 사용자 인증 정보 만들기 → OAuth 클라이언트 ID → 유형 **TV 및 입력 제한 기기** → 클라이언트 ID·보안 비밀 확인
 2. GitHub 저장소 → Settings → Secrets and variables → Actions 에 `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET` 추가
-3. Actions 탭 → `horror-youtube-auth` → Run workflow → 로그에 나온 코드를 폰에서 google.com/device 에 입력 → 허용
+3. Actions 탭 → `horror-youtube-auth` → Run workflow (또는 `upload_queue/.login_request` 파일을 바꿔 push) → 로그에 나온 코드를 폰에서 google.com/device 에 입력 → 허용
 4. 토큰이 암호화돼 `upload_queue/.youtube_token.enc` 로 저장되고, 이후 업로드는 전부 자동
