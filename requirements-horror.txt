@@ -7,5 +7,5 @@ PyYAML>=6.0           # 설정 파일
 requests>=2.31        # Kling API, 폰트 다운로드
 PyJWT>=2.8            # Kling API 인증
 # 업로드까지 쓸 때만:
-# google-api-python-client>=2.100
-# google-auth-oauthlib>=1.2
+google-api-python-client>=2.100
+google-auth-oauthlib>=1.2

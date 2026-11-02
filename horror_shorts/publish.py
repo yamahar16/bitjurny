@@ -71,18 +71,33 @@ def upload(job: Path, cfg: dict, log=print) -> str:
     except ImportError as e:
         raise RuntimeError("업로드하려면: pip install google-api-python-client google-auth-oauthlib") from e
 
+    import os
+
     ucfg = cfg["upload"]
     root = Path.cwd()
     secret, token = root / ucfg["client_secret"], root / ucfg["token"]
     scopes = ["https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtube.force-ssl"]
-    creds = Credentials.from_authorized_user_file(str(token), scopes) if token.exists() else None
+    creds = None
+    # 클라우드/서버: 브라우저 로그인이 안 되므로 PC에서 받은 토큰을 환경변수로 넣는다
+    #   YOUTUBE_TOKEN_JSON = 토큰 파일(json) 내용 전체 (refresh_token, client_id, client_secret 포함)
+    #   또는 YOUTUBE_REFRESH_TOKEN + YOUTUBE_CLIENT_ID + YOUTUBE_CLIENT_SECRET
+    if os.environ.get("YOUTUBE_TOKEN_JSON"):
+        info = json.loads(os.environ["YOUTUBE_TOKEN_JSON"])
+        creds = Credentials.from_authorized_user_info(info, info.get("scopes") or scopes)
+    elif os.environ.get("YOUTUBE_REFRESH_TOKEN"):
+        creds = Credentials(None, refresh_token=os.environ["YOUTUBE_REFRESH_TOKEN"],
+                            token_uri="https://oauth2.googleapis.com/token",
+                            client_id=os.environ["YOUTUBE_CLIENT_ID"], client_secret=os.environ["YOUTUBE_CLIENT_SECRET"],
+                            scopes=scopes)
+    elif token.exists():
+        creds = Credentials.from_authorized_user_file(str(token), scopes)
+    if creds and not creds.valid and creds.refresh_token:
+        creds.refresh(Request())
     if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            if not secret.exists():
-                raise RuntimeError(f"{secret} 가 없습니다. Google Cloud Console에서 OAuth 클라이언트(데스크톱)를 만들어 저장하세요.")
-            creds = InstalledAppFlow.from_client_secrets_file(str(secret), scopes).run_local_server(port=0)
+        if not secret.exists():
+            raise RuntimeError("유튜브 인증 정보가 없습니다. YOUTUBE_TOKEN_JSON 환경변수(토큰 파일 내용) 또는 "
+                               f"{secret.name}(OAuth 데스크톱 클라이언트)가 필요합니다.")
+        creds = InstalledAppFlow.from_client_secrets_file(str(secret), scopes).run_local_server(port=0)
         token.write_text(creds.to_json(), encoding="utf-8")
 
     yt = build("youtube", "v3", credentials=creds)
@@ -103,6 +118,10 @@ def upload(job: Path, cfg: dict, log=print) -> str:
                              media_body=MediaFileUpload(str(job / "subtitles.srt"))).execute()
     except Exception as e:  # 자막 실패는 업로드 실패가 아님
         log(f"  ⚠ 자막 업로드 실패: {e}")
+    try:  # 커스텀 썸네일은 채널 전화번호 인증이 필요할 수 있다
+        yt.thumbnails().set(videoId=vid, media_body=MediaFileUpload(str(job / "thumbnail.jpg"))).execute()
+    except Exception as e:
+        log(f"  ⚠ 썸네일 설정 실패 (Studio에서 직접 적용): {e}")
     url = f"https://studio.youtube.com/video/{vid}/edit"
     (job / "uploaded.txt").write_text(url, encoding="utf-8")
     return url
