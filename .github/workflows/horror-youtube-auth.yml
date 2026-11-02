@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install pyyaml pillow requests cryptography google-api-python-client google-auth-oauthlib
+      - run: pip install -r requirements-horror.txt cryptography
       - name: YouTube device login (google.com/device 에 코드 입력)
         run: python -u -m horror_shorts.yt_auth
       - name: Save token

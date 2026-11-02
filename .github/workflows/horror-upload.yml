@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install pyyaml pillow requests cryptography google-api-python-client google-auth-oauthlib
+      - run: pip install -r requirements-horror.txt cryptography
       - name: Upload queued shorts
         env:
           YOUTUBE_TOKEN_JSON: ${{ secrets.YOUTUBE_TOKEN_JSON }}
