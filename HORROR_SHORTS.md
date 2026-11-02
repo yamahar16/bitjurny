@@ -1,6 +1,7 @@
 # 괴담 쇼츠 자동화 (horror_shorts)
 
-규칙 괴담 쇼츠를 **대본 → 음성 → 이미지 → 렌더 → 제목·설명 → 썸네일 → (업로드)** 까지 한 번에 만듭니다.
+규칙 괴담 쇼츠를 **대본 → 음성 → 이미지 → Kling 영상 → 렌더 → 제목·설명 → 썸네일 → (업로드)** 까지 한 번에 만듭니다.
+기본값은 **모든 장면을 Kling 영상으로** 넣는 것입니다. 영상이 없는 장면만 정지 이미지 + 카메라 효과로 대체됩니다.
 
 ## 대본 구조 (고정)
 **기상 → 상황 파악 → 수칙 발견 → 수칙별 상황 연출 → 규칙 위반 → 끝**
@@ -23,6 +24,7 @@ python -m horror_shorts make --place random --ending random --count 5   # 5편 �
 python -m horror_shorts make --place elevator --place-name "새벽 3시 찜질방" --idea "주인공은 신입 알바생"
 python -m horror_shorts run jobs/<폴더> --force voice  # 특정 단계부터 다시
 python -m horror_shorts run jobs/<폴더> --upload       # 유튜브 업로드 (기본 비공개)
+python -m horror_shorts run jobs/<폴더> --videos none  # 빠진 영상은 정지 이미지로 대체하고 마무리
 ```
 
 | 옵션 | 값 |
@@ -38,7 +40,8 @@ python -m horror_shorts run jobs/<폴더> --upload       # 유튜브 업로드 (
 | script | Claude가 구조에 맞춰 대본 JSON 생성 (구조 검사 후 실패 시 1회 재생성) | `ANTHROPIC_API_KEY`. 없으면 `script_request.md`를 남기고 멈춤 → Claude Code가 `script.json`을 써 넣고 `run` |
 | voice | 문장별 TTS → 앞뒤 무음 제거 → 0.3초 간격으로 이어붙임 (자막 타이밍 정확) | 무료 (edge-tts) |
 | images | 장면별 9:16 이미지 | `procedural`: 무료 자체 생성(테스트용) / `kling`: `KLING_ACCESS_KEY`, `KLING_SECRET_KEY` / `manual`: `images/scene_XX.png` 직접 넣기 (`prompts.json` 참고) |
-| render | 느린 줌·패닝·흔들림 + 형광등 깜빡임 + 필름 노이즈 + 비네팅, 수칙 종이·수칙 카드·위반 도장 오버레이, 저음 드론 BGM + 효과음(자체 합성), 자막(ASS) | ffmpeg |
+| videos | 장면마다 Kling image-to-video (첫 프레임 = 장면 이미지, 5/10초). `videos/requests.json`에 장면별 프롬프트·길이 | `kling`: API 키 / `manual`(기본): Claude Code가 **Kling 커넥터**로 만들어 `videos/scene_XX.mp4`로 넣음 / `none`: 영상 없이 |
+| render | Kling 영상은 장면 길이에 맞춰 최대 1.6배 슬로우 + 깜빡임·노이즈 동일 적용. 영상 없는 장면은 느린 줌·패닝·흔들림 + 형광등 깜빡임 + 필름 노이즈 + 비네팅, 수칙 종이·수칙 카드·위반 도장 오버레이, 저음 드론 BGM + 효과음(자체 합성), 자막(ASS) | ffmpeg |
 | seo | `upload.json`(제목 #shorts, 설명, 태그), `script.txt`(읽기용 대본) | |
 | thumbnail | 1080x1920 썸네일 | |
 | upload | YouTube Data API 비공개 업로드 + 한국어 자막 | `client_secret.json` (OAuth 데스크톱 앱) |
@@ -47,3 +50,11 @@ python -m horror_shorts run jobs/<폴더> --upload       # 유튜브 업로드 (
 `final.mp4` · `thumbnail.jpg` · `upload.json` · `script.json` · `script.txt` · `subtitles.srt` · `images/` · `voice/`
 
 예시 대본: `horror_shorts/examples/mart_loop.json` (무한마트 · 무한 루프 결말, 약 51초)
+
+## Claude Code 세션에서 Kling 커넥터로 돌리는 흐름 (API 키 없이)
+1. `make` → 대본 요청서가 나오면 Claude Code가 `script.json` 작성 → `run`
+2. 이미지: `--images manual` 이면 `images/prompts.json` 대로 Kling text-to-image(9:16)로 만들어 `images/scene_XX.png`로 저장
+3. 영상: `videos/requests.json` 대로 Kling image-to-video (첫 프레임 = 위 이미지) → `videos/scene_XX.mp4`
+4. `run` 다시 → 렌더·자막·썸네일 완료
+
+장면 9개 기준 Kling 사용량: 이미지 10장 + 5~10초 영상 9개.

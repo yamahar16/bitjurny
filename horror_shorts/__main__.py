@@ -16,6 +16,7 @@ from pathlib import Path
 from . import pipeline
 from .config import JOBS_DIR, load_config
 from .images import NeedsImages
+from .videos import NeedsVideos
 from .presets import ENDINGS, PLACES, WORLDS
 from .script import NeedsScript
 
@@ -37,7 +38,7 @@ def _run_job(job: Path, cfg: dict, args) -> bool:
         out = pipeline.run(job, cfg, upload=args.upload, force=getattr(args, "force", None))
         print(f"\n완료: {out}")
         return True
-    except (NeedsScript, NeedsImages) as e:
+    except (NeedsScript, NeedsImages, NeedsVideos) as e:
         print(f"\n⏸ 멈춤 — {e}\n   준비되면: python -m horror_shorts run {job}")
         return False
 
@@ -55,6 +56,7 @@ def cmd_make(args, cfg) -> None:
             "target_seconds": args.seconds or cfg["script"]["target_seconds"],
             "idea": args.idea,
             "images": args.images,
+            "videos": args.videos,
             "avoid": previous[-5:],
         }
         job = pipeline.new_job(meta)
@@ -70,6 +72,11 @@ def cmd_run(args, cfg) -> None:
     job = Path(args.job)
     if not job.exists():
         job = JOBS_DIR / args.job
+    if args.videos:
+        mp = job / "meta.json"
+        meta = json.loads(mp.read_text(encoding="utf-8"))
+        meta["videos"] = args.videos
+        mp.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     _run_job(job, cfg, args)
 
 
@@ -89,6 +96,7 @@ def main(argv: list[str] | None = None) -> None:
     mk.add_argument("--seconds", type=int, default=None, help="목표 길이 (초)")
     mk.add_argument("--idea", default="", help="추가 아이디어")
     mk.add_argument("--images", default=None, choices=["procedural", "kling", "manual"])
+    mk.add_argument("--videos", default=None, choices=["kling", "manual", "none"], help="장면 영상 (기본: 모든 장면 Kling 영상)")
     mk.add_argument("--count", type=int, default=1, help="연속 생성 편수")
     mk.add_argument("--upload", action="store_true", help="유튜브 업로드까지 (기본 비공개)")
 
@@ -96,6 +104,7 @@ def main(argv: list[str] | None = None) -> None:
     rn.add_argument("job")
     rn.add_argument("--force", choices=pipeline.STEPS, default=None, help="이 단계부터 다시 만들기")
     rn.add_argument("--upload", action="store_true")
+    rn.add_argument("--videos", default=None, choices=["kling", "manual", "none"], help="영상 방식 바꾸기 (none: 영상 없는 장면은 정지 이미지로)")
 
     args = ap.parse_args(argv)
     cfg = load_config(args.config)

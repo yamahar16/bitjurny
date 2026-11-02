@@ -9,6 +9,7 @@ from pathlib import Path
 from . import audio_fx, overlays
 from .config import FONTS_DIR
 from .fonts import FAMILY, ensure_fonts
+from .voice import probe_duration
 
 
 def _ff(args: list[str], cwd: Path | None = None) -> None:
@@ -55,9 +56,17 @@ def _zoompan(motion: str, frames: int, W: int, H: int, fps: int) -> str:
 
 
 def _scene_filter(scene: dict, dur: float, frames: int, W: int, H: int, fps: int, first: bool, last: bool,
-                  loop_ending: bool, has_overlay: bool) -> str:
+                  loop_ending: bool, has_overlay: bool, clip_dur: float | None = None) -> str:
     stage = scene["stage"]
-    vf = [f"scale={int(W * 1.5)}:{int(H * 1.5)}:flags=lanczos", _zoompan(scene["motion"], frames, W, H, fps)]
+    if clip_dur:
+        # Kling 영상: 장면 길이에 맞게 최대 1.6배까지 느리게, 그래도 모자라면 마지막 프레임 유지
+        k = min(max(dur / clip_dur, 1.0), 1.6)
+        vf = [f"setpts={k:.4f}*PTS", f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos",
+              f"crop={W}:{H}", f"fps={fps}", f"tpad=stop_mode=clone:stop_duration={dur:.2f}"]
+        if scene["motion"] == "shake" or stage == "규칙위반":
+            vf.append(f"crop={W - 40}:{H - 70}:20+16*sin(n*2.3):35+14*sin(n*1.7+1),scale={W}:{H}")
+    else:
+        vf = [f"scale={int(W * 1.5)}:{int(H * 1.5)}:flags=lanczos", _zoompan(scene["motion"], frames, W, H, fps)]
     # 형광등 깜빡임: 가끔 확 어두워지고, 미세하게 떨림
     drop = 0.08 if stage == "규칙위반" else 0.025
     vf.append(f"eq=brightness='if(lt(random(1),{drop}),-0.22,0)+0.015*sin(t*11)':contrast=1.08:saturation=0.75:eval=frame")
@@ -110,10 +119,16 @@ def render_clips(job: Path, script: dict, meta: dict, durs: list[float], cfg: di
         s, dur = script["scenes"][i], durs[i]
         frames = int(round(dur * fps))
         out = cdir / f"scene_{i:02d}.mp4"
-        args = ["-i", str(job / "images" / f"scene_{i:02d}.png")]
+        vid = job / "videos" / f"scene_{i:02d}.mp4"
+        clip_dur = None
+        if vid.exists():
+            clip_dur = probe_duration(vid)
+            args = ["-an", "-i", str(vid)]
+        else:
+            args = ["-i", str(job / "images" / f"scene_{i:02d}.png")]
         if i in ovs:
             args += ["-loop", "1", "-t", f"{dur:.3f}", "-i", str(ovs[i])]
-        fc = _scene_filter(s, dur, frames, W, H, fps, i == 0, i == n - 1, loop_ending, i in ovs)
+        fc = _scene_filter(s, dur, frames, W, H, fps, i == 0, i == n - 1, loop_ending, i in ovs, clip_dur)
         args += ["-filter_complex", fc, "-map", "[v]", "-frames:v", str(frames), "-r", str(fps),
                  "-c:v", "libx264", "-preset", "veryfast", "-crf", str(rc["crf"]), "-pix_fmt", "yuv420p", str(out)]
         _ff(args)
@@ -121,7 +136,8 @@ def render_clips(job: Path, script: dict, meta: dict, durs: list[float], cfg: di
 
     with ThreadPoolExecutor(max_workers=3) as ex:
         clips = list(ex.map(one, range(n)))
-    log(f"  장면 클립 {n}개 완료")
+    nv = sum((job / "videos" / f"scene_{i:02d}.mp4").exists() for i in range(n))
+    log(f"  장면 클립 {n}개 완료 (Kling 영상 {nv}개 · 정지 이미지 {n - nv}개)")
     return clips
 
 

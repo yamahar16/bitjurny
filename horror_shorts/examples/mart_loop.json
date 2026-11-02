@@ -37,7 +37,8 @@
       "image_prompt": "first person view from inside a shopping cart at an empty supermarket checkout lane at night, barcode scanner red light glowing, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
       "motion": "zoom_out",
       "sfx": "static_burst",
-      "rule_number": 0
+      "rule_number": 0,
+      "video_prompt": "camera slowly rises out of the shopping cart as if waking up, red barcode light blinks, fluorescent tube flickers once, subtle film grain, no cuts, no text"
     },
     {
       "stage": "상황파악",
@@ -46,7 +47,8 @@
       "image_prompt": "endless supermarket aisle at night, identical shelves repeating into darkness, green exit signs all pointing backwards, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
       "motion": "pan_right",
       "sfx": "none",
-      "rule_number": 0
+      "rule_number": 0,
+      "video_prompt": "slow lateral track along endless identical shelves, exit signs flicker, the aisle seems to stretch longer, subtle film grain, no cuts, no text"
     },
     {
       "stage": "수칙발견",
@@ -55,7 +57,8 @@
       "image_prompt": "yellowed paper notice taped to a frosted supermarket freezer door, flashlight beam, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
       "motion": "static",
       "sfx": "static_burst",
-      "rule_number": 0
+      "rule_number": 0,
+      "video_prompt": "slow push in toward the yellowed paper on the freezer door, frost creeping on the glass, flashlight beam trembles, subtle film grain, no cuts, no text"
     },
     {
       "stage": "수칙연출",
@@ -64,7 +67,8 @@
       "image_prompt": "man in red staff vest standing at the far end of a supermarket aisle, smile too wide, face blurred, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
       "motion": "zoom_in",
       "sfx": "none",
-      "rule_number": 1
+      "rule_number": 1,
+      "video_prompt": "slow dolly toward a man in a red staff vest at the end of the aisle, he stays perfectly still and his smile slowly widens, subtle film grain, no cuts, no text"
     },
     {
       "stage": "수칙연출",
@@ -73,7 +77,8 @@
       "image_prompt": "canned food shelf, labels with smiling mascot faces all turned toward camera, repetitive pattern, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
       "motion": "pan_left",
       "sfx": "heartbeat",
-      "rule_number": 2
+      "rule_number": 2,
+      "video_prompt": "slow pan across canned food labels, the printed mascot faces slowly turn toward the camera one by one, subtle film grain, no cuts, no text"
     },
     {
       "stage": "수칙연출",
@@ -82,7 +87,8 @@
       "image_prompt": "view from inside a chest freezer looking up through frosted glass lid, ceiling speaker blurred above, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
       "motion": "shake",
       "sfx": "chime",
-      "rule_number": 3
+      "rule_number": 3,
+      "video_prompt": "view from inside a freezer through frosted lid, a dark shape passes above and pauses, breath fog on the glass, subtle film grain, no cuts, no text"
     },
     {
       "stage": "수칙연출",
@@ -91,7 +97,8 @@
       "image_prompt": "dead silent supermarket aisle from behind a person's shoulder, a dark figure standing very close behind, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
       "motion": "zoom_in",
       "sfx": "riser",
-      "rule_number": 4
+      "rule_number": 4,
+      "video_prompt": "camera holds still in a silent aisle, a shadow slowly leans in from behind the camera, lights dim, subtle film grain, no cuts, no text"
     },
     {
       "stage": "규칙위반",
@@ -100,7 +107,8 @@
       "image_prompt": "rows of identical people in red staff vests standing in a long supermarket aisle staring at camera, faces hidden in shadow, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
       "motion": "shake",
       "sfx": "hit",
-      "rule_number": 4
+      "rule_number": 4,
+      "video_prompt": "fast whip turn then freeze, rows of people in red vests all slowly raise their heads, harsh light flicker, subtle film grain, no cuts, no text"
     },
     {
       "stage": "끝",
@@ -109,7 +117,8 @@
       "image_prompt": "first person view from inside a shopping cart at an empty supermarket checkout lane, lights going out, double exposure, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
       "motion": "zoom_in",
       "sfx": "static_burst",
-      "rule_number": 0
+      "rule_number": 0,
+      "video_prompt": "lights go out one by one down the aisle toward the camera, then a red barcode light blinks in total darkness, subtle film grain, no cuts, no text"
     }
   ],
   "violated_rule": 4,

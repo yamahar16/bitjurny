@@ -33,7 +33,16 @@ DEFAULTS: dict = {
             "base_url": "https://api-singapore.klingai.com",
             "model": "kling-v2-1",
             "aspect_ratio": "9:16",
+            "video_model": "kling-v2-1",
+            "mode": "std",  # std | pro
         },
+    },
+    "videos": {
+        "provider": "manual",   # kling(API) | manual(Claude Code가 Kling 커넥터로 생성해 넣기) | none
+        "scenes": "all",        # "all" 또는 ["기상", "규칙위반", "끝"] 처럼 단계 목록
+        "durations": [5, 10],   # Kling 영상 길이 선택지(초)
+        "require": True,        # 영상이 빠지면 멈출지 (False면 정지 이미지로 대체하고 진행)
+        "parallel": 4,
     },
     "render": {
         "width": 1080,

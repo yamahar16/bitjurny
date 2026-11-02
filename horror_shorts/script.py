@@ -47,12 +47,13 @@ SCRIPT_SCHEMA: dict = {
             "items": {
                 "type": "object",
                 "additionalProperties": False,
-                "required": ["stage", "narration", "caption", "image_prompt", "motion", "sfx", "rule_number"],
+                "required": ["stage", "narration", "caption", "image_prompt", "video_prompt", "motion", "sfx", "rule_number"],
                 "properties": {
                     "stage": {"type": "string", "enum": STAGES},
                     "narration": {"type": "string", "description": "TTS로 읽을 1인칭 나레이션 (1~3문장)"},
                     "caption": {"type": "string", "description": "화면 상단에 크게 띄울 강조 문구 (12자 이내, 없으면 빈 문자열)"},
-                    "image_prompt": {"type": "string", "description": "정지 이미지 생성용 영어 프롬프트"},
+                    "image_prompt": {"type": "string", "description": "첫 프레임 이미지 생성용 영어 프롬프트"},
+                    "video_prompt": {"type": "string", "description": "그 이미지를 움직일 영상 프롬프트 (영어, 카메라·피사체 움직임)"},
                     "motion": {"type": "string", "enum": MOTIONS},
                     "sfx": {"type": "string", "enum": SFX},
                     "rule_number": {"type": "integer", "description": "이 장면이 다루는 수칙 번호, 없으면 0"},
@@ -93,7 +94,8 @@ SCP 재단 세계관과 디시인사이드 나폴리탄 갤러리식 규칙 괴�
 - 고어 묘사 대신 '이상함'과 '암시'로 공포를 만든다 (유튜브 정책).
 - caption: 화면 상단 강조 문구, 12자 이내. 수칙연출이면 "수칙 N", 기상이면 짧은 훅.
 - image_prompt: 영어, 정지 이미지용. 장면의 구도·피사체를 구체적으로 쓰고 맨 끝에 반드시 다음 스타일 문구를 붙인다: "{STYLE_SUFFIX}"
-- motion: {', '.join(MOTIONS)} 중 하나. 기상은 zoom_out 또는 shake, 규칙위반은 shake 권장.
+- video_prompt: 영어. image_prompt 이미지를 첫 프레임으로 5초간 움직이는 지시. 카메라 움직임 1개 + 피사체/환경 움직임 1~2개 (예: "slow dolly forward down the aisle, fluorescent light flickers, a figure at the far end slowly turns its head"). 끝에 "subtle film grain, no cuts, no text"를 붙인다. 공포는 갑작스러운 점프보다 '천천히 다가오는 이상함'.
+- motion: (영상이 없을 때 정지 이미지 카메라 효과) {', '.join(MOTIONS)} 중 하나. 기상은 zoom_out 또는 shake, 규칙위반은 shake 권장.
 - sfx: {', '.join(SFX)} 중 하나. 규칙위반은 hit, 수칙발견은 static_burst 권장.
 - hashtags: #괴담 #규칙괴담 #shorts 포함 5~8개.
 """
@@ -126,6 +128,8 @@ def build_user_prompt(meta: dict) -> str:
 def validate(script: dict, rules_expected: int | None = None) -> list[str]:
     """구조 검사. 문제 목록을 돌려준다(비어 있으면 통과)."""
     errs = []
+    for sc in script.get("scenes", []):
+        sc.setdefault("video_prompt", "")
     for k in SCRIPT_SCHEMA["required"]:
         if k not in script:
             errs.append(f"필드 누락: {k}")

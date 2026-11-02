@@ -6,10 +6,10 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from . import images, publish, render, script as script_mod, voice
+from . import images, publish, render, script as script_mod, videos, voice
 from .config import JOBS_DIR
 
-STEPS = ["script", "voice", "images", "render", "seo", "thumbnail", "upload"]
+STEPS = ["script", "voice", "images", "videos", "render", "seo", "thumbnail", "upload"]
 
 
 def new_job(meta: dict) -> Path:
@@ -26,6 +26,7 @@ def _clear(job: Path, step: str) -> None:
         "script": ["script.json"],
         "voice": ["voice"],
         "images": ["images"],
+        "videos": ["videos"],
         "render": ["clips", "overlays", "audio", "video_raw.mp4", "final.mp4"],
         "thumbnail": ["thumbnail.jpg"],
     }.get(step, [])
@@ -44,7 +45,8 @@ def run(job: Path, cfg: dict, upload: bool = False, force: str | None = None, lo
     if force:
         # 다시 만들 단계 + 그 결과에 의존하는 단계만 지운다 (voice를 다시 해도 이미지는 유지)
         downstream = {"script": STEPS, "voice": ["voice", "render", "thumbnail"],
-                      "images": ["images", "render", "thumbnail"], "render": ["render", "thumbnail"]}
+                      "images": ["images", "videos", "render", "thumbnail"],
+                      "videos": ["videos", "render"], "render": ["render", "thumbnail"]}
         for s in downstream.get(force, [force]):
             _clear(job, s)
 
@@ -63,6 +65,11 @@ def run(job: Path, cfg: dict, upload: bool = False, force: str | None = None, lo
 
     t = step("images")
     images.run(job, sc, meta, cfg, log)
+    log(f"  ({time.time() - t:.0f}초)")
+
+    t = step("videos")
+    durs = render.scene_durations(sc, timing, cfg)
+    videos.run(job, sc, durs, meta, cfg, log)
     log(f"  ({time.time() - t:.0f}초)")
 
     t = step("render")
