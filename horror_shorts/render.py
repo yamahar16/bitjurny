@@ -72,7 +72,7 @@ def _punch_zoompan(cuts: list[float], W: int, H: int, fps: int) -> str:
 
 def _scene_filter(scene: dict, dur: float, frames: int, W: int, H: int, fps: int, first: bool, last: bool,
                   loop_ending: bool, has_overlay: bool, clip_dur: float | None = None,
-                  cuts: list[float] | None = None, overlay_out: float | None = None) -> str:
+                  cuts: list[float] | None = None, overlay_out: float | None = None, retro: bool = False) -> str:
     stage = scene["stage"]
     if clip_dur:
         # Kling 영상: 장면 길이에 맞게 최대 1.6배까지 느리게, 그래도 모자라면 마지막 프레임 유지
@@ -85,6 +85,10 @@ def _scene_filter(scene: dict, dur: float, frames: int, W: int, H: int, fps: int
             vf.append(f"crop={W - 40}:{H - 70}:20+16*sin(n*2.3):35+14*sin(n*1.7+1),scale={W}:{H}")
     else:
         vf = [f"scale={int(W * 1.5)}:{int(H * 1.5)}:flags=lanczos", _zoompan(scene["motion"], frames, W, H, fps)]
+    if retro:
+        # PS1 질감: 1/4 해상도로 줄였다가 계단 그대로 키우기 + 색 단계 줄이기
+        vf += [f"scale={W // 4}:{H // 4}:flags=area", "format=rgb24", "lutrgb=r='floor(val/12)*12':g='floor(val/12)*12':b='floor(val/12)*12'",
+               f"scale={W}:{H}:flags=neighbor"]
     # 형광등 깜빡임: 가끔 확 어두워지고, 미세하게 떨림
     drop = 0.08 if stage == "규칙위반" else 0.025
     vf.append(f"eq=brightness='if(lt(random(1),{drop}),-0.22,0)+0.015*sin(t*11)':contrast=1.08:saturation=0.75:eval=frame")
@@ -92,7 +96,7 @@ def _scene_filter(scene: dict, dur: float, frames: int, W: int, H: int, fps: int
         vf.append("rgbashift=rh=9:bh=-9:gv=3")
         vf.append("noise=alls=34:allf=t+u")
     else:
-        vf.append("noise=alls=20:allf=t+u")
+        vf.append("noise=alls=14:allf=t+u" if retro else "noise=alls=20:allf=t+u")
     vf.append("vignette=angle=PI/4.2")
     if first:
         vf.append("fade=t=in:st=0:d=0.5")
@@ -167,7 +171,7 @@ def render_clips(job: Path, script: dict, meta: dict, durs: list[float], cfg: di
             first_end = timing[i]["sentences"][0]["end"] if timing else 1.2
             ov_out = min(max(first_end + 1.4, 2.0), dur - 0.4)
         fc = _scene_filter(s, dur, frames, W, H, fps, i == 0, i == n - 1, loop_ending, i in ovs, clip_dur,
-                           cuts, ov_out)
+                           cuts, ov_out, retro=(meta.get("style") or cfg["script"].get("style")) == "ps1")
         args += ["-filter_complex", fc, "-map", "[v]", "-frames:v", str(frames), "-r", str(fps),
                  "-c:v", "libx264", "-preset", "veryfast", "-crf", str(rc["crf"]), "-pix_fmt", "yuv420p", str(out)]
         _ff(args)

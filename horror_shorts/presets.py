@@ -9,8 +9,9 @@ STAGES = ["기상", "상황파악", "수칙발견", "수칙연출", "규칙위�
 # 이미지 프롬프트 공통 꼬리 — 모든 장면 톤 통일용
 STYLES = {
     # 참고 영상(레트로 공포 게임) 스타일
-    "ps1": ("low-poly PS1 era survival horror video game screenshot, retro 3D render, pixelated low resolution textures, "
-            "dithering, flat shading, fog, dim lighting, eerie, vertical 9:16, no text, no letters, no UI, no watermark"),
+    "ps1": ("dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, "
+            "heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters "
+            "fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark"),
     "realistic": None,  # 아래 STYLE_SUFFIX
 }
 STYLE_SUFFIX = (
