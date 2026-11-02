@@ -1,0 +1,8 @@
+# 괴담 쇼츠 자동화 결과물/캐시
+jobs/
+horror_shorts/assets/fonts/
+__pycache__/
+*.pyc
+client_secret.json
+youtube_token.json
+horror_config.yaml

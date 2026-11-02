@@ -1,0 +1,128 @@
+{
+  "title": "무한마트에서 음악이 멈추면 절대 하면 안 되는 것",
+  "title_options": [
+    "무한마트 야간 안내문 4번을 어기면",
+    "출구 표지판이 전부 뒤를 가리키는 마트",
+    "새벽 마트에 갇혔을 때 지켜야 할 4가지"
+  ],
+  "hook": "삐— 바코드 소리에 눈을 떴다.",
+  "rulebook_title": "무한마트 야간 고객 안내문",
+  "rules": [
+    {
+      "number": 1,
+      "text": "조끼 입은 직원에게 길을 묻지 마십시오. 야간 직원은 없습니다.",
+      "violation_result": "직원이 대답 대신 점점 빠르게 다가온다."
+    },
+    {
+      "number": 2,
+      "text": "같은 상품이 세 번 연속 보이면, 뒤로 돌아 걸으십시오.",
+      "violation_result": "진열대 사이가 좁아지며 출구가 사라진다."
+    },
+    {
+      "number": 3,
+      "text": "방송이 당신 이름을 부르면, 대답하지 말고 냉동고에 숨으십시오.",
+      "violation_result": "방송이 다시 나온다. '고객님, 지금 뒤에 계십니다.'"
+    },
+    {
+      "number": 4,
+      "text": "음악이 멈추면 움직이지 마십시오. 뒤를 돌아보는 것도 움직임입니다.",
+      "violation_result": "당신을 대신할 직원이 한 명 늘어난다."
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "삐— 바코드 소리에 눈을 떴다. 나는 카트 안에 웅크려 있었다.",
+      "caption": "눈을 떴다",
+      "image_prompt": "first person view from inside a shopping cart at an empty supermarket checkout lane at night, barcode scanner red light glowing, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
+      "motion": "zoom_out",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "진열대는 끝이 없었다. 출구 표지판은 전부, 내가 온 쪽을 가리켰다.",
+      "caption": "출구가 없다",
+      "image_prompt": "endless supermarket aisle at night, identical shelves repeating into darkness, green exit signs all pointing backwards, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
+      "motion": "pan_right",
+      "sfx": "none",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "냉동고 문에, 누렇게 바랜 종이가 붙어 있었다.",
+      "caption": "",
+      "image_prompt": "yellowed paper notice taped to a frosted supermarket freezer door, flashlight beam, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
+      "motion": "static",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. 빨간 조끼의 남자가 웃었다. 찾으시는 거 있으세요? 나는 대답하지 않았다.",
+      "caption": "수칙 1",
+      "image_prompt": "man in red staff vest standing at the far end of a supermarket aisle, smile too wide, face blurred, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 같은 통조림이 세 번째. 라벨 속 얼굴들이 나를 봤다. 나는 뒤로 돌았다.",
+      "caption": "수칙 2",
+      "image_prompt": "canned food shelf, labels with smiling mascot faces all turned toward camera, repetitive pattern, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
+      "motion": "pan_left",
+      "sfx": "heartbeat",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. 딩동. 방송에 내 이름이 나왔다. 나는 냉동고 안에서 숨을 참았다.",
+      "caption": "수칙 3",
+      "image_prompt": "view from inside a chest freezer looking up through frosted glass lid, ceiling speaker blurred above, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
+      "motion": "shake",
+      "sfx": "chime",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번. 뚝, 음악이 끊겼다. 바로 뒤에서, 숨소리가 들렸다.",
+      "caption": "수칙 4",
+      "image_prompt": "dead silent supermarket aisle from behind a person's shoulder, a dark figure standing very close behind, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
+      "motion": "zoom_in",
+      "sfx": "riser",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "참지 못하고 돌아봤다. 빨간 조끼들이 줄지어 서 있었다. 전부, 내 얼굴이었다.",
+      "caption": "",
+      "image_prompt": "rows of identical people in red staff vests standing in a long supermarket aisle staring at camera, faces hidden in shadow, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 4
+    },
+    {
+      "stage": "끝",
+      "narration": "형광등이 꺼졌다. 그리고, 삐— 바코드 소리에 눈을 떴다.",
+      "caption": "다시, 처음",
+      "image_prompt": "first person view from inside a shopping cart at an empty supermarket checkout lane, lights going out, double exposure, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 4,
+  "thumbnail_text": "음악이 멈추면\n돌아보지 마",
+  "thumbnail_prompt": "rows of people in red staff vests standing in an endless supermarket aisle, faces in shadow, dramatic dark composition, empty space at bottom for text, vertical 9:16 composition, found footage still frame, dim flickering fluorescent light, heavy film grain, desaturated sickly green tint, liminal space, unsettling empty atmosphere, photorealistic, faces hidden in shadow or blurred, no text, no letters, no watermark",
+  "description": "새벽, 끝이 없는 마트에서 눈을 떴다. 냉동고 문에 붙은 안내문 네 줄. 마지막 수칙만은 지켜야 했다.\n당신이라면 끝까지 돌아보지 않을 수 있었을까요?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#무한마트",
+    "#나폴리탄",
+    "#공포",
+    "#shorts",
+    "#미스터리"
+  ]
+}

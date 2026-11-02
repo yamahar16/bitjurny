@@ -1,0 +1,11 @@
+# 괴담 쇼츠 자동화 (horror_shorts) 의존성
+anthropic>=2.0        # 대본 생성 (ANTHROPIC_API_KEY 있을 때)
+edge-tts>=7.0         # 한국어 무료 TTS
+pillow>=10.0          # 이미지/오버레이/썸네일
+numpy>=1.26           # 자체 생성(procedural) 이미지
+PyYAML>=6.0           # 설정 파일
+requests>=2.31        # Kling API, 폰트 다운로드
+PyJWT>=2.8            # Kling API 인증
+# 업로드까지 쓸 때만:
+# google-api-python-client>=2.100
+# google-auth-oauthlib>=1.2
