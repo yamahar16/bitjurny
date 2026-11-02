@@ -18,6 +18,7 @@ DEFAULTS: dict = {
         "effort": "high",
         "rules": 4,
         "target_seconds": 55,
+        "style": "ps1",          # ps1(레트로 공포 게임) | realistic(실사 파운드 푸티지)
     },
     "voice": {
         "engine": "edge",
@@ -26,6 +27,8 @@ DEFAULTS: dict = {
         "pitch": "-6Hz",
         "pad_seconds": 0.35,
         "sentence_gap": 0.3,   # 문장 사이 쉼(초)
+        # 괴이의 대사("...")는 다른 목소리로: 느리고 낮은 여성 목소리
+        "dialogue": {"voice": "ko-KR-SunHiNeural", "rate": "-8%", "pitch": "-14Hz"},
     },
     "images": {
         "provider": "procedural",  # procedural | kling | manual
@@ -56,6 +59,9 @@ DEFAULTS: dict = {
         "bgm_volume": 0.22,
         "sfx_volume": 0.8,
         "loudness": -14,
+        "subtitle_style": "clean",   # clean(참고 영상: 작은 흰 고딕, 대사는 빨강) | horror(명조·번짐·글리치)
+        "rule_overlay": "panel",     # panel(반투명 쪽지, 해당 규칙 강조 후 사라짐) | card(종이 조각 상단 고정)
+        "punch_cuts": True,          # 문장마다 구도를 바꿔 컷이 바뀐 느낌 (영상 장면만)
     },
     "upload": {
         "privacy": "private",

@@ -193,3 +193,49 @@ def thumbnail(bg: Image.Image, text: str, label: str, size: tuple[int, int]) -> 
         d.text((x, y), ln, font=f, fill=col, stroke_width=8, stroke_fill=(0, 0, 0))
         y += int(f.size * 1.22)
     return img.convert("RGB")
+
+
+NUM_WORDS = ["하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟"]
+
+
+def rule_panel(size: tuple[int, int], title: str, rules: list[dict], highlight: int | None = None,
+               violated: bool = False, handwritten: int | None = None) -> Image.Image:
+    """참고 영상 스타일 — 반투명 회색 쪽지에 '하나, 둘, 셋…' 규칙, 해당 규칙 줄만 밝게."""
+    W, H = size
+    pw = int(W * 0.88)
+    pad = 54
+    tf = _font("gothic", 42)
+    lf = _font("pen", 66)
+    blocks = []
+    for r in rules:
+        n = r["number"]
+        label = NUM_WORDS[n - 1] if 0 < n <= len(NUM_WORDS) else str(n)
+        blocks.append((n, wrap(f"{label}, {r['text']}", lf, pw - pad * 2)))
+    lh = 70
+    ph = pad + 56 + 26 + sum(len(b[1]) * lh + 18 for b in blocks) + pad - 18
+    panel = Image.new("RGBA", (pw, ph), (0, 0, 0, 0))
+    d = ImageDraw.Draw(panel)
+    d.rectangle([0, 0, pw, ph], fill=(196, 198, 196, 205))
+    d.text((pad, pad - 6), title, font=tf, fill=(92, 94, 96, 255))
+    y = pad + 56 + 26
+    for n, lines in blocks:
+        bh = len(lines) * lh
+        hi = highlight == n
+        if hi:
+            d.rectangle([0, y - 8, pw, y + bh + 4], fill=(238, 238, 234, 245))
+        if n == handwritten:
+            col = (30, 52, 150, 255)
+        elif highlight is None or hi:
+            col = (36, 36, 38, 255)
+        else:
+            col = (80, 82, 84, 150)
+        for k, ln in enumerate(lines):
+            d.text((pad, y + k * lh), ln, font=lf, fill=col)
+        if hi and violated:
+            for k in range(len(lines)):
+                yy = y + k * lh + lh // 2
+                d.line([pad - 6, yy, pad + lf.getlength(lines[k]) + 6, yy + 3], fill=RED + (235,), width=6)
+        y += bh + 18
+    canvas = Image.new("RGBA", size, (0, 0, 0, 0))
+    canvas.alpha_composite(panel, ((W - pw) // 2, int(H * 0.2)))
+    return canvas

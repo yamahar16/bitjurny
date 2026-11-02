@@ -62,7 +62,7 @@
     },
     {
       "stage": "수칙연출",
-      "narration": "수칙 1번. 배수구 쪽에서, *내 이름*을 부르는 소리가 들렸다. 나는 입을 막았다.",
+      "narration": "수칙 1번. 배수구 쪽에서 누가 나를 불렀다. \"거기 있지?\" 나는 입을 막았다.",
       "caption": "수칙 1",
       "image_prompt": "close view of a dark pool drain grate at the deep end of a swimming pool at night, black water swirling into it, vertical 9:16, found footage still, cold cyan fluorescent light, heavy film grain, desaturated, liminal space, eerie empty atmosphere, photorealistic, no text, no watermark",
       "video_prompt": "slow push in toward the drain, the water above it swirls slowly as if something below is breathing, small bubbles rise, subtle film grain, no cuts, no text",
@@ -82,7 +82,7 @@
     },
     {
       "stage": "수칙연출",
-      "narration": "수칙 3번. 탈의실 거울 속의 나는, *머리끝까지 젖어* 있었다. 나는 수건으로 거울을 덮었다.",
+      "narration": "수칙 3번. 거울 속의 나는 *머리끝까지 젖어* 있었다. \"같이 들어가자.\" 나는 수건으로 거울을 덮었다.",
       "caption": "수칙 3",
       "image_prompt": "old locker room mirror reflecting a dripping wet person with face hidden by wet hair, while the room is dry, dim fluorescent light, vertical 9:16, found footage still, cold cyan fluorescent light, heavy film grain, desaturated, liminal space, eerie empty atmosphere, photorealistic, no text, no watermark",
       "video_prompt": "water keeps dripping from the reflection in the mirror, the reflection slowly tilts its head, a white towel falls over the mirror, subtle film grain, no cuts, no text",
@@ -102,7 +102,7 @@
     },
     {
       "stage": "규칙위반",
-      "narration": "물속은 조용했다. 그때 귓가에서, *엄마 목소리*가 내 이름을 불렀다. 나는 *대답하고 말았다*.",
+      "narration": "물속은 조용했다. 귓가에서 *엄마 목소리*가 들렸다. \"얘야, 대답해야지.\" 나는 *대답하고 말았다*.",
       "caption": "",
       "image_prompt": "underwater view in a dark swimming pool, many pale hands reaching up from the pool floor toward the camera, faint light from above, vertical 9:16, found footage still, cold cyan fluorescent light, heavy film grain, desaturated, liminal space, eerie empty atmosphere, photorealistic, no text, no watermark",
       "video_prompt": "pale hands slowly rise from the dark pool floor and reach toward the camera, bubbles burst out, camera shakes and sinks, subtle film grain, no cuts, no text",

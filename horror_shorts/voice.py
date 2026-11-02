@@ -33,6 +33,18 @@ TRIM = ("silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.04,
         "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.06,areverse")
 
 
+QUOTES = '"“”「」『』'
+
+
+def is_dialogue(sent: str) -> bool:
+    """큰따옴표로 시작하는 문장 = 괴이의 대사."""
+    return sent.replace("*", "").lstrip()[:1] in QUOTES
+
+
+def strip_quotes(sent: str) -> str:
+    return sent.strip().strip(QUOTES).strip()
+
+
 def split_sentences(text: str) -> list[str]:
     parts = [p.strip() for p in SENT_RE.findall(text) if p.strip()]
     return parts or [text.strip()]
@@ -56,9 +68,12 @@ def synth_scene(text: str, out_wav: Path, vcfg: dict, log=print) -> list[dict]:
     pieces, sentences, cur = [], [], 0.0
     for j, sent in enumerate(split_sentences(text)):
         mp3, wav = tmp / f"{j}.mp3", tmp / f"{j}.wav"
+        dlg = is_dialogue(sent)
+        vc = {**vcfg, **vcfg.get("dialogue", {})} if dlg else vcfg
+        say = strip_quotes(sent.replace("*", "")) if dlg else sent.replace("*", "")
         for attempt in range(3):
             try:
-                asyncio.run(_tts(sent.replace("*", ""), mp3, vcfg["voice"], vcfg["rate"], vcfg["pitch"]))
+                asyncio.run(_tts(say, mp3, vc["voice"], vc["rate"], vc["pitch"]))
                 break
             except Exception as e:  # 네트워크 일시 오류 재시도
                 if attempt == 2:
@@ -68,7 +83,7 @@ def synth_scene(text: str, out_wav: Path, vcfg: dict, log=print) -> list[dict]:
         d = probe_duration(wav)
         if pieces:
             cur += gap
-        sentences.append({"start": round(cur, 3), "end": round(cur + d, 3), "text": sent})
+        sentences.append({"start": round(cur, 3), "end": round(cur + d, 3), "text": sent, "dialogue": dlg})
         pieces.append(wav)
         cur += d
     lead = 0.08

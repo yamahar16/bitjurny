@@ -10,7 +10,7 @@ import json
 import os
 from pathlib import Path
 
-from .presets import ENDINGS, MOTIONS, PLACES, SFX, STAGES, STYLE_SUFFIX, WORLDS
+from .presets import ENDINGS, MOTIONS, PLACES, SFX, STAGES, WORLDS, style_suffix
 
 
 class NeedsScript(RuntimeError):
@@ -68,7 +68,7 @@ SCRIPT_SCHEMA: dict = {
     },
 }
 
-SYSTEM_PROMPT = f"""당신은 유튜브 쇼츠용 '규칙 괴담' 전문 작가 겸 연출가입니다.
+SYSTEM_TEMPLATE = """당신은 유튜브 쇼츠용 '규칙 괴담' 전문 작가 겸 연출가입니다.
 SCP 재단 세계관과 디시인사이드 나폴리탄 갤러리식 규칙 괴담의 장르 문법을 깊이 이해하지만, 언제나 오리지널 이야기를 씁니다.
 
 ## 저작권 원칙
@@ -92,15 +92,22 @@ SCP 재단 세계관과 디시인사이드 나폴리탄 갤러리식 규칙 괴�
 - 1인칭 나레이션, 짧은 문장. 한 장면 1~3문장.
 - 한국어 TTS는 장면·문장 사이 쉼까지 포함해 초당 약 4.8음절로 읽힌다. 전체 나레이션의 공백 제외 글자 수 ≈ 목표 초 × 4.8 (55초면 약 260자). 넘치면 문장을 줄인다.
 - 고어 묘사 대신 '이상함'과 '암시'로 공포를 만든다 (유튜브 정책).
+- 괴이(직원, 방송, 목소리 등)가 하는 말은 큰따옴표로 따로 한 문장으로 쓴다. 공손하고 기계적인 말투일수록 무섭다. 예: "고객님, 무엇을 찾으세요?" — 다른 목소리로 읽히고 자막은 빨간색이 된다. 영상 전체에서 2~4번.
 - narration 안에서 가장 무서운 핵심 단어 1개(많아야 2개)를 *별표*로 감싼다. 자막에서 빨간색으로 강조된다. 예: "나는 *물속*에 있었다." (마침표는 별표 밖에)
 - caption: 화면 상단 강조 문구, 12자 이내. 수칙연출이면 "수칙 N", 기상이면 짧은 훅.
-- image_prompt: 영어, 정지 이미지용. 장면의 구도·피사체를 구체적으로 쓰고 맨 끝에 반드시 다음 스타일 문구를 붙인다: "{STYLE_SUFFIX}"
+- image_prompt: 영어, 정지 이미지용. 장면의 구도·피사체를 구체적으로 쓰고 맨 끝에 반드시 다음 스타일 문구를 붙인다: "{style}"
 - video_prompt: 영어. image_prompt 이미지를 첫 프레임으로 5초간 움직이는 지시. 카메라 움직임 1개 + 피사체/환경 움직임 1~2개 (예: "slow dolly forward down the aisle, fluorescent light flickers, a figure at the far end slowly turns its head"). 끝에 "subtle film grain, no cuts, no text"를 붙인다. 공포는 갑작스러운 점프보다 '천천히 다가오는 이상함'.
-- motion: (영상이 없을 때 정지 이미지 카메라 효과) {', '.join(MOTIONS)} 중 하나. 기상은 zoom_out 또는 shake, 규칙위반은 shake 권장.
-- sfx: {', '.join(SFX)} 중 하나. 규칙위반은 hit, 수칙발견은 static_burst 권장.
+- motion: (영상이 없을 때 정지 이미지 카메라 효과) {motions} 중 하나. 기상은 zoom_out 또는 shake, 규칙위반은 shake 권장.
+- sfx: {sfx} 중 하나. 규칙위반은 hit, 수칙발견은 static_burst 권장.
 - hashtags: #괴담 #규칙괴담 #shorts 포함 5~8개.
 - 결말이 '반전'이면 마지막 수칙을 '거짓(손글씨로 덧붙인) 수칙'으로 쓴다. 화면의 수칙 종이에서 그 줄만 볼펜 손글씨로 그려진다.
 """
+
+
+def system_prompt(meta: dict) -> str:
+    return (SYSTEM_TEMPLATE.replace("{style}", style_suffix(meta.get("style")))
+            .replace("{motions}", ", ".join(MOTIONS)).replace("{sfx}", ", ".join(SFX)))
+
 
 
 def build_user_prompt(meta: dict) -> str:
@@ -176,7 +183,7 @@ def generate_with_claude(meta: dict, cfg: dict) -> dict:
     kwargs = dict(
         model=model,
         max_tokens=16000,
-        system=SYSTEM_PROMPT,
+        system=system_prompt(meta),
         messages=[{"role": "user", "content": build_user_prompt(meta)}],
         output_config={"effort": cfg["script"]["effort"], "format": {"type": "json_schema", "schema": SCRIPT_SCHEMA}},
     )
@@ -216,7 +223,7 @@ def run(job: Path, meta: dict, cfg: dict) -> dict:
             "# 대본 요청 (Claude Code가 직접 작성)\n\n"
             "아래 system/user 프롬프트대로 대본을 쓰고, `script_schema.json` 형식에 맞춰 "
             f"`{out.name}`으로 이 폴더에 저장한 뒤 다시 run 하세요.\n\n"
-            f"## system\n\n{SYSTEM_PROMPT}\n\n## user\n\n{build_user_prompt(meta)}\n",
+            f"## system\n\n{system_prompt(meta)}\n\n## user\n\n{build_user_prompt(meta)}\n",
             encoding="utf-8",
         )
         (job / "script_schema.json").write_text(json.dumps(SCRIPT_SCHEMA, ensure_ascii=False, indent=2), encoding="utf-8")

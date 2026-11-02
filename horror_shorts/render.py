@@ -55,14 +55,32 @@ def _zoompan(motion: str, frames: int, W: int, H: int, fps: int) -> str:
     return f"zoompan=z='{z}':x='{x}':y='{y}':d={frames}:s={W}x{H}:fps={fps}"
 
 
+PUNCH = [(1.0, 0.5, 0.5), (1.32, 0.5, 0.42), (1.15, 0.38, 0.55), (1.45, 0.6, 0.5)]  # (줌, x중심, y중심)
+
+
+def _punch_zoompan(cuts: list[float], W: int, H: int, fps: int) -> str:
+    """문장이 바뀔 때마다 구도(줌·위치)를 바꿔 컷 편집처럼 보이게."""
+    z, x, y = f"{PUNCH[0][0]}", f"{PUNCH[0][1]}", f"{PUNCH[0][2]}"
+    for k, c in reversed(list(enumerate(cuts, 1))):
+        pz, px, py = PUNCH[k % len(PUNCH)]
+        z = f"if(gte(it,{c:.2f}),{pz},{z})"
+        x = f"if(gte(it,{c:.2f}),{px},{x})"
+        y = f"if(gte(it,{c:.2f}),{py},{y})"
+    return (f"zoompan=z='{z}':x='max(0,min(iw-iw/zoom,iw*({x})-iw/zoom/2))'"
+            f":y='max(0,min(ih-ih/zoom,ih*({y})-ih/zoom/2))':d=1:s={W}x{H}:fps={fps}")
+
+
 def _scene_filter(scene: dict, dur: float, frames: int, W: int, H: int, fps: int, first: bool, last: bool,
-                  loop_ending: bool, has_overlay: bool, clip_dur: float | None = None) -> str:
+                  loop_ending: bool, has_overlay: bool, clip_dur: float | None = None,
+                  cuts: list[float] | None = None, overlay_out: float | None = None) -> str:
     stage = scene["stage"]
     if clip_dur:
         # Kling 영상: 장면 길이에 맞게 최대 1.6배까지 느리게, 그래도 모자라면 마지막 프레임 유지
         k = min(max(dur / clip_dur, 1.0), 1.6)
         vf = [f"setpts={k:.4f}*PTS", f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos",
               f"crop={W}:{H}", f"fps={fps}", f"tpad=stop_mode=clone:stop_duration={dur:.2f}"]
+        if cuts:
+            vf.append(_punch_zoompan(cuts, W, H, fps))
         if scene["motion"] == "shake" or stage == "규칙위반":
             vf.append(f"crop={W - 40}:{H - 70}:20+16*sin(n*2.3):35+14*sin(n*1.7+1),scale={W}:{H}")
     else:
@@ -82,24 +100,33 @@ def _scene_filter(scene: dict, dur: float, frames: int, W: int, H: int, fps: int
         vf.append(f"fade=t=out:st={max(0.0, dur - 0.9):.2f}:d=0.9")
     chain = ",".join(vf)
     if has_overlay:
-        return (f"[0:v]{chain}[bg];[1:v]format=rgba,fade=t=in:st=0.12:d=0.35:alpha=1[ov];"
+        out_fx = f",fade=t=out:st={overlay_out:.2f}:d=0.3:alpha=1" if overlay_out else ""
+        return (f"[0:v]{chain}[bg];[1:v]format=rgba,fade=t=in:st=0.12:d=0.3:alpha=1{out_fx}[ov];"
                 f"[bg][ov]overlay=0:0:format=auto,format=yuv420p[v]")
     return f"[0:v]{chain},format=yuv420p[v]"
 
 
-def build_overlays(job: Path, script: dict, meta: dict, size: tuple[int, int]) -> dict[int, Path]:
+def build_overlays(job: Path, script: dict, meta: dict, size: tuple[int, int], mode: str = "panel") -> dict[int, Path]:
     odir = job / "overlays"
     odir.mkdir(exist_ok=True)
     rules = {r["number"]: r for r in script["rules"]}
+    hand = script.get("handwritten_rule") or (script["rules"][-1]["number"] if meta.get("ending") == "twist" else None)
     out = {}
     for i, s in enumerate(script["scenes"]):
         img = None
         if s["stage"] == "수칙발견":
-            hand = script.get("handwritten_rule") or (script["rules"][-1]["number"] if meta.get("ending") == "twist" else None)
-            img = overlays.rulebook(size, script["rulebook_title"], script["rules"], meta["world"], handwritten=hand)
+            if mode == "panel":
+                img = overlays.rule_panel(size, script["rulebook_title"], script["rules"], handwritten=hand)
+            else:
+                img = overlays.rulebook(size, script["rulebook_title"], script["rules"], meta["world"], handwritten=hand)
         elif s["stage"] in ("수칙연출", "규칙위반") and s.get("rule_number") in rules:
             n = s["rule_number"]
-            img = overlays.rule_card(size, n, rules[n]["text"], violated=s["stage"] == "규칙위반")
+            viol = s["stage"] == "규칙위반"
+            if mode == "panel":
+                img = overlays.rule_panel(size, script["rulebook_title"], script["rules"], highlight=n,
+                                          violated=viol, handwritten=hand)
+            else:
+                img = overlays.rule_card(size, n, rules[n]["text"], violated=viol)
         if img is not None:
             p = odir / f"scene_{i:02d}.png"
             img.save(p)
@@ -107,12 +134,14 @@ def build_overlays(job: Path, script: dict, meta: dict, size: tuple[int, int]) -
     return out
 
 
-def render_clips(job: Path, script: dict, meta: dict, durs: list[float], cfg: dict, log=print) -> list[Path]:
+def render_clips(job: Path, script: dict, meta: dict, durs: list[float], cfg: dict, log=print,
+                 timing: list[dict] | None = None) -> list[Path]:
     rc = cfg["render"]
     W, H, fps = rc["width"], rc["height"], rc["fps"]
     cdir = job / "clips"
     cdir.mkdir(exist_ok=True)
-    ovs = build_overlays(job, script, meta, (W, H))
+    mode = rc.get("rule_overlay", "panel")
+    ovs = build_overlays(job, script, meta, (W, H), mode)
     n = len(script["scenes"])
     loop_ending = meta.get("ending") == "loop"
 
@@ -129,7 +158,16 @@ def render_clips(job: Path, script: dict, meta: dict, durs: list[float], cfg: di
             args = ["-i", str(job / "images" / f"scene_{i:02d}.png")]
         if i in ovs:
             args += ["-loop", "1", "-t", f"{dur:.3f}", "-i", str(ovs[i])]
-        fc = _scene_filter(s, dur, frames, W, H, fps, i == 0, i == n - 1, loop_ending, i in ovs, clip_dur)
+        cuts = None
+        if rc.get("punch_cuts") and timing and s["stage"] != "수칙발견":
+            cuts = [x["start"] - 0.05 for x in timing[i]["sentences"][1:]]
+        # 규칙 쪽지(panel)는 첫 문장("수칙 N번.")이 끝나고 조금 뒤에 사라진다. 수칙발견 장면은 끝까지.
+        ov_out = None
+        if mode == "panel" and i in ovs and s["stage"] != "수칙발견":
+            first_end = timing[i]["sentences"][0]["end"] if timing else 1.2
+            ov_out = min(max(first_end + 1.4, 2.0), dur - 0.4)
+        fc = _scene_filter(s, dur, frames, W, H, fps, i == 0, i == n - 1, loop_ending, i in ovs, clip_dur,
+                           cuts, ov_out)
         args += ["-filter_complex", fc, "-map", "[v]", "-frames:v", str(frames), "-r", str(fps),
                  "-c:v", "libx264", "-preset", "veryfast", "-crf", str(rc["crf"]), "-pix_fmt", "yuv420p", str(out)]
         _ff(args)
@@ -220,7 +258,7 @@ def _tokens(text: str) -> list[tuple[str, bool]]:
     return out
 
 
-def _chunks(text: str, max_chars: int = 14) -> list[list[list[tuple[str, bool]]]]:
+def _chunks(text: str, max_chars: int = 14, lines_per_screen: int = 2) -> list[list[list[tuple[str, bool]]]]:
     """자막 한 화면 = 최대 2줄. 어절 단위로 쪼갠다. 반환: 화면 > 줄 > (단어, 강조)"""
     lines, cur, n = [], [], 0
     for w, red in _tokens(text):
@@ -232,8 +270,13 @@ def _chunks(text: str, max_chars: int = 14) -> list[list[list[tuple[str, bool]]]
         cur.append((w, red))
         n += add
     if cur:
-        lines.append(cur)
-    return [lines[i:i + 2] for i in range(0, len(lines), 2)]
+        # 마지막 줄이 한 단어로 떨어지면 앞 줄에 붙인다 (예: "있었다." 단독 자막 방지)
+        if lines and len(cur) == 1 and n <= 5 and sum(len(w) + 1 for w, _ in lines[-1]) + n <= max_chars + 6:
+            lines[-1] = lines[-1] + cur
+        else:
+            lines.append(cur)
+    n = lines_per_screen
+    return [lines[i:i + n] for i in range(0, len(lines), n)]
 
 
 def _ass_line(screen: list[list[tuple[str, bool]]], base: str = WHITE_TXT) -> str:
@@ -254,8 +297,9 @@ def _plain(screen) -> str:
     return "\n".join(" ".join(w for w, _ in line) for line in screen)
 
 
-def subtitle_events(script: dict, timing: list[dict], durs: list[float]) -> list[tuple[float, float, list, str]]:
-    from .voice import split_sentences
+def subtitle_events(script: dict, timing: list[dict], durs: list[float], max_chars: int = 14,
+                    lines_per_screen: int = 2) -> list[tuple[float, float, list, str]]:
+    from .voice import is_dialogue, split_sentences, strip_quotes
 
     events = []
     offset = 0.0
@@ -263,13 +307,17 @@ def subtitle_events(script: dict, timing: list[dict], durs: list[float]) -> list
         marked = split_sentences(s["narration"])
         use_marked = len(marked) == len(t["sentences"])
         for k, sent in enumerate(t["sentences"]):
-            screens = _chunks(marked[k] if use_marked else sent["text"])
+            text = marked[k] if use_marked else sent["text"]
+            dlg = is_dialogue(text)
+            if dlg:  # 괴이의 대사: 따옴표 빼고 전체 빨강
+                text = "*" + strip_quotes(text.replace("*", "")) + "*"
+            screens = _chunks(text, max_chars, lines_per_screen)
             span = max(sent["end"] - sent["start"], 0.3)
             weights = [max(sum(len(w) for line in sc for w, _ in line), 1) for sc in screens]
             cur = sent["start"]
             for sc, w in zip(screens, weights):
                 dt = span * w / sum(weights)
-                events.append((offset + cur, offset + cur + dt, sc, s["stage"]))
+                events.append((offset + cur, offset + cur + dt, sc, "대사" if dlg else s["stage"]))
                 cur += dt
         offset += d
     fixed = []
@@ -280,10 +328,47 @@ def subtitle_events(script: dict, timing: list[dict], durs: list[float]) -> list
     return fixed
 
 
+def _write_srt(job: Path, ev) -> None:
+    (job / "subtitles.srt").write_text("".join(f"{i}\n{_srt_time(a)} --> {_srt_time(b)}\n{_plain(sc)}\n\n"
+                                              for i, (a, b, sc, _) in enumerate(ev, 1)), encoding="utf-8")
+
+
+def _write_clean_subtitles(job: Path, script: dict, timing: list[dict], durs: list[float], W: int, H: int) -> Path:
+    """참고 영상 스타일: 화면 2/3 지점, 작고 깔끔한 흰 고딕 한 줄. 괴이의 대사만 빨강. 강조(*)는 무시."""
+    ev = subtitle_events(script, timing, durs, max_chars=18, lines_per_screen=1)
+    head = f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {W}
+PlayResY: {H}
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Clean,{FAMILY['gothic']},50,&H00F2F2F2,&H00F2F2F2,&H00101010,&H90000000,0,0,0,0,100,100,0,0,1,2.6,1.5,2,60,60,{int(H * 0.335)},1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+    lines = [head]
+    for a, b, sc, kind in ev:
+        if kind == "대사":
+            txt = "{\\c&H003838FF&\\3c&H00000018&\\bord3.2}" + " ".join(w for w, _ in sc[0])
+        else:
+            txt = " ".join(w for w, _ in sc[0])
+        lines.append(f"Dialogue: 0,{_ass_time(a)},{_ass_time(b)},Clean,,0,0,0,,{{\\fad(70,50)\\blur0.6}}{txt}\n")
+    ass = job / "subtitles.ass"
+    ass.write_text("".join(lines), encoding="utf-8")
+    _write_srt(job, ev)
+    return ass
+
+
 def write_subtitles(job: Path, script: dict, timing: list[dict], durs: list[float], cfg: dict) -> Path:
     rc = cfg["render"]
     W, H = rc["width"], rc["height"]
     X, Y = W // 2, H - 560
+    if rc.get("subtitle_style", "clean") == "clean":
+        return _write_clean_subtitles(job, script, timing, durs, W, H)
     ev = subtitle_events(script, timing, durs)
     head = f"""[Script Info]
 ScriptType: v4.00+
@@ -338,7 +423,7 @@ def run(job: Path, script: dict, meta: dict, timing: list[dict], cfg: dict, log=
     rc = cfg["render"]
     durs = scene_durations(script, timing, cfg)
     (job / "durations.json").write_text(json.dumps(durs), encoding="utf-8")
-    clips = render_clips(job, script, meta, durs, cfg, log)
+    clips = render_clips(job, script, meta, durs, cfg, log, timing)
     lst = job / "clips" / "list.txt"
     lst.write_text("".join(f"file '{c.name}'\n" for c in clips), encoding="utf-8")
     _ff(["-f", "concat", "-safe", "0", "-i", "list.txt", "-c", "copy", "../video_raw.mp4"], cwd=job / "clips")
