@@ -23,9 +23,9 @@ class NeedsVideos(RuntimeError):
 
 
 def clip_seconds(scene_dur: float, options: list[int]) -> int:
-    """장면 길이를 덮는 가장 짧은 Kling 길이 (렌더에서 최대 1.6배까지 느리게 늘린다)."""
+    """장면 길이를 덮는 가장 짧은 Kling 길이. 없으면 가장 긴 것 (렌더에서 최대 1.6배까지 느리게 늘린다)."""
     for o in sorted(options):
-        if o * 1.6 >= scene_dur:
+        if o >= scene_dur:
             return o
     return max(options)
 

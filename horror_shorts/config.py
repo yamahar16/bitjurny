@@ -40,7 +40,9 @@ DEFAULTS: dict = {
     "videos": {
         "provider": "manual",   # kling(API) | manual(Claude Code가 Kling 커넥터로 생성해 넣기) | none
         "scenes": "all",        # "all" 또는 ["기상", "규칙위반", "끝"] 처럼 단계 목록
-        "durations": [5, 10],   # Kling 영상 길이 선택지(초)
+        "durations": list(range(3, 16)),  # Kling 3.0 Turbo는 3~15초 자유. 구버전 모델이면 [5, 10]
+        "model": "kling-video-v3_0_turbo",  # Kling 커넥터(MCP)로 만들 때 쓰는 모델
+        "resolution": "720p",
         "require": True,        # 영상이 빠지면 멈출지 (False면 정지 이미지로 대체하고 진행)
         "parallel": 4,
     },
