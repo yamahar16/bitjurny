@@ -55,15 +55,18 @@ def _paper_texture(w: int, h: int, seed: int) -> Image.Image:
     return img.filter(ImageFilter.GaussianBlur(0.6))
 
 
-def rulebook(size: tuple[int, int], title: str, rules: list[dict], world: str, seed: int = 7) -> Image.Image:
-    """수칙발견 장면용 — 테이프로 붙은 안내문 한 장."""
+def rulebook(size: tuple[int, int], title: str, rules: list[dict], world: str, seed: int = 7,
+             handwritten: int | None = None) -> Image.Image:
+    """수칙발견 장면용 — 테이프로 붙은 안내문 한 장. handwritten 번호의 수칙은 볼펜 손글씨로 (반전 결말용)."""
     W, H = size
     pw = int(W * 0.80)
     tf, rf, nf = _font("myeongjo", 50), _font("myeongjo", 37), _font("myeongjo", 37)
+    pf = _font("pen", 50)
     inner = pw - 120
     body = []
     for r in rules:
-        body.append((f"{r['number']}.", wrap(r["text"], rf, inner - 60)))
+        hand = r["number"] == handwritten
+        body.append((f"{r['number']}.", wrap(r["text"], pf if hand else rf, inner - 60), hand))
     t_lines = wrap(title, tf, inner)
     ph = 90 + len(t_lines) * 64 + 40 + sum(len(b[1]) * 52 + 22 for b in body) + 90
     paper = _paper_texture(pw, ph, seed).convert("RGBA")
@@ -75,11 +78,17 @@ def rulebook(size: tuple[int, int], title: str, rules: list[dict], world: str, s
     d.line([60, y + 14, pw - 60, y + 14], fill=INK, width=3)
     y += 50
     rng = random.Random(seed)
-    for num, lines in body:
-        d.text((60, y), num, font=nf, fill=RED)
-        for ln in lines:
-            d.text((120, y), ln, font=rf, fill=INK)
-            y += 52
+    for num, lines, hand in body:
+        if hand:  # 다른 줄과 달리 파란 볼펜, 살짝 삐뚤게
+            d.text((56, y - 6), num, font=pf, fill=(28, 48, 140))
+            for k, ln in enumerate(lines):
+                d.text((118 + 3 * k, y - 8), ln, font=pf, fill=(28, 48, 140))
+                y += 52
+        else:
+            d.text((60, y), num, font=nf, fill=RED)
+            for ln in lines:
+                d.text((120, y), ln, font=rf, fill=INK)
+                y += 52
         y += 22
     if world in ("scp", "mixed"):
         # 검게 지운 줄 + 등급 도장

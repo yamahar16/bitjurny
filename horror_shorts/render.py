@@ -95,7 +95,8 @@ def build_overlays(job: Path, script: dict, meta: dict, size: tuple[int, int]) -
     for i, s in enumerate(script["scenes"]):
         img = None
         if s["stage"] == "수칙발견":
-            img = overlays.rulebook(size, script["rulebook_title"], script["rules"], meta["world"])
+            hand = script.get("handwritten_rule") or (script["rules"][-1]["number"] if meta.get("ending") == "twist" else None)
+            img = overlays.rulebook(size, script["rulebook_title"], script["rules"], meta["world"], handwritten=hand)
         elif s["stage"] in ("수칙연출", "규칙위반") and s.get("rule_number") in rules:
             n = s["rule_number"]
             img = overlays.rule_card(size, n, rules[n]["text"], violated=s["stage"] == "규칙위반")
