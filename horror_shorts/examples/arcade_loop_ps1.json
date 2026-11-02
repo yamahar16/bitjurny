@@ -1,0 +1,137 @@
+{
+  "title": "지하상가 야간 경비, 6시 전에 온 교대자",
+  "title_options": [
+    "지하상가 야간 경비 인수인계 메모 4번",
+    "무전기에서 내 목소리가 들리면 절대 대답하지 마세요",
+    "새벽 4시 44분에 교대하러 온 사람"
+  ],
+  "hook": "치직. 무전기 소리에 눈을 떴다.",
+  "rulebook_title": "야간 경비 인수인계 메모",
+  "rules": [
+    {
+      "number": 1,
+      "text": "순찰 중 셔터가 올라간 가게가 있으면, 안을 보지 말고 지나갈 것.",
+      "violation_result": "그 가게의 마지막 손님이 된다."
+    },
+    {
+      "number": 2,
+      "text": "무전기에서 내 목소리가 들리면, 대답하지 말고 끌 것.",
+      "violation_result": "그것이 내 위치를 알게 된다."
+    },
+    {
+      "number": 3,
+      "text": "에스컬레이터가 혼자 움직이면, 올라가는 쪽에 타지 말 것.",
+      "violation_result": "끝까지 올라가도 지상이 나오지 않는다."
+    },
+    {
+      "number": 4,
+      "text": "교대자는 6시에 온다. 그 전에 온 교대자에게 문을 열지 말 것.",
+      "violation_result": "내가 다음 야간 근무자가 된다."
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "치직. 무전기 소리에 눈을 떴다. 새벽 1시, *지하상가 경비실*이었다.",
+      "caption": "새벽 1시",
+      "image_prompt": "inside a small glass security booth in a Korean underground shopping arcade at night, a walkie-talkie on the desk with a blinking red light, CCTV monitors glowing, empty arcade outside, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the walkie-talkie light blinks, static flickers on the CCTV monitors, the camera slowly lifts as if waking up, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "첫 출근이었다. 상가는 *셔터가 전부 내려간* 채, 끝없이 이어져 있었다.",
+      "caption": "",
+      "image_prompt": "long empty underground shopping arcade corridor at night, every shop shutter pulled down, tiled floor reflecting dim fluorescent lights, stretching into darkness, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow forward dolly down the endless arcade corridor, fluorescent tubes flicker one by one, shutters rattle faintly, subtle film grain, no cuts, no text",
+      "motion": "pan_right",
+      "sfx": "none",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "책상 위에, 전임자의 *인수인계 메모*가 있었다.",
+      "caption": "",
+      "image_prompt": "a handwritten paper memo lying on a security guard desk under a desk lamp, a flashlight and a cold cup of coffee next to it, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the memo, the desk lamp flickers, the paper corner lifts slightly from a draft, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. 순찰 중, 한 가게만 *셔터가 올라가 있었다*. 안에서 누가 손짓했다. 나는 보지 않고 지나갔다.",
+      "caption": "",
+      "image_prompt": "one shop in a dark underground arcade with its shutter half raised, inside pitch black except a pale hand beckoning from the darkness, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the pale hand slowly beckons from the dark shop, the half-raised shutter trembles, the camera keeps walking past, subtle film grain, no cuts, no text",
+      "motion": "pan_left",
+      "sfx": "heartbeat",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 무전기가 울렸다. \"여기는 경비실. 지금 어디야?\" *내 목소리*였다. 나는 무전기를 껐다.",
+      "caption": "",
+      "image_prompt": "close-up of a guard's hand holding a black walkie-talkie in a dark arcade corridor, the radio's red light glowing, flashlight beam on the floor, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the walkie-talkie light blinks rapidly, the hand trembles and turns the knob off, the flashlight beam shakes, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. 멈춰 있던 에스컬레이터가, *혼자 올라가기* 시작했다. 나는 옆 계단으로 내려왔다.",
+      "caption": "",
+      "image_prompt": "a stopped escalator in a dark underground arcade leading up into blackness, emergency lights glowing, no one on it, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the escalator suddenly starts moving upward by itself, the steps rising into the dark, a faint silhouette appears at the top, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "riser",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번. 새벽 4시 44분. 경비실 유리문을 누가 두드렸다. \"*교대하러* 왔습니다.\"",
+      "caption": "",
+      "image_prompt": "a security guard in a reflective vest and cap standing outside a glass security booth door in a dark arcade, pale mannequin-like face with an unnaturally wide grin, knocking on the glass, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the grinning guard knocks slowly on the glass door three times, tilting his head, the booth light flickers, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "교대자 조끼를 입고 있었다. 나는 *문을 열어줬다*. \"고마워요. 이제 당신 차례예요.\"",
+      "caption": "",
+      "image_prompt": "extreme close-up of the grinning guard in a reflective vest leaning through an open glass door, eyes wide, red emergency light tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the guard steps inside fast and leans toward the camera, his grin stretching wider, red light strobes, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 4
+    },
+    {
+      "stage": "끝",
+      "narration": "그가 내 자리에 앉았다. 그리고, 치직. 무전기 소리에 *눈을 떴다*.",
+      "caption": "다시, 1시",
+      "image_prompt": "the grinning guard sitting in the security booth chair facing the CCTV monitors, seen from behind the glass, the arcade dark outside, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the guard in the chair slowly turns his head toward the camera and smiles, the monitors flicker to static, the lights go out, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 4,
+  "thumbnail_text": "6시 전에 온\n교대자",
+  "thumbnail_prompt": "grinning security guard knocking on a glass booth door, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+  "description": "지하상가 야간 경비 첫 출근. 책상 위 인수인계 메모 네 줄. 마지막 줄만은 지켜야 했다.\n새벽 4시 44분, 당신이라면 문을 열어주시겠어요?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#나폴리탄",
+    "#야간근무",
+    "#지하상가",
+    "#공포",
+    "#shorts"
+  ]
+}

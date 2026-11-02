@@ -45,8 +45,19 @@ def strip_quotes(sent: str) -> str:
     return sent.strip().strip(QUOTES).strip()
 
 
+QUOTED_RE = re.compile(r'(\*?["“「『][^"”」』]*["”」』]\*?)')
+
+
 def split_sentences(text: str) -> list[str]:
-    parts = [p.strip() for p in SENT_RE.findall(text) if p.strip()]
+    """문장 단위로 자른다. 큰따옴표 대사는 여러 문장이어도 하나로 묶는다 (목소리·자막 색이 중간에 바뀌지 않게)."""
+    parts = []
+    for chunk in QUOTED_RE.split(text):
+        if not chunk.strip():
+            continue
+        if QUOTED_RE.fullmatch(chunk.strip()):
+            parts.append(chunk.strip())
+        else:
+            parts += [p.strip() for p in SENT_RE.findall(chunk) if p.strip()]
     return parts or [text.strip()]
 
 
