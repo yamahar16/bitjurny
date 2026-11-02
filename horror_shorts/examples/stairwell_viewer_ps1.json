@@ -1,0 +1,137 @@
+{
+  "title": "새벽 비상계단에서 몇 층 사냐고 물으면",
+  "title_options": [
+    "아파트 비상계단 안내문 4번을 어기면",
+    "15층에서 내려왔는데 계속 15층이었다",
+    "새벽 2시 비상계단에서 절대 손뼉 치지 마세요"
+  ],
+  "hook": "새벽 2시, 엘리베이터가 멈췄다.",
+  "rulebook_title": "비상계단 이용 안내 (관리사무소)",
+  "rules": [
+    {
+      "number": 1,
+      "text": "표지판에 숫자가 없는 층의 문은 열지 마십시오.",
+      "violation_result": "그 층에 사는 것이 당신을 들입니다."
+    },
+    {
+      "number": 2,
+      "text": "위층에서 발소리가 내려오면, 벽에 붙어 눈을 감으십시오.",
+      "violation_result": "발소리의 주인과 눈이 마주칩니다."
+    },
+    {
+      "number": 3,
+      "text": "센서등이 꺼지면 손뼉을 치지 마십시오.",
+      "violation_result": "불은 켜지지만, 혼자가 아니게 됩니다."
+    },
+    {
+      "number": 4,
+      "text": "누가 몇 층 사냐고 물으면, 한 층 낮게 대답하십시오.",
+      "violation_result": "그것이 당신 집을 먼저 찾아갑니다."
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "새벽 2시, 엘리베이터가 멈췄다. 비상계단으로 내려온 지 *20분*째였다.",
+      "caption": "20분째",
+      "image_prompt": "Korean apartment emergency stairwell at night, first person view looking down the concrete stairs spiraling into darkness, a green emergency exit sign, dim motion-sensor ceiling light, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "first person walking down the stairs, the camera bobs with each step, the sensor light flickers on above, the stairwell keeps going down, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "15층에서 출발했는데, 표지판은 아직도 *15층*이었다. 계단은 끝없이 아래로 이어졌다.",
+      "caption": "",
+      "image_prompt": "close-up of a painted floor number sign on a concrete stairwell wall showing the number 15, endless stairs going down beside it, dim light, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the floor sign, the light buzzes and flickers, a faint shadow passes on the stairs below, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "방화문에, 관리사무소 안내문이 붙어 있었다.",
+      "caption": "",
+      "image_prompt": "a printed paper notice taped on a gray steel apartment fire door in a dim concrete stairwell, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the notice on the fire door, the paper edge flutters slightly from a draft, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. 다음 층 표지판에는 *숫자가 없었다*. 문 너머에서 누가 손잡이를 돌렸다. 나는 문을 열지 않았다.",
+      "caption": "",
+      "image_prompt": "a stairwell landing with a blank floor sign with no number, a steel fire door with its handle slowly turning by itself, dim green light, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the door handle slowly turns down and up again by itself, the door rattles slightly as if pushed from the other side, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "heartbeat",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 위에서 *발소리*가 내려왔다. 나는 벽에 붙어 눈을 감았다. 발소리가, 내 앞에서 멈췄다.",
+      "caption": "",
+      "image_prompt": "looking up the stairwell from a landing, pale bare feet of a figure standing a few steps above in the dark, only legs visible, dim light, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the bare feet slowly step down one stair at a time toward the camera and stop very close, the light dims, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "riser",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. 센서등이 *툭* 꺼졌다. 손뼉을 치고 싶었다. 어둠 속에서, 누가 대신 손뼉을 쳤다.",
+      "caption": "",
+      "image_prompt": "pitch dark apartment stairwell with only a green emergency exit sign glowing, a faint pale silhouette of hands raised in the darkness, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the sensor light shuts off, darkness, then pale hands clap once in the dark and the light snaps back on revealing an empty landing, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "hit",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번. 불이 켜지자, 경비원 아저씨가 서 있었다. \"학생, *몇 층 살아요*?\"",
+      "caption": "",
+      "image_prompt": "an apartment security guard in a gray uniform and cap standing on the stairwell landing facing the camera, pale mannequin-like face with an unnaturally wide grin, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the grinning security guard tilts his head slowly and leans toward the camera, the sensor light flickers, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "나도 모르게 대답해버렸다. *십오 층*이요. \"그럼, 먼저 올라가 있을게요.\"",
+      "caption": "",
+      "image_prompt": "extreme close-up of the grinning security guard in gray uniform and cap, eyes wide, red emergency light tint, stairwell behind, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the guard grins wider, then turns and walks up the stairs very fast, his footsteps echoing upward, red light strobes, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 4
+    },
+    {
+      "stage": "끝",
+      "narration": "집에 도착했을 때, 현관문은 *열려 있었다*. 오늘 밤 계단에서 누가 몇 층 사냐고 물으면, 한 층 낮게 말하세요.",
+      "caption": "열려 있었다",
+      "image_prompt": "an apartment front door left slightly open in a dark hallway, warm light from inside, a gray uniform cap lying on the doormat, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the apartment door slowly creaks open wider by itself, the light inside flickers, the camera slowly pushes in, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 4,
+  "thumbnail_text": "몇 층 사냐고\n물으면",
+  "thumbnail_prompt": "grinning apartment security guard close-up in stairwell, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering fluorescent light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed in staff uniforms, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+  "description": "새벽 2시, 엘리베이터가 멈췄다. 비상계단 방화문에 붙은 관리사무소 안내문 네 줄. 마지막 수칙만은 지켜야 했다.\n당신이라면 몇 층이라고 대답했을까요?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#나폴리탄",
+    "#아파트괴담",
+    "#비상계단",
+    "#공포",
+    "#shorts"
+  ]
+}
