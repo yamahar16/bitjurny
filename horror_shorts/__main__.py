@@ -4,6 +4,8 @@
   python -m horror_shorts make --place mart --world napolitan --ending loop --rules 4
   python -m horror_shorts make --place subway --count 3          # 같은 장소 3편 연속 (시리즈)
   python -m horror_shorts run jobs/20261102-150000-mart [--force voice] [--upload]
+  python -m horror_shorts queue jobs/20261102-150000-mart       # 자동 게시 대기열에 넣기 → git push 하면 GitHub Actions가 업로드
+  python -m horror_shorts upload-queue                          # 대기열 업로드 (Actions에서 실행)
 """
 from __future__ import annotations
 
@@ -81,6 +83,20 @@ def cmd_run(args, cfg) -> None:
     _run_job(job, cfg, args)
 
 
+def cmd_queue(args, cfg) -> None:
+    from . import uploadq
+
+    for j in args.jobs:
+        job = Path(j) if Path(j).exists() else JOBS_DIR / j
+        uploadq.enqueue(job, cfg)
+
+
+def cmd_upload_queue(_args, cfg) -> None:
+    from . import uploadq
+
+    uploadq.upload_all(cfg)
+
+
 def main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(prog="horror_shorts", description="괴담 쇼츠 자동화")
     ap.add_argument("--config", type=Path, default=None)
@@ -108,9 +124,14 @@ def main(argv: list[str] | None = None) -> None:
     rn.add_argument("--upload", action="store_true")
     rn.add_argument("--videos", default=None, choices=["kling", "manual", "none"], help="영상 방식 바꾸기 (none: 영상 없는 장면은 정지 이미지로)")
 
+    q = sub.add_parser("queue", help="완성된 job을 자동 게시 대기열(upload_queue/)에 넣기")
+    q.add_argument("jobs", nargs="+")
+    sub.add_parser("upload-queue", help="대기열 영상을 유튜브에 업로드 (예약 공개)")
+
     args = ap.parse_args(argv)
     cfg = load_config(args.config)
-    {"places": cmd_places, "make": cmd_make, "run": cmd_run}[args.cmd](args, cfg)
+    {"places": cmd_places, "make": cmd_make, "run": cmd_run, "queue": cmd_queue,
+     "upload-queue": cmd_upload_queue}[args.cmd](args, cfg)
 
 
 if __name__ == "__main__":

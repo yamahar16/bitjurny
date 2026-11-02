@@ -98,6 +98,13 @@ PLACES: dict[str, dict] = {
         "layout": "aisle",
         "tint": (160, 170, 160),
     },
+    "doorbell": {
+        "name": "새벽 택배 방문자",
+        "rulebook": "방문자 응대 수칙",
+        "visual": "small Korean studio apartment at night, front door with peephole and video intercom screen, dim shoe entryway with motion-sensor light, cardboard delivery boxes",
+        "layout": "corridor",
+        "tint": (165, 160, 150),
+    },
     "parking": {
         "name": "지하 주차장 B∞층",
         "rulebook": "지하 주차장 이용 안내",

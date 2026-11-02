@@ -1,0 +1,137 @@
+{
+  "title": "새벽 3시, 택배 왔습니다",
+  "title_options": [
+    "새벽에 택배 왔다는 소리가 들리면 대답하지 마세요",
+    "현관문 안쪽에 붙어있던 방문자 수칙",
+    "엄마 목소리면 열어도 된다는 손글씨"
+  ],
+  "hook": "띵동. 초인종 소리에 눈을 떴다.",
+  "rulebook_title": "방문자 응대 수칙",
+  "rules": [
+    {
+      "number": 1,
+      "text": "새벽에 '택배 왔습니다' 소리가 나면, 대답하지 말 것.",
+      "violation_result": "집에 사람이 있다는 걸 알게 된다."
+    },
+    {
+      "number": 2,
+      "text": "초인종이 울려도, 현관 렌즈로 밖을 보지 말 것.",
+      "violation_result": "눈이 마주치면, 그것도 안을 볼 수 있다."
+    },
+    {
+      "number": 3,
+      "text": "현관 센서등이 혼자 켜지면, 꺼질 때까지 숨을 참을 것.",
+      "violation_result": "그것이 숨소리를 따라 들어온다."
+    },
+    {
+      "number": 4,
+      "text": "엄마 목소리면 열어도 돼요. 진짜 엄마예요.",
+      "violation_result": ""
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "띵동. 초인종 소리에 눈을 떴다. 새벽 *3시 12분*이었다.",
+      "caption": "AM 3:12",
+      "image_prompt": "dark small studio apartment bedroom at night seen from the bed, a glowing video intercom screen on the wall by the front door, digital clock on the floor showing red light, moving boxes stacked, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the intercom screen flickers on with a soft glow, the camera slowly lifts as if waking up from the bed, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "이사 온 첫날 밤이었다. 인터폰 화면엔, *아무도 없었다*.",
+      "caption": "",
+      "image_prompt": "close-up of a video intercom monitor on an apartment wall showing an empty dim apartment hallway in grainy black and white, unopened moving boxes in the dark below, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the grainy intercom image of the empty hallway jitters with static, the hallway light on screen flickers, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "현관문 안쪽에, 전 세입자가 붙여둔 *종이*가 있었다.",
+      "caption": "",
+      "image_prompt": "the inside of an apartment front door in a dark entryway, an old yellowed paper notice taped at eye level, door chain and peephole, shoes on the floor, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the taped paper on the door, the paper corner trembles from a draft under the door, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. 문밖에서 남자 목소리가 들렸다. \"*고객님*, 택배 왔습니다.\" 나는 숨을 죽였다.",
+      "caption": "",
+      "image_prompt": "a dark apartment front door seen from inside, a thin strip of hallway light under the door broken by the shadow of two feet standing outside, a cardboard box shadow, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the shadow under the door shifts slightly as someone outside waits, the door handle is gently tested once, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "heartbeat",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 초인종이 *세 번* 울렸다. 렌즈를 보고 싶었다. 나는 테이프로 렌즈를 막았다.",
+      "caption": "",
+      "image_prompt": "extreme close-up of an apartment door peephole in the dark, a hand holding a strip of tape over it, faint light glowing through the tiny lens, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the hand presses tape over the glowing peephole, the light behind the lens pulses as the doorbell rings, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. 현관 *센서등*이 혼자 켜졌다. 아무도 없는데. 나는 숨을 참았다.",
+      "caption": "",
+      "image_prompt": "an empty apartment shoe entryway lit by a single motion-sensor ceiling light, nobody there, long shadows, the front door closed, dark living room beyond, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the sensor light flickers on by itself, a faint shadow passes across the floor with no one there, the light blinks three times and goes dark, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "riser",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번은 *손글씨*였다. 그때, 문밖에서. \"엄마야. 문 좀 열어줘.\"",
+      "caption": "",
+      "image_prompt": "close-up of the bottom of the yellowed paper notice on the door, a line of shaky blue handwriting added below the printed rules, a flashlight beam on it, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the flashlight beam trembles over the handwritten line, the door behind the paper shakes softly as someone knocks, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "엄마 목소리였다. 나는 *문을 열었다*. \"고객님, 직접 받으셨네요.\"",
+      "caption": "",
+      "image_prompt": "an apartment front door opened onto a dark hallway, a tall delivery man in a dark cap and delivery vest holding a cardboard box, his face in shadow with an unnaturally wide pale grin, red emergency light tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the delivery man tilts his head and steps forward through the doorway, holding out the box, his grin widening, red light strobes, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 1
+    },
+    {
+      "stage": "끝",
+      "narration": "다음 날, 수칙 종이에 손글씨가 *한 줄* 늘어 있었다. 내 글씨였다.",
+      "caption": "다음 날",
+      "image_prompt": "the yellowed paper notice on the inside of the front door in morning grey light, two lines of shaky blue handwriting at the bottom, a pen lying on the floor below, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the new handwritten line on the paper, the morning light dims and flickers, the door chain sways, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 1,
+  "thumbnail_text": "새벽 3시\n택배 왔습니다",
+  "thumbnail_prompt": "grinning delivery man holding a box in a dark apartment hallway at an opened door, red tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+  "description": "이사 온 첫날 새벽 3시, 초인종이 울렸다. 현관문 안쪽에 붙어있던 방문자 수칙. 마지막 줄만 손글씨였다.\n당신이라면 엄마 목소리에 문을 열어주시겠어요?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#나폴리탄",
+    "#택배",
+    "#방문자",
+    "#공포",
+    "#shorts"
+  ]
+}
