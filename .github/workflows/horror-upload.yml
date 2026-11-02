@@ -33,7 +33,12 @@ jobs:
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
-        run: python -m horror_shorts upload-queue
+        run: |
+          if [ -z "$YOUTUBE_TOKEN_JSON" ] && [ -z "$YOUTUBE_REFRESH_TOKEN" ]; then
+            echo "::warning::유튜브 비밀값(YOUTUBE_TOKEN_JSON 또는 YOUTUBE_REFRESH_TOKEN 등)이 아직 없습니다. 영상은 대기열에 그대로 남습니다."
+            exit 0
+          fi
+          python -m horror_shorts upload-queue
       - name: Record results
         if: always()
         run: |

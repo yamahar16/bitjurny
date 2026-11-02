@@ -58,3 +58,22 @@ python -m horror_shorts run jobs/<폴더> --videos none  # 빠진 영상은 정�
 4. `run` 다시 → 렌더·자막·썸네일 완료
 
 장면 9개 기준 Kling 사용량: 이미지 10장 + 5~10초 영상 9개.
+
+## 자동 게시 (폰만으로 운영)
+완성된 영상을 대기열에 넣고 push 하면 **GitHub Actions**(`.github/workflows/horror-upload.yml`)가 유튜브에 올립니다.
+PC·클라우드 세션이 꺼져 있어도 GitHub 서버에서 올라갑니다.
+
+```bash
+python -m horror_shorts queue jobs/<폴더>     # upload_queue/<폴더>/ 에 업로드용(약 15MB) 영상·제목·썸네일
+git add upload_queue && git commit -m "대기열" && git push
+```
+
+- 공개 방식: 비공개로 올린 뒤 **매일 19:00(한국시간)에 1편씩 자동 공개 예약** (`upload.schedule`, `upload.per_day`).
+  예약 전에는 YouTube Studio 앱에서 확인·취소할 수 있습니다. `schedule: ""` 이면 `upload.privacy` 그대로 올립니다.
+- 올린 뒤 `upload_queue/<폴더>/uploaded.json`(영상 주소·공개 시각)이 기록되고 영상 파일은 대기열에서 지워집니다.
+- 필요한 저장소 Secrets (GitHub → Settings → Secrets and variables → Actions → New repository secret):
+  - `YOUTUBE_TOKEN_JSON` : PC의 `youtube_token.json` 내용 전체 (가장 간단), 또는
+  - `YOUTUBE_REFRESH_TOKEN` + `YOUTUBE_CLIENT_ID` + `YOUTUBE_CLIENT_SECRET`
+- 비밀값이 없으면 Actions는 경고만 남기고 영상은 대기열에 그대로 둡니다. 비밀값을 넣은 뒤 Actions 탭에서 `horror-upload` → Run workflow.
+- 주의: 구글 OAuth 앱이 "테스트" 상태면 refresh token이 7일 뒤 만료됩니다 → OAuth 동의 화면에서 "프로덕션으로 게시".
+  API 감사를 받지 않은 새 Google Cloud 프로젝트로 올린 영상은 유튜브가 비공개로 고정할 수 있으니, 기존에 쓰던 프로젝트의 클라이언트를 쓰세요.
