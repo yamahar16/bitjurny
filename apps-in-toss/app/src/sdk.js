@@ -9,7 +9,7 @@ import {
   showFullScreenAd
 } from "@apps-in-toss/web-framework";
 
-export const APP_NAME = "haru-sangsik";
+export const APP_NAME = "harusangsik";
 
 // 콘솔에서 발급한 광고 그룹 ID를 .env에 넣으면 실제 광고가 나가요.
 // 비워 두면 앱인토스 테스트 광고 ID를 써요. (실제 ID로 테스트하면 정책 위반이에요)
@@ -27,7 +27,7 @@ function safe(fn, fallback) {
 }
 
 // ---------- 진입 링크 ----------
-// 정식: intoss://haru-sangsik?c=<문제ID>&r=<1|0>
+// 정식: intoss://harusangsik?c=<문제ID>&r=<1|0>
 // 콘솔 QR 테스트: ...?_deploymentId=...&queryParams={"c":"...","r":"1"}
 export function readLaunchParams() {
   const params = {};
