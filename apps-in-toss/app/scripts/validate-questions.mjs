@@ -23,8 +23,10 @@ for (const category of CATEGORIES) {
     ids.add(q.id);
     if (q.category !== category) errors.push(`${where}: category 값이 ${category}가 아니에요`);
     if (typeof q.q !== "string" || !q.q.trim().endsWith("?")) errors.push(`${where}: 질문은 '?'로 끝나야 해요`);
-    if (texts.has(q.q)) errors.push(`${where}: 같은 질문이 이미 있어요`);
-    texts.add(q.q);
+    // "다음 중 맞춤법이 올바른 것은?"처럼 질문이 같아도 보기가 다르면 다른 문제예요.
+    const signature = `${q.q}::${[...(q.choices || [])].sort().join("|")}`;
+    if (texts.has(signature)) errors.push(`${where}: 같은 문제가 이미 있어요`);
+    texts.add(signature);
     if (!Array.isArray(q.choices) || q.choices.length !== 4) errors.push(`${where}: 보기는 4개여야 해요`);
     else if (new Set(q.choices).size !== 4) errors.push(`${where}: 보기가 중복돼요`);
     if (!Number.isInteger(q.answer) || q.answer < 0 || q.answer > 3) errors.push(`${where}: answer는 0~3이어야 해요`);
