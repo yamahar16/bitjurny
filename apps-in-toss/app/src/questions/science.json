@@ -1,0 +1,392 @@
+[
+  {
+    "id": "science-01",
+    "category": "science",
+    "difficulty": "easy",
+    "q": "식물이 광합성을 할 때 공기 중에서 흡수하는 기체는 무엇일까요?",
+    "choices": [
+      "산소",
+      "이산화탄소",
+      "질소",
+      "수소"
+    ],
+    "answer": 1,
+    "explanation": "식물은 햇빛 에너지로 이산화탄소와 물을 이용해 포도당을 만들어요. 재미있게도 이때 내뿜는 산소는 이산화탄소가 아니라 물 분자가 쪼개지면서 나온 거예요.",
+    "source": "브리태니커 'Photosynthesis' 항목"
+  },
+  {
+    "id": "science-02",
+    "category": "science",
+    "difficulty": "easy",
+    "q": "태양계에서 가장 큰 행성은 어디일까요?",
+    "choices": [
+      "토성",
+      "해왕성",
+      "목성",
+      "천왕성"
+    ],
+    "answer": 2,
+    "explanation": "목성은 태양계에서 가장 큰 행성이에요. 부피로 따지면 지구가 1,000개 넘게 들어갈 만큼 거대하답니다.",
+    "source": "NASA Science 'Jupiter: Facts'"
+  },
+  {
+    "id": "science-03",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "태양계 행성 중 표면 평균 온도가 가장 높은 행성은 어디일까요?",
+    "choices": [
+      "금성",
+      "수성",
+      "화성",
+      "목성"
+    ],
+    "answer": 0,
+    "explanation": "태양과 가장 가까운 건 수성이지만, 가장 뜨거운 행성은 금성이에요. 두꺼운 이산화탄소 대기가 강한 온실 효과를 일으켜 표면이 납이 녹을 만큼(약 460℃ 이상) 뜨겁답니다.",
+    "source": "NASA Science 'Venus: Facts'"
+  },
+  {
+    "id": "science-04",
+    "category": "science",
+    "difficulty": "easy",
+    "q": "사람 몸에서 가장 큰 기관은 무엇일까요?",
+    "choices": [
+      "간",
+      "폐",
+      "뇌",
+      "피부"
+    ],
+    "answer": 3,
+    "explanation": "피부는 우리 몸을 통째로 감싸고 있는 가장 큰 기관이에요. 성인의 피부를 펼치면 넓이가 약 1.5~2㎡ 정도로, 작은 돗자리 한 장만 해요.",
+    "source": "브리태니커 'Human skin' 항목, 미국 국립보건원(NIH) 자료"
+  },
+  {
+    "id": "science-05",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "맑은 날 낮에 하늘이 파랗게 보이는 주된 이유는 무엇일까요?",
+    "choices": [
+      "바다의 파란색이 하늘에 비쳐서",
+      "파란빛이 공기 분자에 더 잘 산란되어서",
+      "대기 중 산소가 파란색이어서",
+      "태양이 파란빛만 내보내서"
+    ],
+    "answer": 1,
+    "explanation": "햇빛이 대기를 지날 때 파장이 짧은 파란빛이 공기 분자에 더 많이 흩어져서(레일리 산란) 하늘 전체가 파랗게 보여요. 해 질 녘에는 빛이 더 긴 대기를 지나며 파란빛이 대부분 흩어져 버려서 노을이 붉게 보인답니다.",
+    "source": "브리태니커 'Rayleigh scattering' 항목, NASA Space Place 'Why is the sky blue?'"
+  },
+  {
+    "id": "science-06",
+    "category": "science",
+    "difficulty": "hard",
+    "q": "지진의 규모가 1 커지면 방출되는 에너지는 약 몇 배가 될까요?",
+    "choices": [
+      "약 2배",
+      "약 10배",
+      "약 32배",
+      "약 100배"
+    ],
+    "answer": 2,
+    "explanation": "지진 규모가 1 오르면 지진파의 진폭은 10배, 방출 에너지는 약 32배가 돼요. 그래서 규모가 2 차이 나면 에너지는 약 1,000배나 차이 난답니다.",
+    "source": "미국지질조사국(USGS) 'Earthquake Magnitude, Energy Release, and Shaking Intensity'"
+  },
+  {
+    "id": "science-07",
+    "category": "science",
+    "difficulty": "easy",
+    "q": "태양에서 출발한 빛이 지구에 도착하는 데 걸리는 시간은 약 얼마일까요?",
+    "choices": [
+      "약 8초",
+      "약 8분",
+      "약 8시간",
+      "약 8일"
+    ],
+    "answer": 1,
+    "explanation": "햇빛은 약 1억 5천만 km를 달려 평균 약 8분 20초 만에 지구에 도착해요. 그러니까 지금 보는 태양은 사실 약 8분 전의 모습이에요.",
+    "source": "NASA Space Place 'How long does it take sunlight to reach Earth?'"
+  },
+  {
+    "id": "science-08",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "문어의 심장은 모두 몇 개일까요?",
+    "choices": [
+      "1개",
+      "2개",
+      "3개",
+      "4개"
+    ],
+    "answer": 2,
+    "explanation": "문어는 심장이 3개예요. 2개는 아가미로 피를 보내고, 나머지 1개는 온몸으로 피를 보내요. 게다가 문어 피는 구리가 든 헤모시아닌 때문에 푸른빛을 띤답니다.",
+    "source": "브리태니커 'Octopus' 항목, 스미스소니언 국립자연사박물관 자료"
+  },
+  {
+    "id": "science-09",
+    "category": "science",
+    "difficulty": "easy",
+    "q": "빛의 3원색에 속하지 않는 색은 무엇일까요?",
+    "choices": [
+      "빨강",
+      "초록",
+      "파랑",
+      "노랑"
+    ],
+    "answer": 3,
+    "explanation": "빛의 3원색은 빨강·초록·파랑이에요. 이 세 빛을 모두 겹치면 흰색이 되는데, 물감은 섞을수록 어두워지는 것과 정반대랍니다.",
+    "source": "브리태니커 'Colour' 및 'Additive colour mixing' 항목"
+  },
+  {
+    "id": "science-10",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "지구에 계절이 생기는 가장 주된 이유는 무엇일까요?",
+    "choices": [
+      "지구 자전축이 기울어져 있어서",
+      "지구와 태양 사이 거리가 변해서",
+      "태양의 밝기가 계절마다 달라져서",
+      "달이 지구를 끌어당겨서"
+    ],
+    "answer": 0,
+    "explanation": "지구 자전축이 약 23.5° 기울어진 채 공전해서 햇빛이 비치는 각도와 낮의 길이가 달라져요. 실제로 지구가 태양에 가장 가까워지는 때는 북반구가 한겨울인 1월 초랍니다.",
+    "source": "NASA Space Place 'What Causes the Seasons?'"
+  },
+  {
+    "id": "science-11",
+    "category": "science",
+    "difficulty": "easy",
+    "q": "지구 대기를 이루는 기체 중 가장 많은 것은 무엇일까요?",
+    "choices": [
+      "질소",
+      "산소",
+      "이산화탄소",
+      "아르곤"
+    ],
+    "answer": 0,
+    "explanation": "지구 대기의 약 78%는 질소이고, 산소는 약 21%예요. 우리가 숨 쉬는 공기의 대부분은 사실 산소가 아니라 질소인 셈이에요.",
+    "source": "NASA Earth Fact Sheet, 브리태니커 'Atmosphere' 항목"
+  },
+  {
+    "id": "science-12",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "스스로 날갯짓을 해서 날 수 있는 유일한 포유류는 무엇일까요?",
+    "choices": [
+      "하늘다람쥐",
+      "박쥐",
+      "날원숭이(콜루고)",
+      "슈가글라이더"
+    ],
+    "answer": 1,
+    "explanation": "포유류 중에서 진짜로 날갯짓을 하며 나는 동물은 박쥐뿐이에요. 하늘다람쥐나 슈가글라이더는 몸의 막을 펼쳐 미끄러지듯 활공할 뿐이랍니다.",
+    "source": "브리태니커 'Bat' 항목"
+  },
+  {
+    "id": "science-13",
+    "category": "science",
+    "difficulty": "hard",
+    "q": "이론상 가장 낮은 온도인 '절대영도'는 섭씨로 몇 도일까요?",
+    "choices": [
+      "-100℃",
+      "-196℃",
+      "-273.15℃",
+      "-373.15℃"
+    ],
+    "answer": 2,
+    "explanation": "절대영도는 -273.15℃로, 켈빈 온도로는 0K예요. 물리 법칙상 이 온도에 가까이 갈 수는 있어도 정확히 도달할 수는 없답니다.",
+    "source": "브리태니커 'Absolute zero' 항목, 국제단위계(SI) 켈빈 정의"
+  },
+  {
+    "id": "science-14",
+    "category": "science",
+    "difficulty": "easy",
+    "q": "다이아몬드를 이루는 원소는 무엇일까요?",
+    "choices": [
+      "규소",
+      "질소",
+      "산소",
+      "탄소"
+    ],
+    "answer": 3,
+    "explanation": "다이아몬드는 탄소 원자로만 이루어져 있어요. 연필심의 흑연도 똑같은 탄소인데, 원자가 배열된 방식이 달라서 성질이 완전히 달라진답니다.",
+    "source": "브리태니커 'Diamond' 및 'Graphite' 항목"
+  },
+  {
+    "id": "science-15",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "지구에서 늘 달의 같은 면만 보이는 이유는 무엇일까요?",
+    "choices": [
+      "달이 자전하지 않아서",
+      "달의 뒷면은 항상 밤이라서",
+      "달의 자전 주기와 공전 주기가 같아서",
+      "지구가 달의 뒷면을 가려서"
+    ],
+    "answer": 2,
+    "explanation": "달은 한 바퀴 자전하는 데 걸리는 시간과 지구를 한 바퀴 도는 시간이 같아서 늘 같은 면만 지구를 향해요. 흔히 '달의 어두운 면'이라고 부르지만, 달 뒷면에도 낮과 밤이 똑같이 찾아온답니다.",
+    "source": "NASA Science 'Moon: Facts' 및 'Tidal Locking'"
+  },
+  {
+    "id": "science-16",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "혈액이 붉은색을 띠게 하는 적혈구 속 단백질은 무엇일까요?",
+    "choices": [
+      "헤모글로빈",
+      "인슐린",
+      "케라틴",
+      "콜라겐"
+    ],
+    "answer": 0,
+    "explanation": "적혈구 속 헤모글로빈에는 철이 들어 있어서 산소와 결합하며 붉은색을 띠어요. 정맥이 파랗게 보이는 건 빛이 피부를 지나며 생기는 착시일 뿐, 사람 피는 언제나 붉은색이랍니다.",
+    "source": "브리태니커 'Hemoglobin' 항목"
+  },
+  {
+    "id": "science-17",
+    "category": "science",
+    "difficulty": "easy",
+    "q": "원소 기호 'Au'가 나타내는 원소는 무엇일까요?",
+    "choices": [
+      "은",
+      "금",
+      "알루미늄",
+      "구리"
+    ],
+    "answer": 1,
+    "explanation": "Au는 금을 뜻하는 라틴어 '아우룸(aurum)'에서 왔어요. 은의 기호 Ag도 라틴어 '아르겐툼(argentum)'에서 왔는데, 나라 이름 '아르헨티나'도 이 말에서 유래했답니다.",
+    "source": "브리태니커 'Gold' 및 'Argentina' 항목"
+  },
+  {
+    "id": "science-18",
+    "category": "science",
+    "difficulty": "hard",
+    "q": "사람 몸에서 가장 작은 뼈는 무엇일까요?",
+    "choices": [
+      "망치뼈",
+      "모루뼈",
+      "손가락 끝마디뼈",
+      "등자뼈(등골)"
+    ],
+    "answer": 3,
+    "explanation": "가장 작은 뼈는 귀 안쪽(중이)에 있는 등자뼈로, 길이가 약 3mm 안팎이에요. 말을 탈 때 발을 거는 '등자'를 닮아서 이런 이름이 붙었답니다.",
+    "source": "브리태니커 'Stapes' 및 'Ear' 항목"
+  },
+  {
+    "id": "science-19",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "다음 중 야생 펭귄이 자연적으로 살지 않는 곳은 어디일까요?",
+    "choices": [
+      "남극",
+      "북극",
+      "남아프리카 해안",
+      "뉴질랜드"
+    ],
+    "answer": 1,
+    "explanation": "야생 펭귄은 거의 모두 남반구에 살아서 북극에는 펭귄이 없어요. 그래서 북극곰과 펭귄이 야생에서 마주칠 일은 없답니다. 가장 북쪽에 사는 갈라파고스펭귄도 적도 부근에서 살아요.",
+    "source": "브리태니커 'Penguin' 항목"
+  },
+  {
+    "id": "science-20",
+    "category": "science",
+    "difficulty": "easy",
+    "q": "드라이아이스가 녹지 않고 바로 기체가 되는 현상을 무엇이라고 할까요?",
+    "choices": [
+      "승화",
+      "융해",
+      "응결",
+      "기화"
+    ],
+    "answer": 0,
+    "explanation": "고체가 액체를 거치지 않고 곧바로 기체가 되는 현상을 승화라고 해요. 드라이아이스는 고체 이산화탄소로, 약 -78.5℃에서 승화해서 물기 없이 사라진답니다.",
+    "source": "브리태니커 'Sublimation' 및 'Dry ice' 항목"
+  },
+  {
+    "id": "science-21",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "상온(약 25℃)에서 액체 상태로 존재하는 금속은 무엇일까요?",
+    "choices": [
+      "나트륨",
+      "알루미늄",
+      "텅스텐",
+      "수은"
+    ],
+    "answer": 3,
+    "explanation": "수은은 상온에서 액체인 거의 유일한 금속이에요. 비슷한 예로 갈륨은 녹는점이 약 30℃라서 손바닥 위에 올려 두면 체온으로 스르르 녹는답니다.",
+    "source": "브리태니커 'Mercury (chemical element)' 및 'Gallium' 항목"
+  },
+  {
+    "id": "science-22",
+    "category": "science",
+    "difficulty": "hard",
+    "q": "사람의 적혈구는 보통 얼마 동안 몸속을 돌다가 수명을 다할까요?",
+    "choices": [
+      "약 3일",
+      "약 30일",
+      "약 120일",
+      "약 1년"
+    ],
+    "answer": 2,
+    "explanation": "적혈구는 약 120일 동안 온몸에 산소를 나르다가 주로 비장과 간에서 분해돼요. 다 자란 적혈구에는 핵이 없는데, 그만큼 산소를 나르는 헤모글로빈을 더 많이 담을 수 있답니다.",
+    "source": "브리태니커 'Red blood cell' 항목"
+  },
+  {
+    "id": "science-23",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "높은 산에서 물이 100℃보다 낮은 온도에서 끓는 이유는 무엇일까요?",
+    "choices": [
+      "기압이 낮아서",
+      "산소가 많아서",
+      "중력이 약해서",
+      "기온이 낮아서"
+    ],
+    "answer": 0,
+    "explanation": "높이 올라갈수록 기압이 낮아져서 물이 더 낮은 온도에서 끓어요. 에베레스트 정상에서는 약 70℃ 안팎에서 끓기 때문에, 높은 산에서 밥을 지으면 설익기 쉽답니다.",
+    "source": "브리태니커 'Boiling point' 항목, 미국 달·행성연구소(LPI) 자료"
+  },
+  {
+    "id": "science-24",
+    "category": "science",
+    "difficulty": "easy",
+    "q": "지구에서 가장 가까운 별은 무엇일까요?",
+    "choices": [
+      "북극성",
+      "시리우스",
+      "프록시마 센타우리",
+      "태양"
+    ],
+    "answer": 3,
+    "explanation": "태양도 스스로 빛을 내는 별이라서 지구에서 가장 가까운 별은 바로 태양이에요. 태양 다음으로 가까운 별인 프록시마 센타우리는 약 4.2광년이나 떨어져 있어요.",
+    "source": "NASA Science 'Sun: Facts', NASA 'Proxima Centauri' 자료"
+  },
+  {
+    "id": "science-25",
+    "category": "science",
+    "difficulty": "normal",
+    "q": "1869년 주기율표를 발표해 '주기율표의 아버지'로 불리는 과학자는 누구일까요?",
+    "choices": [
+      "존 돌턴",
+      "드미트리 멘델레예프",
+      "앙투안 라부아지에",
+      "닐스 보어"
+    ],
+    "answer": 1,
+    "explanation": "러시아의 화학자 멘델레예프는 원소를 원자량 순으로 배열해 주기율표를 만들었어요. 그는 아직 발견되지 않은 원소 자리를 빈칸으로 남겨 성질까지 예측했는데, 몇 년 뒤 실제로 갈륨 등이 발견되면서 예측이 맞았음이 증명됐답니다.",
+    "source": "브리태니커 'Dmitri Mendeleev' 및 'Periodic table' 항목"
+  },
+  {
+    "id": "science-26",
+    "category": "science",
+    "difficulty": "hard",
+    "q": "사람 몸에서 가장 길고 굵은 신경은 무엇일까요?",
+    "choices": [
+      "좌골신경",
+      "미주신경",
+      "시신경",
+      "정중신경"
+    ],
+    "answer": 0,
+    "explanation": "좌골신경은 허리 아래쪽에서 시작해 엉덩이와 다리 뒤쪽을 따라 발까지 이어지는, 몸에서 가장 길고 굵은 신경이에요. 가장 굵은 부분은 어른 엄지손가락 너비만 하답니다.",
+    "source": "브리태니커 'Sciatic nerve' 항목"
+  }
+]

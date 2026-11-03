@@ -1,0 +1,392 @@
+[
+  {
+    "id": "life-01",
+    "category": "life",
+    "difficulty": "easy",
+    "q": "샌드위치라는 음식 이름은 어디에서 유래했을까요?",
+    "choices": [
+      "처음 판매한 빵집 이름",
+      "영국의 '샌드위치 백작'",
+      "'빵 사이'라는 뜻의 옛 영어",
+      "미국의 한 도시 이름"
+    ],
+    "answer": 1,
+    "explanation": "18세기 영국의 제4대 샌드위치 백작 존 몬터규의 작위 이름에서 왔어요. 카드 게임을 하며 손을 떼지 않으려고 빵 사이에 고기를 끼워 먹었다는 일화가 전해져요. 정작 '샌드위치'는 영국 켄트주에 있는 작은 마을 이름이에요.",
+    "source": "Britannica 'sandwich'; Merriam-Webster 어원(Earl of Sandwich)"
+  },
+  {
+    "id": "life-02",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "감자에서 우리가 먹는 부분은 식물의 어느 기관일까요?",
+    "choices": [
+      "뿌리",
+      "열매",
+      "줄기",
+      "잎"
+    ],
+    "answer": 2,
+    "explanation": "감자는 땅속줄기 끝이 양분을 저장해 부풀어 오른 '덩이줄기'예요. 감자의 움푹한 '눈'은 줄기의 마디라서 거기서 싹이 나요. 반면 고구마는 뿌리가 부푼 '덩이뿌리'랍니다.",
+    "source": "Britannica 'potato'(tuber, modified stem); 표준국어대사전 '덩이줄기'"
+  },
+  {
+    "id": "life-03",
+    "category": "life",
+    "difficulty": "easy",
+    "q": "도로의 '정지' 표지판은 어떤 모양일까요?",
+    "choices": [
+      "원형",
+      "역삼각형",
+      "사각형",
+      "팔각형"
+    ],
+    "answer": 3,
+    "explanation": "정지 표지는 빨간 팔각형이에요. 다른 표지에는 잘 쓰이지 않는 모양이라 뒷면만 봐도 정지 표지인 걸 알 수 있어요. 비슷하게 헷갈리는 역삼각형은 '양보' 표지예요.",
+    "source": "도로교통법 시행규칙 별표6 규제표지(정지); 비엔나 도로표지 협약"
+  },
+  {
+    "id": "life-04",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "볼링에서 한 게임 최고 점수인 '퍼펙트 게임'은 몇 점일까요?",
+    "choices": [
+      "300점",
+      "200점",
+      "250점",
+      "100점"
+    ],
+    "answer": 0,
+    "explanation": "10프레임 동안 스트라이크만 12번 연속으로 치면 300점이 돼요. 마지막 10프레임에서 스트라이크를 치면 보너스 투구 두 번이 더 주어지기 때문에 10번이 아니라 12번이 필요해요.",
+    "source": "World Bowling/USBC 점수 규칙; Britannica 'bowling'"
+  },
+  {
+    "id": "life-05",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "야구 경기에서 수비하는 팀의 선수는 몇 명일까요?",
+    "choices": [
+      "8명",
+      "10명",
+      "9명",
+      "11명"
+    ],
+    "answer": 2,
+    "explanation": "야구는 투수와 포수, 내야수 4명, 외야수 3명을 합쳐 9명이 수비해요. 그래서 공격할 때도 1번부터 9번 타자까지 9명이 차례로 타석에 들어서요.",
+    "source": "KBO 공식야구규칙 (경기의 목적·수비 위치)"
+  },
+  {
+    "id": "life-06",
+    "category": "life",
+    "difficulty": "easy",
+    "q": "이메일 주소에 쓰는 '@' 기호를 우리나라에서 흔히 부르는 이름은?",
+    "choices": [
+      "골뱅이",
+      "소라",
+      "고리",
+      "꽈배기"
+    ],
+    "answer": 0,
+    "explanation": "모양이 골뱅이를 닮아서 우리나라에선 '골뱅이'라고 많이 불러요. 영어로는 '앳(at)'이라고 읽어요. 나라마다 별명이 달라서 이탈리아에선 '달팽이', 네덜란드에선 '원숭이 꼬리'라고 부른답니다.",
+    "source": "Wikipedia 'At sign'(각국 명칭); 국립국어원 새국어소식(2001) '골뱅이' 칼럼"
+  },
+  {
+    "id": "life-07",
+    "category": "life",
+    "difficulty": "hard",
+    "q": "'지퍼(zipper)'라는 이름이 처음 상품명으로 쓰인 제품은?",
+    "choices": [
+      "군용 배낭",
+      "고무 장화(덧신)",
+      "청바지",
+      "여행 가방"
+    ],
+    "answer": 1,
+    "explanation": "1923년 미국 B.F. 굿리치사가 새 잠금장치를 단 고무 덧신을 '지퍼 부츠'라는 이름으로 내놓았어요. 잠글 때 나는 '지익(zip)' 소리에서 따온 이름이에요. 그전까지 이 장치는 '훅 없는 잠금장치(hookless fastener)'라고 불렸어요.",
+    "source": "Wikipedia 'Zipper'; Lemelson-MIT 'Whitcomb Judson'; B.F. Goodrich 1923 'Zipper Boot' 상표"
+  },
+  {
+    "id": "life-08",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "콩물을 두부로 굳힐 때 전통적으로 넣는 것은?",
+    "choices": [
+      "식초",
+      "설탕",
+      "녹말",
+      "간수"
+    ],
+    "answer": 3,
+    "explanation": "끓인 콩물에 간수를 넣으면 단백질이 엉겨 두부가 돼요. 간수는 바닷물에서 소금을 만들 때 생기는 쓴 액체로, 주성분은 염화마그네슘이에요. 일본어로 두부 응고제를 '니가리(쓴맛)'라고 부르는 것도 같은 이유예요.",
+    "source": "Britannica 'tofu'(coagulant, nigari/magnesium chloride); 표준국어대사전 '간수'"
+  },
+  {
+    "id": "life-09",
+    "category": "life",
+    "difficulty": "easy",
+    "q": "마라톤 풀코스의 공식 거리는?",
+    "choices": [
+      "40km",
+      "42.195km",
+      "45.5km",
+      "50km"
+    ],
+    "answer": 1,
+    "explanation": "마라톤 풀코스는 42.195km예요. 1908년 런던 올림픽 때 이 거리로 달렸고, 1921년 국제육상경기연맹이 공식 거리로 정했어요. 그전 대회들은 약 40km 안팎으로 거리가 제각각이었어요.",
+    "source": "Britannica 'marathon'; World Athletics 규정"
+  },
+  {
+    "id": "life-10",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "파인애플(pineapple)이라는 이름은 무엇을 닮았다고 해서 붙었을까요?",
+    "choices": [
+      "솔방울",
+      "사과나무",
+      "고슴도치",
+      "왕관"
+    ],
+    "answer": 0,
+    "explanation": "영어 'pineapple'은 원래 소나무(pine)의 열매, 즉 솔방울을 가리키던 말이에요. 아메리카에서 들어온 이 과일이 솔방울을 닮아서 그 이름을 물려받았어요. 지금도 많은 나라에서는 원주민 말에서 온 '아나나스'라고 불러요.",
+    "source": "Online Etymology Dictionary / Merriam-Webster 'pineapple'"
+  },
+  {
+    "id": "life-11",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "목이 긴 기린의 목뼈는 몇 개일까요?",
+    "choices": [
+      "14개",
+      "21개",
+      "3개",
+      "7개"
+    ],
+    "answer": 3,
+    "explanation": "기린의 목뼈는 사람과 똑같이 7개예요. 개수는 같지만 뼈 하나하나가 아주 길어서 목이 길어요. 대부분의 포유류는 목이 짧든 길든 목뼈가 7개랍니다.",
+    "source": "Britannica 'giraffe'; Smithsonian National Zoo"
+  },
+  {
+    "id": "life-12",
+    "category": "life",
+    "difficulty": "easy",
+    "q": "일반적인 주사위에서 서로 마주 보는 두 면의 눈을 더하면 얼마일까요?",
+    "choices": [
+      "6",
+      "8",
+      "7",
+      "9"
+    ],
+    "answer": 2,
+    "explanation": "1과 6, 2와 5, 3과 4가 마주 보게 만들어져서 합이 항상 7이에요. 그래서 위에 나온 눈만 알면 바닥 면의 눈도 바로 알 수 있어요.",
+    "source": "Britannica 'dice'"
+  },
+  {
+    "id": "life-13",
+    "category": "life",
+    "difficulty": "hard",
+    "q": "우리나라 고속도로 노선번호에서 남북 방향 노선에 붙이는 번호는?",
+    "choices": [
+      "홀수",
+      "짝수",
+      "끝자리가 0인 수",
+      "알파벳이 붙은 번호"
+    ],
+    "answer": 0,
+    "explanation": "남북 방향 노선은 홀수, 동서 방향 노선은 짝수 번호를 붙여요. 예를 들어 서해안선은 15번, 중앙선은 55번, 동서로 달리는 남해선은 10번, 영동선은 50번이에요. 경부고속도로는 상징성 때문에 예외적으로 1번을 그대로 쓰고 있어요.",
+    "source": "국토교통부 예규 '도로 노선번호 부여 지침'; 한국도로공사; 위키백과 '대한민국의 고속도로'"
+  },
+  {
+    "id": "life-14",
+    "category": "life",
+    "difficulty": "easy",
+    "q": "고추의 매운맛을 내는 성분은?",
+    "choices": [
+      "카페인",
+      "캡사이신",
+      "타닌",
+      "카테킨"
+    ],
+    "answer": 1,
+    "explanation": "고추의 매운맛은 캡사이신 때문이에요. 매운맛은 사실 맛이 아니라 통증과 열을 느끼는 감각이에요. 새는 캡사이신을 거의 느끼지 못해서 매운 고추도 아무렇지 않게 먹어요.",
+    "source": "Britannica 'capsaicin'; Tewksbury & Nabhan, Nature(2001) 조류의 캡사이신 둔감성"
+  },
+  {
+    "id": "life-15",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "프랑스 빵 '크루아상(croissant)'은 프랑스어로 무슨 뜻일까요?",
+    "choices": [
+      "버터",
+      "아침",
+      "초승달",
+      "소용돌이"
+    ],
+    "answer": 2,
+    "explanation": "크루아상은 프랑스어로 '초승달'이라는 뜻이에요. 반달처럼 휜 모양에서 이름이 붙었어요. 오스만 군대를 물리친 기념으로 만들었다는 이야기는 유명하지만 확실한 근거가 없는 전설이에요.",
+    "source": "Merriam-Webster / Larousse 'croissant'; Britannica"
+  },
+  {
+    "id": "life-16",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "현재 탁구 경기에서 한 게임을 이기려면 기본적으로 몇 점을 먼저 얻어야 할까요?",
+    "choices": [
+      "15점",
+      "21점",
+      "25점",
+      "11점"
+    ],
+    "answer": 3,
+    "explanation": "탁구는 11점을 먼저 얻으면 한 게임을 이겨요. 10대 10이 되면 2점을 앞서야 끝나요. 2001년까지는 21점제였는데, 경기를 더 박진감 있게 만들려고 11점제로 바뀌었어요.",
+    "source": "ITTF(국제탁구연맹) 규정 2.11; 2001년 11점제 도입"
+  },
+  {
+    "id": "life-17",
+    "category": "life",
+    "difficulty": "easy",
+    "q": "낙타의 혹에 주로 저장되어 있는 것은?",
+    "choices": [
+      "지방",
+      "물",
+      "공기",
+      "근육"
+    ],
+    "answer": 0,
+    "explanation": "낙타 혹에는 물이 아니라 지방이 들어 있어요. 먹이가 부족할 때 이 지방을 에너지로 써요. 오래 굶으면 혹이 작아지고 축 처지기도 해요.",
+    "source": "Britannica 'camel'; San Diego Zoo Wildlife Alliance"
+  },
+  {
+    "id": "life-18",
+    "category": "life",
+    "difficulty": "hard",
+    "q": "넥타이의 원조로 꼽히는 '크라바트(cravat)'라는 이름은 어느 나라 사람을 가리키던 말에서 왔을까요?",
+    "choices": [
+      "프랑스",
+      "이탈리아",
+      "크로아티아",
+      "스코틀랜드"
+    ],
+    "answer": 2,
+    "explanation": "17세기 루이 14세 무렵 프랑스 군에 있던 크로아티아 병사들이 목에 천을 둘렀는데, 이것이 유행하며 '크로아티아 사람'을 뜻하는 말이 변해 '크라바트'가 됐어요. 이 목 장식이 오늘날 넥타이의 조상이에요.",
+    "source": "Britannica 'cravat'; Merriam-Webster 어원(French Croate)"
+  },
+  {
+    "id": "life-19",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "우리나라에 배정된 상품 바코드(GS1) 국가코드는 어떤 숫자로 시작할까요?",
+    "choices": [
+      "450",
+      "880",
+      "690",
+      "400"
+    ],
+    "answer": 1,
+    "explanation": "우리나라는 GS1 국가코드로 880을 받았어요. 다만 이 숫자는 바코드를 등록한 나라를 뜻할 뿐, 상품의 원산지를 뜻하지는 않아요. 그래서 880으로 시작해도 외국에서 만든 상품일 수 있어요.",
+    "source": "GS1 공식 접두어 목록(gs1.org/prefixes); GS1 Korea 바코드 사용자 매뉴얼"
+  },
+  {
+    "id": "life-20",
+    "category": "life",
+    "difficulty": "easy",
+    "q": "땅콩의 꼬투리(열매)는 어디에서 자랄까요?",
+    "choices": [
+      "나뭇가지 끝",
+      "공중에 매달린 덩굴",
+      "잎의 뒷면",
+      "땅속"
+    ],
+    "answer": 3,
+    "explanation": "땅콩은 땅 위에서 꽃이 핀 뒤, 꽃 아래 자루가 땅속으로 파고들어 가 그 안에서 꼬투리를 키워요. 그래서 '땅에서 나는 콩'이라는 뜻의 이름이 붙었어요. 땅콩은 견과류처럼 보이지만 사실 콩과 식물이에요.",
+    "source": "Britannica 'peanut'(gynophore/peg); 표준국어대사전 '땅콩'"
+  },
+  {
+    "id": "life-21",
+    "category": "life",
+    "difficulty": "easy",
+    "q": "올림픽 오륜기의 다섯 고리 색에 포함되지 않는 것은?",
+    "choices": [
+      "파랑",
+      "노랑",
+      "보라",
+      "초록"
+    ],
+    "answer": 2,
+    "explanation": "오륜기의 고리는 파랑, 노랑, 검정, 초록, 빨강이에요. 쿠베르탱은 흰 바탕까지 합친 여섯 색으로 당시 모든 나라의 국기를 그릴 수 있다고 설명했어요.",
+    "source": "IOC 'Olympic rings' 공식 설명; Olympic Charter"
+  },
+  {
+    "id": "life-22",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "'18K' 금에는 금이 몇 % 들어 있을까요?",
+    "choices": [
+      "75%",
+      "18%",
+      "50%",
+      "90%"
+    ],
+    "answer": 0,
+    "explanation": "캐럿(K)은 금의 순도를 24등분으로 나타낸 단위예요. 18K는 24분의 18이니 금이 75% 들어 있어요. 보석 무게를 재는 캐럿(ct)은 이름만 같고 전혀 다른 단위예요.",
+    "source": "Britannica 'karat'; 표준국어대사전 '캐럿'"
+  },
+  {
+    "id": "life-23",
+    "category": "life",
+    "difficulty": "hard",
+    "q": "공식 골프 규칙에서 정한 홀(구멍)의 지름은?",
+    "choices": [
+      "54mm",
+      "76mm",
+      "130mm",
+      "108mm"
+    ],
+    "answer": 3,
+    "explanation": "골프 홀의 지름은 108mm(4.25인치)로 정해져 있어요. 1891년 R&A가 이 크기를 표준으로 정했는데, 스코틀랜드 머셀버러 골프 클럽이 쓰던 홀 크기가 기준이 됐다고 알려져 있어요.",
+    "source": "R&A/USGA 골프 규칙 정의 'Hole'(4¼ inches, 108mm); R&A 역사 자료"
+  },
+  {
+    "id": "life-24",
+    "category": "life",
+    "difficulty": "normal",
+    "q": "녹차와 홍차의 관계로 옳은 것은?",
+    "choices": [
+      "녹차는 찻잎, 홍차는 꽃잎으로 만들어요",
+      "같은 차나무 잎을 가공 방식만 달리해 만들어요",
+      "녹차는 차나무, 홍차는 홍화 잎으로 만들어요",
+      "녹차는 어린잎, 홍차는 뿌리로 만들어요"
+    ],
+    "answer": 1,
+    "explanation": "녹차와 홍차는 모두 같은 차나무 잎으로 만들어요. 잎을 바로 덖거나 쪄서 산화를 막으면 녹차, 충분히 산화시키면 홍차가 돼요. 홍차는 영어로 '블랙 티(black tea)'라고 불러요.",
+    "source": "Britannica 'tea'(Camellia sinensis, green vs black processing)"
+  },
+  {
+    "id": "life-25",
+    "category": "life",
+    "difficulty": "easy",
+    "q": "'햄버거'라는 이름은 어디에서 유래했을까요?",
+    "choices": [
+      "햄(ham)이 들어간 빵이라서",
+      "영국 햄프셔 지방",
+      "햄을 처음 만든 요리사 이름",
+      "독일 도시 함부르크"
+    ],
+    "answer": 3,
+    "explanation": "햄버거는 독일의 항구 도시 함부르크(Hamburg)에서 유래한 '함부르크식 고기 요리'에서 이름이 왔어요. 그래서 햄버거에는 원래 햄이 들어가지 않아요. 나중에 '버거'만 따로 떼어 치즈버거, 치킨버거 같은 말이 생겼어요.",
+    "source": "Britannica 'hamburger'; Merriam-Webster 어원"
+  },
+  {
+    "id": "life-26",
+    "category": "life",
+    "difficulty": "hard",
+    "q": "치즈를 만들 때 우유를 굳히려고 전통적으로 넣는, 송아지 위에서 얻는 것은?",
+    "choices": [
+      "젤라틴",
+      "레닛",
+      "한천",
+      "펙틴"
+    ],
+    "answer": 1,
+    "explanation": "레닛은 어린 송아지의 위에서 얻는 응고제로, 그 안의 키모신이라는 효소가 우유 단백질을 엉기게 해요. 요즘은 미생물이나 유전자 재조합 기술로 만든 키모신도 널리 써요. 반대로 리코타처럼 레닛 없이 열과 산으로 굳히는 치즈도 있어요.",
+    "source": "Britannica 'rennet', 'cheese'"
+  }
+]

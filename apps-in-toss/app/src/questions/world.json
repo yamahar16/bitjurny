@@ -1,0 +1,262 @@
+[
+  {
+    "id": "world-01",
+    "category": "world",
+    "difficulty": "easy",
+    "q": "에펠탑이 있는 도시는 어디일까요?",
+    "choices": ["런던", "파리", "로마", "빈"],
+    "answer": 1,
+    "explanation": "에펠탑은 1889년 파리 만국박람회에 맞춰 세워졌어요. 원래는 20년만 세워 두고 철거할 예정이었지만, 무선 전신 안테나로 쓸모가 인정되면서 살아남았어요.",
+    "source": "Britannica 'Eiffel Tower' (1889 Exposition Universelle, 20-year permit, saved as radiotelegraph antenna)"
+  },
+  {
+    "id": "world-02",
+    "category": "world",
+    "difficulty": "easy",
+    "q": "캐나다 국기 가운데에 그려진 것은 무엇일까요?",
+    "choices": ["곰", "소나무", "단풍잎", "별"],
+    "answer": 2,
+    "explanation": "캐나다 국기에는 빨간 단풍잎이 그려져 있고, 1965년 2월 15일에 처음 게양됐어요. 단풍잎의 뾰족한 끝은 11개인데, 바람에 펄럭일 때 가장 덜 흐릿해 보이도록 풍동 실험을 거쳐 정해진 모양이에요.",
+    "source": "Government of Canada, 'Description of the National Flag of Canada' (11-point maple leaf, first raised 15 Feb 1965); The Canadian Encyclopedia"
+  },
+  {
+    "id": "world-03",
+    "category": "world",
+    "difficulty": "easy",
+    "q": "호주의 수도는 어디일까요?",
+    "choices": ["시드니", "멜버른", "브리즈번", "캔버라"],
+    "answer": 3,
+    "explanation": "호주의 수도는 캔버라예요. 시드니와 멜버른이 서로 수도가 되겠다고 경쟁하자, 두 도시 사이에 새 계획도시를 짓는 것으로 타협했어요. 도시 설계는 국제 공모를 통해 미국 건축가 부부가 맡았어요.",
+    "source": "Britannica 'Canberra' (compromise between Sydney and Melbourne; design competition won by Walter Burley Griffin and Marion Mahony Griffin)"
+  },
+  {
+    "id": "world-04",
+    "category": "world",
+    "difficulty": "easy",
+    "q": "명화 '모나리자'를 그린 화가는 누구일까요?",
+    "choices": ["레오나르도 다빈치", "미켈란젤로", "라파엘로", "렘브란트"],
+    "answer": 0,
+    "explanation": "모나리자는 레오나르도 다빈치의 작품으로, 지금은 파리 루브르 박물관에 있어요. 1911년 루브르에서 도난당했다가 2년 뒤 되찾았는데, 이 사건 덕분에 오히려 세계적으로 더 유명해졌어요.",
+    "source": "Britannica 'Mona Lisa' (stolen from the Louvre in 1911 by Vincenzo Peruggia, recovered 1913)"
+  },
+  {
+    "id": "world-05",
+    "category": "world",
+    "difficulty": "easy",
+    "q": "브라질의 공용어는 무엇일까요?",
+    "choices": ["스페인어", "포르투갈어", "영어", "프랑스어"],
+    "answer": 1,
+    "explanation": "브라질은 포르투갈의 식민지였기 때문에 포르투갈어를 써요. 남아메리카의 이웃 나라 대부분은 스페인어를 쓰지만, 브라질은 아메리카 대륙에서 포르투갈어를 공용어로 쓰는 유일한 나라예요.",
+    "source": "Britannica 'Brazil' (official language Portuguese; only Portuguese-speaking country in the Americas); CIA World Factbook 'Brazil'"
+  },
+  {
+    "id": "world-06",
+    "category": "world",
+    "difficulty": "easy",
+    "q": "미국 뉴욕의 '자유의 여신상'을 선물한 나라는 어디일까요?",
+    "choices": ["영국", "스페인", "독일", "프랑스"],
+    "answer": 3,
+    "explanation": "자유의 여신상은 미국 독립 100주년을 기념해 프랑스가 선물했고, 1886년에 공개됐어요. 조각은 바르톨디가 디자인했고, 속을 받치는 철골 구조는 에펠탑을 만든 귀스타브 에펠이 설계했어요.",
+    "source": "Britannica 'Statue of Liberty'; U.S. National Park Service 'Statue of Liberty' (gift from France, dedicated 1886, Bartholdi / Eiffel)"
+  },
+  {
+    "id": "world-07",
+    "category": "world",
+    "difficulty": "easy",
+    "q": "아프리카 북부에 펼쳐진 세계 최대의 '더운 사막'은 어디일까요?",
+    "choices": ["사하라 사막", "고비 사막", "아타카마 사막", "칼라하리 사막"],
+    "answer": 0,
+    "explanation": "사하라 사막은 아프리카 북부 대부분을 뒤덮고 있는 세계 최대의 더운 사막이에요. 다만 사막은 '비가 아주 적게 오는 곳'을 뜻하기 때문에, 추운 곳까지 포함하면 남극이 세계에서 가장 큰 사막이에요.",
+    "source": "Britannica 'Sahara' (largest hot desert, covering most of northern Africa); Britannica 'desert' (Antarctica as largest desert by definition of low precipitation)"
+  },
+  {
+    "id": "world-08",
+    "category": "world",
+    "difficulty": "easy",
+    "q": "토마토를 서로 던지며 노는 축제 '라 토마티나'가 열리는 나라는 어디일까요?",
+    "choices": ["이탈리아", "멕시코", "스페인", "포르투갈"],
+    "answer": 2,
+    "explanation": "라 토마티나는 스페인 발렌시아 지방의 작은 마을 부뇰에서 매년 8월 마지막 수요일에 열려요. 1940년대 중반 마을 행사 중 벌어진 소동에서 사람들이 채소 가게의 토마토를 던진 것이 시작이라고 전해져요.",
+    "source": "Spain.info (Spain official tourism) 'La Tomatina' (Buñol, last Wednesday of August); Wikipedia 'La Tomatina' (origin c. 1945)"
+  },
+  {
+    "id": "world-09",
+    "category": "world",
+    "difficulty": "easy",
+    "q": "세계에서 면적이 가장 작은 나라는 어디일까요?",
+    "choices": ["모나코", "바티칸 시국", "산마리노", "리히텐슈타인"],
+    "answer": 1,
+    "explanation": "바티칸 시국은 면적이 약 0.44㎢로, 이탈리아 로마 시내 안에 자리한 세계에서 가장 작은 나라예요. 바티칸을 지키는 근위대는 1506년부터 이어져 온 스위스 근위대로, 화려한 줄무늬 제복으로 유명해요.",
+    "source": "CIA World Factbook 'Holy See (Vatican City)' (area 0.44 sq km); Britannica 'Vatican City', 'Swiss Guard' (founded 1506)"
+  },
+  {
+    "id": "world-10",
+    "category": "world",
+    "difficulty": "easy",
+    "q": "안데스산맥 높은 곳에 있는 잉카 유적 '마추픽추'는 어느 나라에 있을까요?",
+    "choices": ["페루", "칠레", "멕시코", "콜롬비아"],
+    "answer": 0,
+    "explanation": "마추픽추는 15세기 잉카 제국이 페루 안데스산맥에 세운 도시예요. 1911년 미국 탐험가 하이럼 빙엄이 세상에 널리 알렸고, '마추픽추'는 원주민 언어인 케추아어로 '늙은 봉우리'라는 뜻이에요.",
+    "source": "UNESCO World Heritage 'Historic Sanctuary of Machu Picchu' (inscribed 1983); Britannica 'Machu Picchu' (Hiram Bingham 1911, Quechua 'Old Peak')"
+  },
+  {
+    "id": "world-11",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "캐나다의 수도는 어디일까요?",
+    "choices": ["토론토", "몬트리올", "오타와", "밴쿠버"],
+    "answer": 2,
+    "explanation": "캐나다의 수도는 토론토가 아니라 오타와예요. 1857년 빅토리아 여왕이 수도로 골랐는데, 영어권과 프랑스어권 지역의 경계에 있어 양쪽 모두 받아들이기 좋은 위치였어요.",
+    "source": "Britannica 'Ottawa' (chosen as capital by Queen Victoria in 1857; on boundary of Ontario and Quebec)"
+  },
+  {
+    "id": "world-12",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "뉴질랜드의 수도는 어디일까요?",
+    "choices": ["오클랜드", "크라이스트처치", "퀸스타운", "웰링턴"],
+    "answer": 3,
+    "explanation": "뉴질랜드의 수도는 웰링턴으로, 1865년 오클랜드에서 수도가 옮겨졌어요. 남위 41도 근처에 있어 세계 독립국 수도 가운데 가장 남쪽에 있는 수도로 꼽혀요.",
+    "source": "Britannica 'Wellington' (capital since 1865, replacing Auckland); Te Ara – Encyclopedia of New Zealand; southernmost capital of a sovereign state"
+  },
+  {
+    "id": "world-13",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "국기에 사원 '앙코르와트'가 그려진 나라는 어디일까요?",
+    "choices": ["태국", "캄보디아", "라오스", "미얀마"],
+    "answer": 1,
+    "explanation": "캄보디아 국기 가운데에는 하얀 앙코르와트가 그려져 있어요. 건축물이 들어간 국기는 아주 드문데, 12세기에 지어진 앙코르와트는 세계에서 가장 큰 종교 건축물로 꼽힐 만큼 캄보디아의 자랑이에요.",
+    "source": "Britannica 'flag of Cambodia' (Angkor Wat depicted); UNESCO World Heritage 'Angkor' (12th-century temple)"
+  },
+  {
+    "id": "world-14",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "다음 중 스위스의 공용어가 아닌 것은 무엇일까요?",
+    "choices": ["독일어", "프랑스어", "이탈리아어", "네덜란드어"],
+    "answer": 3,
+    "explanation": "스위스의 국어는 독일어, 프랑스어, 이탈리아어, 로망슈어 네 가지이고 네덜란드어는 포함되지 않아요. 로망슈어는 쓰는 사람이 인구의 1%도 안 되지만 당당히 국어로 인정받고 있어요.",
+    "source": "Swiss Federal Constitution Art. 4 (national languages: German, French, Italian, Romansh); Swiss Federal Statistical Office (Romansh ~0.5%)"
+  },
+  {
+    "id": "world-15",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "고대 이집트 상형문자를 해독하는 열쇠가 된 유물은 무엇일까요?",
+    "choices": ["로제타석", "함무라비 법전", "투탕카멘 황금 가면", "네페르티티 흉상"],
+    "answer": 0,
+    "explanation": "로제타석에는 같은 내용이 상형문자, 민중문자, 그리스 문자 세 가지로 새겨져 있었어요. 덕분에 프랑스 학자 샹폴리옹이 1822년 상형문자를 해독했고, 지금은 영국 대영박물관에 전시되어 있어요.",
+    "source": "British Museum 'Rosetta Stone' (three scripts; on display since 1802); Britannica 'Rosetta Stone' (Champollion, 1822)"
+  },
+  {
+    "id": "world-16",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "태국의 새해 명절로, 서로 물을 뿌리며 축하하는 축제는 무엇일까요?",
+    "choices": ["홀리", "송끄란", "디왈리", "러이끄라통"],
+    "answer": 1,
+    "explanation": "송끄란은 매년 4월 13~15일 무렵 열리는 태국의 전통 새해 축제예요. 원래는 어른의 손에 물을 부으며 복을 비는 풍습이었는데 지금은 거리 물싸움으로 유명해졌고, 2023년 유네스코 인류무형문화유산에 올랐어요.",
+    "source": "UNESCO ICH Decision 18.COM 8.B.10 'Songkran in Thailand, traditional Thai New Year festival' (inscribed Dec 2023); Tourism Authority of Thailand"
+  },
+  {
+    "id": "world-17",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "세계에서 가장 깊은 호수는 어디일까요?",
+    "choices": ["카스피해", "빅토리아호", "바이칼호", "슈피리어호"],
+    "answer": 2,
+    "explanation": "러시아 시베리아의 바이칼호는 가장 깊은 곳이 약 1,642m로 세계에서 가장 깊은 호수예요. 지구 표면의 얼지 않은 담수 가운데 약 5분의 1이 이 호수 하나에 담겨 있어요. 참고로 넓이가 가장 큰 호수는 카스피해예요.",
+    "source": "Britannica 'Lake Baikal' (max depth 1,642 m; ~one-fifth of Earth's surface fresh water); UNESCO World Heritage 'Lake Baikal'"
+  },
+  {
+    "id": "world-18",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "아프리카에서 가장 높은 산인 킬리만자로산은 어느 나라에 있을까요?",
+    "choices": ["케냐", "에티오피아", "우간다", "탄자니아"],
+    "answer": 3,
+    "explanation": "킬리만자로산은 탄자니아에 있는 높이 약 5,895m의 화산이에요. 적도 가까이에 있는데도 꼭대기에 빙하가 있고, 산맥에 속하지 않고 홀로 솟은 산 중에서는 세계에서 가장 높아요.",
+    "source": "Britannica 'Kilimanjaro' (Tanzania, 19,341 ft / 5,895 m); UNESCO World Heritage 'Kilimanjaro National Park' (highest free-standing mountain)"
+  },
+  {
+    "id": "world-19",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "바티칸 시스티나 성당의 천장화를 그린 화가는 누구일까요?",
+    "choices": ["레오나르도 다빈치", "미켈란젤로", "라파엘로", "카라바조"],
+    "answer": 1,
+    "explanation": "시스티나 성당 천장화는 미켈란젤로가 1508년부터 1512년까지 약 4년에 걸쳐 완성했어요. 스스로를 화가보다 조각가라고 여겼던 그는 처음엔 이 일을 내켜 하지 않았다고 해요. '아담의 창조'가 바로 이 천장화의 한 장면이에요.",
+    "source": "Britannica 'Sistine Chapel' / 'Michelangelo' (ceiling painted 1508–1512); Vatican Museums official site"
+  },
+  {
+    "id": "world-20",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "소설 '돈키호테'를 쓴 작가는 누구일까요?",
+    "choices": ["미겔 데 세르반테스", "윌리엄 셰익스피어", "단테 알리기에리", "요한 볼프강 폰 괴테"],
+    "answer": 0,
+    "explanation": "'돈키호테'는 스페인 작가 세르반테스의 작품으로, 흔히 최초의 근대 소설로 불려요. 세르반테스는 젊은 시절 1571년 레판토 해전에 참전했다가 왼손을 못 쓰게 되어 '레판토의 외팔이'라는 별명을 얻었어요.",
+    "source": "Britannica 'Miguel de Cervantes' (Battle of Lepanto 1571, left hand maimed); Britannica 'Don Quixote'"
+  },
+  {
+    "id": "world-21",
+    "category": "world",
+    "difficulty": "normal",
+    "q": "영국 런던의 '빅벤'은 원래 무엇을 부르는 이름일까요?",
+    "choices": ["시계탑 건물", "국회의사당 건물", "시계탑 안의 큰 종", "템스강의 다리"],
+    "answer": 2,
+    "explanation": "빅벤은 원래 시계탑 안에 달린 거대한 종의 이름이에요. 탑은 흔히 빅벤이라 불리지만, 2012년 엘리자베스 2세 여왕 즉위 60주년을 기념해 공식 이름이 '엘리자베스 타워'가 됐어요.",
+    "source": "UK Parliament 'Big Ben' (name of the Great Bell; tower renamed Elizabeth Tower in 2012); Britannica 'Big Ben'"
+  },
+  {
+    "id": "world-22",
+    "category": "world",
+    "difficulty": "hard",
+    "q": "국기 모양이 사각형이 아닌 유일한 나라는 어디일까요?",
+    "choices": ["스위스", "바티칸 시국", "덴마크", "네팔"],
+    "answer": 3,
+    "explanation": "네팔 국기는 삼각형 깃발 두 개를 위아래로 겹친 모양으로, 사각형이 아닌 유일한 국기예요. 네팔 헌법에는 이 국기를 그리는 방법이 자로 재고 선을 긋는 단계별로 적혀 있어요. 참고로 스위스와 바티칸 국기는 정사각형이에요.",
+    "source": "Britannica 'flag of Nepal' (only non-quadrilateral national flag); Constitution of Nepal, Schedule 1 (construction of the national flag)"
+  },
+  {
+    "id": "world-23",
+    "category": "world",
+    "difficulty": "hard",
+    "q": "높이 979m로 세계에서 가장 높은 폭포인 '앙헬 폭포'는 어느 나라에 있을까요?",
+    "choices": ["베네수엘라", "브라질", "아르헨티나", "캐나다"],
+    "answer": 0,
+    "explanation": "앙헬 폭포는 베네수엘라 카나이마 국립공원에 있어요. 1933년 이 폭포 위를 비행한 미국 비행사 지미 에인절(Angel)의 이름을 따서 붙여졌고, 스페인어로 읽어 '앙헬'이라고 불러요.",
+    "source": "Britannica 'Angel Falls' (3,212 ft / 979 m, Canaima National Park, Venezuela; named for Jimmie Angel); Guinness World Records 'Tallest waterfall'"
+  },
+  {
+    "id": "world-24",
+    "category": "world",
+    "difficulty": "hard",
+    "q": "유럽에서 가장 많은 나라를 거쳐 흐르는 강은 무엇일까요?",
+    "choices": ["라인강", "볼가강", "다뉴브강", "엘베강"],
+    "answer": 2,
+    "explanation": "다뉴브강은 독일에서 시작해 흑해까지 10개 나라를 지나거나 국경을 이루며 흘러요. 빈, 브라티슬라바, 부다페스트, 베오그라드까지 무려 네 나라의 수도가 이 강가에 있어요.",
+    "source": "Britannica 'Danube River' (flows through or along 10 countries; capitals Vienna, Bratislava, Budapest, Belgrade); ICPDR (International Commission for the Protection of the Danube River)"
+  },
+  {
+    "id": "world-25",
+    "category": "world",
+    "difficulty": "hard",
+    "q": "헝가리어와 같은 '우랄어족'에 속하는 언어는 무엇일까요?",
+    "choices": ["핀란드어", "독일어", "루마니아어", "폴란드어"],
+    "answer": 0,
+    "explanation": "헝가리어는 핀란드어, 에스토니아어와 함께 우랄어족에 속해요. 유럽 한가운데 있지만 주변 나라들이 쓰는 인도유럽어족 언어와는 뿌리가 전혀 달라서, 이웃 나라 사람들도 헝가리어를 거의 알아듣지 못해요.",
+    "source": "Britannica 'Hungarian language' / 'Uralic languages' (Finno-Ugric branch with Finnish and Estonian)"
+  },
+  {
+    "id": "world-26",
+    "category": "world",
+    "difficulty": "hard",
+    "q": "그림 '진주 귀걸이를 한 소녀'를 그린 네덜란드 화가는 누구일까요?",
+    "choices": ["렘브란트 판 레인", "요하네스 페르메이르", "빈센트 반 고흐", "페테르 파울 루벤스"],
+    "answer": 1,
+    "explanation": "'진주 귀걸이를 한 소녀'는 1665년 무렵 페르메이르가 그린 작품으로, 네덜란드 헤이그의 마우리츠하위스 미술관에 있어요. 실제 모델의 초상화가 아니라 상상 속 인물의 얼굴을 그린 '트로니'라는 그림이라, 소녀가 누구인지는 지금도 수수께끼예요.",
+    "source": "Mauritshuis 'Girl with a Pearl Earring' (Johannes Vermeer, c. 1665; a tronie); Britannica 'Girl with a Pearl Earring'"
+  }
+]
