@@ -12,10 +12,12 @@ import {
 export const APP_NAME = "harusangsik";
 
 // 콘솔에서 발급한 광고 그룹 ID를 .env에 넣으면 실제 광고가 나가요.
-// 비워 두면 앱인토스 테스트 광고 ID를 써요. (실제 ID로 테스트하면 정책 위반이에요)
+// - 개발 서버(npm run dev)에서는 앱인토스 테스트 광고 ID를 써요. (실제 ID로 테스트하면 정책 위반)
+// - 출시 빌드에 ID가 없으면 광고를 아예 끄고, 놓친 문제는 광고 없이 열어줘요.
+//   (테스트 광고 ID가 들어간 번들은 검수에서 반려돼요)
 const AD_IDS = {
-  rewarded: import.meta.env.VITE_AD_REWARDED_ID || "ait-ad-test-rewarded-id",
-  banner: import.meta.env.VITE_AD_BANNER_ID || "ait-ad-test-banner-id"
+  rewarded: import.meta.env.VITE_AD_REWARDED_ID || (import.meta.env.DEV ? "ait-ad-test-rewarded-id" : ""),
+  banner: import.meta.env.VITE_AD_BANNER_ID || (import.meta.env.DEV ? "ait-ad-test-banner-id" : "")
 };
 
 function safe(fn, fallback) {
@@ -104,7 +106,7 @@ export function rewardedStatus() {
 }
 
 export function preloadRewarded() {
-  rewarded.supported = safe(() => loadFullScreenAd.isSupported(), false);
+  rewarded.supported = Boolean(AD_IDS.rewarded) && safe(() => loadFullScreenAd.isSupported(), false);
   if (!rewarded.supported) return notifyRewarded();
   rewarded.loaded = false;
   rewarded.failed = false;
@@ -162,6 +164,7 @@ let bannerReady = null;
 function initBanner() {
   if (bannerReady) return bannerReady;
   bannerReady = new Promise((resolve) => {
+    if (!AD_IDS.banner) return resolve(false);
     if (!safe(() => TossAds.initialize.isSupported(), false)) return resolve(false);
     try {
       TossAds.initialize({
