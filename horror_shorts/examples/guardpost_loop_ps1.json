@@ -1,0 +1,137 @@
+{
+  "title": "야간 경계근무 초소에 남겨진 인수인계 수칙",
+  "title_options": [
+    "철책 너머에서 엄마가 이름을 부르면",
+    "암구호를 모르는 순찰자에게 대답하지 마세요",
+    "새벽 4시, 얼굴이 안 보이는 교대자"
+  ],
+  "hook": "툭툭. 누가 어깨를 쳤다.",
+  "rulebook_title": "초소 근무 인수인계 수칙",
+  "rules": [
+    {
+      "number": 1,
+      "text": "암구호를 모르는 순찰자에게는, 아무것도 대답하지 말 것.",
+      "violation_result": "그 순찰자와 함께 철책을 따라 걷게 된다."
+    },
+    {
+      "number": 2,
+      "text": "철책 너머에서 이름을 부르면, 손전등을 비추지 말 것.",
+      "violation_result": "그것이 철책을 넘어온다."
+    },
+    {
+      "number": 3,
+      "text": "무전기에서 숫자를 세는 소리가 나면, 끝까지 듣지 말고 끌 것.",
+      "violation_result": "마지막 숫자에 내 위치를 말하게 된다."
+    },
+    {
+      "number": 4,
+      "text": "교대자의 얼굴이 보이지 않으면, 절대 교대하지 말 것.",
+      "violation_result": "내가 초소에 남는다."
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "툭툭. 누가 어깨를 쳤다. 새벽 2시, *경계근무* 교대 시간이었다.",
+      "caption": "02:00",
+      "image_prompt": "inside a small dark military guard post at night seen from a sitting position, sandbags and a narrow observation slit, a field radio on a wooden shelf, a gloved hand on the shoulder from behind, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the gloved hand taps the shoulder twice, the camera slowly lifts as if waking up, the radio light blinks, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "철책 옆 초소였다. 같이 선 사수는, *어디에도 없었다*.",
+      "caption": "",
+      "image_prompt": "a lonely military guard post next to a long barbed wire border fence at night, a single dim lamp, fog drifting over a dark field beyond the fence, nobody around, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow pan along the foggy barbed wire fence, the lamp flickers, the empty guard post creaks in the wind, subtle film grain, no cuts, no text",
+      "motion": "pan_right",
+      "sfx": "none",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "초소 벽에, 근무자들이 몰래 적어둔 *인수인계 수칙*이 있었다.",
+      "caption": "",
+      "image_prompt": "an old crumpled paper taped on the concrete wall inside a dark military guard post, faded illegible handwritten lines, a flashlight beam on it, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the taped paper, the flashlight beam trembles, dust falls from the ceiling, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. 순찰자가 물었다. \"*암구호*가 뭐였지?\" 나는 입을 다물었다.",
+      "caption": "",
+      "image_prompt": "a patrolling soldier in a camouflage uniform and helmet standing in the dark outside a guard post, face hidden in shadow under the helmet, holding a flashlight pointed toward the camera, fog, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the patrolling figure tilts its head slowly, the flashlight beam swings toward the camera, fog drifts, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "heartbeat",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 철책 너머에서 *엄마 목소리*가 들렸다. \"아들, 춥지?\" 나는 손전등을 껐다.",
+      "caption": "",
+      "image_prompt": "a dark field beyond a tall barbed wire fence at night, a faint pale silhouette of a woman in a long coat standing far away in the fog, face not visible, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the faint silhouette beyond the fence takes one slow step closer, the fence wire hums, fog thickens, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "riser",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. 무전기가 숫자를 셌다. *내 군번*이었다. 나는 무전기를 껐다.",
+      "caption": "",
+      "image_prompt": "close-up of a gloved hand gripping an old green military field radio handset in a dark guard post, the radio dial glowing faintly, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the radio dial flickers as static pulses, the gloved hand trembles and switches the radio off, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번. 새벽 4시, 교대자가 왔다. 철모 아래 *얼굴이 없었다*. \"교대하러 왔습니다.\"",
+      "caption": "",
+      "image_prompt": "a soldier in a camouflage uniform with a helmet pulled down low standing at the entrance of a dark guard post, the face completely hidden in black shadow under the helmet, fog behind, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the soldier at the entrance stands perfectly still, then slowly raises a hand in salute, the lamp flickers, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "나는 *자리를 내줬다*. 그가 고개를 들었다. 내 얼굴이었다. \"이제 네 차례다.\"",
+      "caption": "",
+      "image_prompt": "extreme close-up of a soldier in a helmet lifting his head inside a dark guard post, a pale face with an unnaturally wide grin, red emergency light tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the soldier lifts his head quickly toward the camera, the grin stretches wider, red light strobes, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 4
+    },
+    {
+      "stage": "끝",
+      "narration": "툭툭. 누가 어깨를 쳤다. 새벽 2시, *교대 시간*이었다.",
+      "caption": "다시, 02:00",
+      "image_prompt": "inside a small dark military guard post at night, an empty seat beside sandbags, a field radio blinking on the shelf, a gloved hand reaching from the darkness toward the camera, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the gloved hand reaches out and taps twice, the radio light blinks, the lamp goes dark, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 4,
+  "thumbnail_text": "얼굴 없는\n교대자",
+  "thumbnail_prompt": "soldier with face hidden under helmet at the entrance of a dark guard post, red tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+  "description": "철책 옆 초소, 새벽 2시 교대. 초소 벽에 몰래 적힌 인수인계 수칙 네 줄.\n새벽 4시, 얼굴이 보이지 않는 교대자가 왔다면 당신은 자리를 내주겠습니까?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#나폴리탄",
+    "#군대괴담",
+    "#경계근무",
+    "#공포",
+    "#shorts"
+  ]
+}
