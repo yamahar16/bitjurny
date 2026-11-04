@@ -135,12 +135,23 @@ def upload_video(yt, video: Path, meta: dict, cfg: dict, thumb: Path | None = No
     while resp is None:
         _, resp = req.next_chunk()
     vid = resp["id"]
-    if thumb and thumb.exists():
-        try:  # 커스텀 썸네일은 채널 전화번호 인증이 필요할 수 있다
-            yt.thumbnails().set(videoId=vid, media_body=MediaFileUpload(str(thumb))).execute()
-        except Exception as e:
-            log(f"  ⚠ 썸네일 설정 실패 (Studio에서 직접 적용): {e}")
+    set_thumbnail(yt, vid, thumb, log)
     return vid
+
+
+def set_thumbnail(yt, vid: str, thumb: Path | None, log=print) -> bool:
+    """커스텀 썸네일 지정. 채널이 전화번호 인증(youtube.com/verify)을 해야 허용된다."""
+    from googleapiclient.http import MediaFileUpload
+
+    if not thumb or not thumb.exists():
+        return False
+    try:
+        yt.thumbnails().set(videoId=vid, media_body=MediaFileUpload(str(thumb))).execute()
+        log(f"  썸네일 지정 완료: {vid}")
+        return True
+    except Exception as e:
+        log(f"  ⚠ 썸네일 지정 실패 ({vid}): {str(e)[:200]}")
+        return False
 
 
 def upload(job: Path, cfg: dict, log=print) -> str:

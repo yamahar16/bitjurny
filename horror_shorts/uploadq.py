@@ -97,14 +97,28 @@ def pending() -> list[Path]:
         if QUEUE_DIR.exists() else []
 
 
+def retry_thumbnails(yt, log=print) -> None:
+    """이미 올린 영상 중 썸네일이 아직 안 붙은 것에 다시 시도 (채널 인증 후 자동으로 붙게)."""
+    from .publish import set_thumbnail
+
+    for f in sorted(QUEUE_DIR.glob("*/uploaded.json")):
+        info = json.loads(f.read_text(encoding="utf-8"))
+        if info.get("thumbnail_set") or not (f.parent / "thumbnail.jpg").exists():
+            continue
+        if set_thumbnail(yt, info["video_id"], f.parent / "thumbnail.jpg", log):
+            info["thumbnail_set"] = True
+            f.write_text(json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
 def upload_all(cfg: dict, log=print) -> int:
     from .publish import upload_video, youtube_client
 
     items = pending()
+    yt = youtube_client(cfg)
+    retry_thumbnails(yt, log)
     if not items:
         log("대기열에 올릴 영상이 없습니다.")
         return 0
-    yt = youtube_client(cfg)
     n = 0
     for d in items:
         meta = json.loads((d / "upload.json").read_text(encoding="utf-8"))
