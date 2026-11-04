@@ -71,7 +71,8 @@ DEFAULTS: dict = {
         # 자동 게시: 대기열(upload_queue) 영상을 이 시각들(한국시간)에 1편씩 공개 예약. 비우면 privacy 그대로 업로드
         "schedule": ["06:00", "12:00", "18:00"],
         "start_date": "2026-11-04",
-        "end_thumbnail_seconds": 0.2,  # 업로드본 맨 끝에 썸네일 0.2초 (쇼츠 커버로 고르기용)
+        "end_thumbnail_seconds": 0.2,
+        "mid_thumbnail_at": 0.34,  # 실험: 자동 커버 지점(약 1/3)에 썸네일 0.3초. 0이면 끔  # 업로드본 맨 끝에 썸네일 0.2초 (쇼츠 커버로 고르기용)
         "queue_encode": {"crf": 25, "maxrate": "3300k", "bufsize": "6600k"},
     },
 }

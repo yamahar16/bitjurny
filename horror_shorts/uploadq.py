@@ -38,8 +38,20 @@ def enqueue(job: Path, cfg: dict, log=print) -> Path:
     if tail > 0 and thumb.exists():
         inputs = ["-i", str(job / "final.mp4"), "-loop", "1", "-framerate", str(fps), "-t", f"{tail}", "-i", str(thumb),
                   "-f", "lavfi", "-t", f"{tail}", "-i", "anullsrc=r=44100:cl=stereo"]
-        fc = (f"[0:v]fps={fps},scale={W}:{H},setsar=1,format=yuv420p[v0];"
-              f"[1:v]fps={fps},scale={W}:{H},setsar=1,format=yuv420p[v1];"
+        # 실험: 유튜브 자동 커버가 잡히는 지점(관찰상 약 1/3)에도 썸네일을 0.3초 깜빡 넣는다
+        mid = float(cfg["upload"].get("mid_thumbnail_at", 0) or 0)
+        dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                    str(job / "final.mp4")], capture_output=True, text=True).stdout.strip() or 0)
+        flash = ""
+        if mid > 0 and dur > 0:
+            t0 = round((dur + tail) * mid, 3)
+            flash = (f"[1:v]fps={fps},scale={W}:{H},setsar=1,format=yuv420p,split[tb][tm];"
+                     f"[0:v]fps={fps},scale={W}:{H},setsar=1,format=yuv420p[base];"
+                     f"[tm]trim=duration=0.3,setpts=PTS-STARTPTS+{t0}/TB[tf];"
+                     f"[base][tf]overlay=eof_action=pass:enable='between(t,{t0},{t0 + 0.3})'[v0];"
+                     "[tb]null[v1];")
+        fc = flash + (f"[0:v]fps={fps},scale={W}:{H},setsar=1,format=yuv420p[v0];"
+              f"[1:v]fps={fps},scale={W}:{H},setsar=1,format=yuv420p[v1];" if not flash else "") + (
               "[0:a]aresample=44100,aformat=channel_layouts=stereo[a0];[2:a]aformat=channel_layouts=stereo[a1];"
               "[v0][a0][v1][a1]concat=n=2:v=1:a=1[v][a]")
         mapping = ["-filter_complex", fc, "-map", "[v]", "-map", "[a]"]
