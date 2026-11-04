@@ -118,6 +118,12 @@ def upload_all(cfg: dict, log=print) -> int:
             t = datetime.fromisoformat(old["publish_at"].replace("Z", "+00:00"))
             if t > datetime.now(timezone.utc) + timedelta(minutes=30):
                 at = old["publish_at"]
+        if not at and (d / "publish_at").exists():  # 직접 지정한 공개 시각 (한국시간 "2026-11-04 18:30" 또는 UTC ISO)
+            raw = (d / "publish_at").read_text(encoding="utf-8").strip()
+            t = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+            t = t if t.tzinfo else t.replace(tzinfo=KST)
+            if t > datetime.now(timezone.utc) + timedelta(minutes=15):
+                at = t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         at = at or next_slot(cfg)
         log(f"▶ 업로드: {meta['title']}" + (f" (공개 예약 {at})" if at else "") + (" — 교체" if old else ""))
         vid = upload_video(yt, d / "video.mp4", meta, cfg, d / "thumbnail.jpg", publish_at=at, log=log)
@@ -133,6 +139,7 @@ def upload_all(cfg: dict, log=print) -> int:
                 info["old_delete_failed"] = str(e)[:300]
                 log(f"::warning::옛 영상 {old['video_id']} 삭제 실패 — Studio에서 직접 삭제하세요: {e}")
             (d / "replace").unlink()
+        (d / "publish_at").unlink(missing_ok=True)
         (d / "uploaded.json").write_text(json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
         (d / "video.mp4").unlink()  # 올린 영상은 저장소에서 지운다 (용량)
         log(f"  ✅ {info['url']}")

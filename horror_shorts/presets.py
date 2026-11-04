@@ -105,6 +105,13 @@ PLACES: dict[str, dict] = {
         "layout": "corridor",
         "tint": (165, 160, 150),
     },
+    "village": {
+        "name": "시골 마을 규칙",
+        "rulebook": "마을 밤 외출 수칙",
+        "visual": "remote Korean countryside village at night, old tiled-roof houses, rice paddies, scarecrows, a loudspeaker on a wooden pole, stone well, dirt paths",
+        "layout": "corridor",
+        "tint": (160, 170, 150),
+    },
     "parking": {
         "name": "지하 주차장 B∞층",
         "rulebook": "지하 주차장 이용 안내",

@@ -1,0 +1,137 @@
+{
+  "title": "외할머니 댁 시골 마을, 밤 외출 수칙",
+  "title_options": [
+    "밤에 마을 방송이 내 이름을 부르면 대답하지 마세요",
+    "시골 마을회관에서 나눠준 밤 외출 수칙",
+    "해 뜨기 전 마을 사람이 찾아오면"
+  ],
+  "hook": "딩동댕. 마을 방송 소리에 눈을 떴다.",
+  "rulebook_title": "마을 밤 외출 수칙",
+  "rules": [
+    {
+      "number": 1,
+      "text": "밤에 마을 방송이 이름을 불러도, 대답하지 말 것.",
+      "violation_result": "대답한 사람은 아침에 마을회관에 서 있다."
+    },
+    {
+      "number": 2,
+      "text": "허수아비가 처음과 다른 곳에 있으면, 눈을 마주치지 말 것.",
+      "violation_result": "허수아비가 한 걸음 더 가까워진다."
+    },
+    {
+      "number": 3,
+      "text": "우물 안에서 누가 부르면, 뚜껑을 열지 말 것.",
+      "violation_result": "우물 안의 사람과 자리가 바뀐다."
+    },
+    {
+      "number": 4,
+      "text": "해 뜨기 전에 마을 사람이 찾아오면, 대문을 열지 말 것.",
+      "violation_result": "마을 사람이 된다."
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "딩동댕. 마을 방송 소리에 눈을 떴다. 새벽 2시, *외할머니 댁*이었다.",
+      "caption": "AM 2:00",
+      "image_prompt": "dark traditional Korean countryside room at night seen from a floor mattress, paper sliding door glowing faintly blue, an old wall clock, a folded blanket, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the paper sliding door glows and flickers as a distant loudspeaker crackles, the camera slowly lifts as if waking up, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "할머니가 없었다. 창밖엔 마을 사람들이, *전부 같은 쪽*을 보고 서 있었다.",
+      "caption": "",
+      "image_prompt": "view through an old wooden window of a dark Korean village at night, several villagers in plain work clothes standing motionless in a rice paddy, all facing away toward the same direction, fog, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the motionless villagers stand still in the foggy paddy, one of them slowly tilts its head, the window frame trembles slightly, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "heartbeat",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "마루 벽에, 마을회관에서 나눠준 *종이*가 붙어 있었다.",
+      "caption": "",
+      "image_prompt": "an old yellowed paper notice pinned on a wooden wall of a traditional Korean house porch at night, a dim bulb hanging above, moths around it, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the pinned paper, the hanging bulb swings slightly and flickers, moths flutter, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. 스피커에서 이장님 목소리가 나를 불렀다. \"*손주야*, 회관으로 오너라.\" 나는 입을 막았다.",
+      "caption": "",
+      "image_prompt": "a rusty loudspeaker mounted on a tall wooden pole in a dark Korean village at night, the pole silhouetted against a dim cloudy sky, fog over rice paddies, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the loudspeaker vibrates and crackles, fog drifts past the pole, the camera slowly looks up at it, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 논에 있던 허수아비가, *마당 앞*까지 와 있었다. 나는 땅만 보고 걸었다.",
+      "caption": "",
+      "image_prompt": "a ragged scarecrow in an old straw hat and faded clothes standing at the edge of a dark Korean house front yard at night, its burlap face in shadow, a dirt path and a flashlight beam on the ground, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the scarecrow sways slightly although there is no wind, its head turns a little toward the camera, the flashlight beam stays on the ground, subtle film grain, no cuts, no text",
+      "motion": "pan_left",
+      "sfx": "heartbeat",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. 우물 안에서 *할머니 목소리*가 들렸다. \"얘야, 두레박 좀 내려다오.\" 나는 뚜껑을 눌렀다.",
+      "caption": "",
+      "image_prompt": "an old stone well covered with a heavy wooden lid in a dark Korean village courtyard at night, a rope and a bucket beside it, two hands pressing down on the lid, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the wooden lid rattles from below as the hands press it down hard, dust falls from the edge, the rope twitches, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "riser",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번. 새벽 5시. 대문 밖에 *마을 사람들*이 줄지어 서 있었다. \"할머니가 회관에서 기다리신다.\"",
+      "caption": "",
+      "image_prompt": "view through the gap of an old wooden gate of a Korean country house at night, a line of villagers in plain work clothes standing outside in the fog, faces hidden in shadow, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the villagers outside the gate step closer one by one, one knocks slowly on the wooden gate, fog rolls, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "할머니도 그 사이에 있었다. 나는 *대문을 열었다*. \"이제 우리 마을 사람이네.\"",
+      "caption": "",
+      "image_prompt": "an old wooden gate swung open at night, a crowd of villagers in plain work clothes standing right outside with unnaturally wide pale grins, an old grandmother in a floral vest among them, red emergency light tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "all the villagers lean forward together toward the camera, their grins widening at the same time, red light strobes, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 4
+    },
+    {
+      "stage": "끝",
+      "narration": "다음 날 새벽, 나는 논에 서서 할머니 댁 *창문*을 보고 있었다. 창 안에서 누가 눈을 떴다.",
+      "caption": "다음 날 새벽",
+      "image_prompt": "a dark traditional Korean country house seen from the middle of a foggy rice paddy at night, one window faintly lit, the backs of motionless villagers standing in the foreground, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the lit window flickers, a faint silhouette rises behind it, the camera stays still among the motionless villagers, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 4,
+  "thumbnail_text": "새벽 5시\n대문을 열지 마",
+  "thumbnail_prompt": "grinning villagers outside an open wooden gate of a Korean country house at night, red tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+  "description": "외할머니 댁에서 보낸 첫날 밤. 마루 벽에 붙은 마을 밤 외출 수칙 네 줄.\n새벽 5시, 할머니가 회관에서 기다린다면 당신은 대문을 열겠습니까?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#나폴리탄",
+    "#시골",
+    "#시골괴담",
+    "#공포",
+    "#shorts"
+  ]
+}
