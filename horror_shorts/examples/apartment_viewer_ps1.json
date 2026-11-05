@@ -1,0 +1,137 @@
+{
+  "title": "새벽 3시, 관리사무소에서 점검 나왔습니다",
+  "title_options": [
+    "엘리베이터에 붙은 관리사무소 안내문",
+    "새벽에 13층 버튼에 불이 들어오면",
+    "관리사무소는 새벽에 문을 닫습니다"
+  ],
+  "hook": "띵. 엘리베이터 소리에 눈을 떴다.",
+  "rulebook_title": "관리사무소 야간 안내문",
+  "rules": [
+    {
+      "number": 1,
+      "text": "새벽에 13층 버튼에 불이 들어오면, 다음 층에서 바로 내릴 것.",
+      "violation_result": "13층 문이 열리면 다시는 내릴 수 없다."
+    },
+    {
+      "number": 2,
+      "text": "새벽 안내방송이 우리 집 호수를 부르면, 대답하지 말 것.",
+      "violation_result": "그것이 집 주소를 확인한다."
+    },
+    {
+      "number": 3,
+      "text": "복도 센서등이 내 앞에서만 켜지지 않으면, 뒤돌아보지 말 것.",
+      "violation_result": "뒤에 있던 것과 눈이 마주친다."
+    },
+    {
+      "number": 4,
+      "text": "새벽에 관리사무소 직원이 찾아오면, 문을 열지 말 것.",
+      "violation_result": "관리사무소는 새벽에 문을 닫는다."
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "띵. 엘리베이터 소리에 눈을 떴다. 새벽 3시, *우리 아파트 엘리베이터* 안이었다.",
+      "caption": "AM 3:00",
+      "image_prompt": "inside a small old apartment elevator at night seen from the floor, flickering fluorescent ceiling light, scratched metal walls, a glowing button panel, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the ceiling light flickers, the elevator hums, the camera slowly lifts from the floor as if waking up, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "아무 버튼도 안 눌렀는데, *한 버튼에만* 불이 들어와 있었다.",
+      "caption": "",
+      "image_prompt": "close-up of an old elevator button panel in the dark, rows of unlit round buttons and only one button glowing red, scratched steel plate, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the single red button pulses slowly, the elevator jolts and starts moving upward, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "heartbeat",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "벽에, 관리사무소 *안내문*이 붙어 있었다.",
+      "caption": "",
+      "image_prompt": "an old paper notice taped on the scratched metal wall of a dark apartment elevator, faded illegible printed lines, flickering light, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the taped notice, the light flickers, the paper edge trembles from the moving elevator, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. 엘리베이터가 *13층*으로 올라갔다. 나는 12층에서 뛰어내렸다.",
+      "caption": "",
+      "image_prompt": "elevator doors sliding open onto a dark apartment hallway, a figure in a hoodie seen from behind stepping out quickly, red light from the button panel, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the doors open and the figure hurries out, the doors slam shut behind, the elevator continues upward, subtle film grain, no cuts, no text",
+      "motion": "pan_right",
+      "sfx": "riser",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 복도 스피커에서 방송이 나왔다. \"*1203호* 세대주님, 계십니까?\" 우리 집이었다.",
+      "caption": "",
+      "image_prompt": "a small round loudspeaker on the ceiling of a dark apartment corridor at night, apartment doors lined up, dim emergency light, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the loudspeaker crackles and vibrates, the corridor lights flicker one by one, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "static_burst",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. 복도 센서등이 *내 앞에서만* 켜지지 않았다. 나는 뒤돌아보지 않았다.",
+      "caption": "",
+      "image_prompt": "a long dark apartment corridor, motion sensor lights glowing behind a figure in a hoodie seen from behind, the corridor ahead completely dark, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the lights behind turn on one after another as something follows, the dark corridor ahead stays black, subtle film grain, no cuts, no text",
+      "motion": "pan_left",
+      "sfx": "heartbeat",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번. 현관문 밖에서 누가 말했다. \"*관리사무소*입니다. 점검 나왔습니다.\"",
+      "caption": "",
+      "image_prompt": "fisheye peephole view of a man in a grey maintenance uniform and cap standing in a dim apartment corridor, holding a clipboard, face hidden in shadow under the cap, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the man in the peephole view tilts his head and knocks slowly, the corridor light flickers, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "목소리가 너무 친절했다. 나는 *문을 열었다*. \"확인했습니다. 다음 세대로 가죠.\"",
+      "caption": "",
+      "image_prompt": "an apartment front door opened onto a dark corridor, a man in a grey maintenance uniform and cap holding a clipboard with an unnaturally wide pale grin, red emergency light tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the maintenance man leans in through the doorway, his grin widening, red light strobes, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 4
+    },
+    {
+      "stage": "끝",
+      "narration": "그는 다음 집 초인종을 눌렀다. 지금 이 영상을 보고 있는, *당신 집*이었다.",
+      "caption": "띵동",
+      "image_prompt": "a man in a grey maintenance uniform and cap seen from behind standing in front of another apartment door in a dark corridor, his finger on the doorbell, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+      "video_prompt": "the man presses the doorbell, then slowly turns his head toward the camera, the lights go out, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 4,
+  "thumbnail_text": "새벽 3시\n점검 나왔습니다",
+  "thumbnail_prompt": "grinning maintenance man with a clipboard at an opened apartment door at night, red tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no text, no letters, no UI, no watermark",
+  "description": "새벽 3시 엘리베이터에 붙은 관리사무소 안내문 네 줄.\n관리사무소는 새벽에 문을 닫는데, 지금 당신 집 초인종을 누르는 사람은 누구일까요?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#나폴리탄",
+    "#아파트괴담",
+    "#관리사무소",
+    "#공포",
+    "#shorts"
+  ]
+}
