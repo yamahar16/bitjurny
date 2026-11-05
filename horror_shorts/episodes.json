@@ -42,14 +42,15 @@
       "place": "guardpost",
       "title": "야간 경계근무 초소에 남겨진 인수인계 수칙",
       "ending": "loop"
+    },
+    {
+      "job": "20261105-004801-apartment",
+      "place": "apartment",
+      "title": "새벽 3시, 관리사무소에서 점검 나왔습니다",
+      "ending": "viewer"
     }
   ],
   "backlog": [
-    {
-      "place_name": "아파트 관리사무소 안내문",
-      "idea": "엘리베이터에 붙은 관리사무소 공지. 13층 버튼, 새벽 안내방송, 경비실에 아무도 없을 때.",
-      "ending": "viewer"
-    },
     {
       "place_name": "편의점 야간 알바",
       "idea": "점장님이 남긴 야간 근무 수칙. 새벽 3시 33분 손님, 냉장고 안쪽에서 두드리는 소리, CCTV에만 보이는 손님.",
