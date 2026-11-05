@@ -1,0 +1,137 @@
+{
+  "title": "편의점 야간 알바, 점장님이 남긴 메모",
+  "title_options": [
+    "새벽 3시 33분에 온 손님에게 인사하지 마세요",
+    "CCTV에만 보이는 손님이 있으면",
+    "점장님은 야간에 오지 않는다"
+  ],
+  "hook": "딩동. 편의점 문 열리는 소리에 눈을 떴다.",
+  "rulebook_title": "야간 근무 메모 (점장)",
+  "rules": [
+    {
+      "number": 1,
+      "text": "3시 33분에 들어온 손님에게는, 인사하지 말 것.",
+      "violation_result": "그 손님은 나가지 않는다."
+    },
+    {
+      "number": 2,
+      "text": "음료 냉장고 안쪽에서 두드리면, 문을 열지 말 것.",
+      "violation_result": "안쪽의 그것이 나온다."
+    },
+    {
+      "number": 3,
+      "text": "CCTV에만 보이는 손님이 있으면, 계산대를 떠나지 말 것.",
+      "violation_result": "돌아왔을 때 계산대에 누가 서 있다."
+    },
+    {
+      "number": 4,
+      "text": "점장은 야간에 오지 않는다. 점장이 와도 카운터를 넘기지 말 것.",
+      "violation_result": "내가 진열대에 서게 된다."
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "딩동. 문 열리는 소리에 눈을 떴다. 새벽 3시, *편의점 카운터*였다.",
+      "caption": "AM 3:00",
+      "image_prompt": "a small Korean convenience store at night seen from behind the counter, a cash register and snack racks, harsh flickering fluorescent lights, a glass door with rain outside, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no brand names, no text, no letters, no UI, no watermark",
+      "video_prompt": "the fluorescent lights flicker, the glass door slowly swings shut, the camera lifts as if waking up behind the counter, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "야간 알바 첫날이었다. 손님은 없고, 냉장고만 *웅웅* 울렸다.",
+      "caption": "",
+      "image_prompt": "empty convenience store aisles at night, glowing drink refrigerators along the back wall, fluorescent lights buzzing, wet floor reflections, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no brand names, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow dolly down the empty aisle toward the humming refrigerators, a light tube flickers, subtle film grain, no cuts, no text",
+      "motion": "pan_right",
+      "sfx": "none",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "포스기 옆에, 점장님이 남긴 *메모*가 붙어 있었다.",
+      "caption": "",
+      "image_prompt": "a small yellowed paper note taped next to an old cash register on a convenience store counter, faded illegible handwriting, fluorescent light, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no brand names, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the taped note, the fluorescent light flickers, the note corner lifts slightly, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. 3시 33분. 비에 젖은 손님이 *인사를 기다리며* 서 있었다. 나는 고개를 숙였다.",
+      "caption": "",
+      "image_prompt": "a customer in a dripping dark raincoat with the hood up standing motionless just inside the glass door of a convenience store at night, face hidden in shadow, a puddle forming, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no brand names, no text, no letters, no UI, no watermark",
+      "video_prompt": "the hooded customer stands perfectly still, water drips onto the floor, the head tilts slightly toward the camera, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "heartbeat",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 음료 냉장고 *안쪽*에서 누가 두드렸다. 똑, 똑. 나는 지나쳤다.",
+      "caption": "",
+      "image_prompt": "close-up of a convenience store drink refrigerator glass door at night, rows of plain bottles, a pale handprint pressed on the inside of the fogged glass behind the bottles, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no brand names, no text, no letters, no UI, no watermark",
+      "video_prompt": "the glass door rattles as something knocks from inside, a second pale handprint appears on the fogged glass, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "riser",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. CCTV 화면 속 과자 코너에 누가 서 있었다. 돌아보니 *아무도 없었다*.",
+      "caption": "",
+      "image_prompt": "a small CCTV monitor on a convenience store counter showing a grainy black and white view of a snack aisle with a dark figure standing still, the real aisle behind the monitor empty, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no brand names, no text, no letters, no UI, no watermark",
+      "video_prompt": "the figure on the CCTV screen slowly turns its head toward the camera, static rolls across the monitor, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번. 새벽 5시, 점장님이 들어왔다. \"수고했어. 이제 *내가 볼게*.\"",
+      "caption": "",
+      "image_prompt": "a middle-aged man in a plain store staff vest standing at the glass entrance of a convenience store at dawn, face hidden in shadow, rain outside, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no brand names, no text, no letters, no UI, no watermark",
+      "video_prompt": "the man steps inside and raises a hand in greeting, the door chime swings, the lights flicker, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "너무 피곤했다. 나는 *카운터를 넘겨줬다*. \"이제 넌 진열대에 서 있으면 돼.\"",
+      "caption": "",
+      "image_prompt": "close-up of a middle-aged man in a plain store staff vest behind a convenience store counter with an unnaturally wide pale grin, red emergency light tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no brand names, no text, no letters, no UI, no watermark",
+      "video_prompt": "the man leans over the counter toward the camera, his grin stretching wider, red light strobes, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 4
+    },
+    {
+      "stage": "끝",
+      "narration": "다음 날 아침 근무자는, CCTV 속 과자 코너에 서 있는 *나*를 보지 못했다.",
+      "caption": "아침 7시",
+      "image_prompt": "a small CCTV monitor showing a grainy black and white view of a convenience store snack aisle in morning light, a young clerk in a store vest standing motionless among the shelves, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no brand names, no text, no letters, no UI, no watermark",
+      "video_prompt": "static flickers across the monitor, the motionless clerk on the screen slowly fades into the shelves, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 4,
+  "thumbnail_text": "새벽 5시\n점장님이 왔다",
+  "thumbnail_prompt": "grinning man in a store staff vest behind a convenience store counter at night, red tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no brand names, no text, no letters, no UI, no watermark",
+  "description": "편의점 야간 알바 첫날, 포스기 옆에 붙은 점장님의 메모 네 줄.\n점장님은 야간에 오지 않는다는데, 새벽 5시에 들어온 사람은 누구였을까요?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#나폴리탄",
+    "#편의점",
+    "#야간알바",
+    "#공포",
+    "#shorts"
+  ]
+}
