@@ -48,14 +48,15 @@
       "place": "apartment",
       "title": "새벽 3시, 관리사무소에서 점검 나왔습니다",
       "ending": "viewer"
+    },
+    {
+      "job": "20261105-064745-store",
+      "place": "store",
+      "title": "편의점 야간 알바, 점장님이 남긴 메모",
+      "ending": "vanish"
     }
   ],
   "backlog": [
-    {
-      "place_name": "편의점 야간 알바",
-      "idea": "점장님이 남긴 야간 근무 수칙. 새벽 3시 33분 손님, 냉장고 안쪽에서 두드리는 소리, CCTV에만 보이는 손님.",
-      "ending": "vanish"
-    },
     {
       "place_name": "고시원 생활 수칙",
       "idea": "총무가 준 고시원 수칙. 옆방 벽을 두드리면 대답하지 말 것, 공용 주방 냉장고의 이름 없는 반찬, 복도 끝 방.",
