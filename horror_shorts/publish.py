@@ -89,21 +89,34 @@ def youtube_client(cfg: dict):
     root = Path.cwd()
     secret, token = root / ucfg["client_secret"], root / ucfg["token"]
     scopes = ["https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtube.force-ssl"]
-    creds = None
+    # 후보를 순서대로 시도: 폰 로그인(기기 코드) 토큰 → PC 토큰(JSON) → 로컬 파일. 만료된 것은 건너뛴다.
+    candidates = []
+    if os.environ.get("YOUTUBE_CLIENT_SECRET", "").strip():
+        rt = os.environ.get("YOUTUBE_REFRESH_TOKEN", "").strip() or _stored_refresh_token()
+        if rt:
+            candidates.append(("폰 로그인 토큰", lambda: Credentials(
+                None, refresh_token=rt, token_uri="https://oauth2.googleapis.com/token",
+                client_id=os.environ["YOUTUBE_CLIENT_ID"].strip(),
+                client_secret=os.environ["YOUTUBE_CLIENT_SECRET"].strip())))
     if os.environ.get("YOUTUBE_TOKEN_JSON", "").strip():
         info = json.loads(os.environ["YOUTUBE_TOKEN_JSON"])
-        creds = Credentials.from_authorized_user_info(info, info.get("scopes") or scopes)
-    elif os.environ.get("YOUTUBE_CLIENT_SECRET", "").strip() and (
-            os.environ.get("YOUTUBE_REFRESH_TOKEN", "").strip() or _stored_refresh_token()):
-        rt = os.environ.get("YOUTUBE_REFRESH_TOKEN", "").strip() or _stored_refresh_token()
-        creds = Credentials(None, refresh_token=rt,
-                            token_uri="https://oauth2.googleapis.com/token",
-                            client_id=os.environ["YOUTUBE_CLIENT_ID"].strip(),
-                            client_secret=os.environ["YOUTUBE_CLIENT_SECRET"].strip())
-    elif token.exists():
-        creds = Credentials.from_authorized_user_file(str(token), scopes)
-    if creds and not creds.valid and creds.refresh_token:
-        creds.refresh(Request())
+        candidates.append(("YOUTUBE_TOKEN_JSON", lambda: Credentials.from_authorized_user_info(info, info.get("scopes") or scopes)))
+    if token.exists():
+        candidates.append((token.name, lambda: Credentials.from_authorized_user_file(str(token), scopes)))
+    creds, errors = None, []
+    for name, make in candidates:
+        try:
+            c = make()
+            if not c.valid and c.refresh_token:
+                c.refresh(Request())
+            if c.valid:
+                creds = c
+                break
+        except Exception as e:  # 만료·취소된 토큰 (invalid_grant) 등
+            errors.append(f"{name}: {e}")
+    if not creds and errors:
+        raise RuntimeError("유튜브 로그인이 만료됐습니다. 다시 로그인이 필요합니다 (horror-youtube-auth 워크플로). "
+                           + " / ".join(errors))
     if not creds or not creds.valid:
         if not secret.exists():
             raise RuntimeError("유튜브 인증 정보가 없습니다. YOUTUBE_TOKEN_JSON 또는 YOUTUBE_REFRESH_TOKEN/CLIENT_ID/"
