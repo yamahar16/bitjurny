@@ -1,0 +1,137 @@
+{
+  "title": "고시원 생활 수칙, 4번만 손글씨였다",
+  "title_options": [
+    "새벽에 고시원 방문을 두드리면 열어주지 마세요",
+    "복도 끝 34호 문이 열려 있으면",
+    "총무는 안전합니다라는 손글씨"
+  ],
+  "hook": "쿵. 벽 치는 소리에 눈을 떴다.",
+  "rulebook_title": "고시원 생활 수칙",
+  "rules": [
+    {
+      "number": 1,
+      "text": "새벽에 누가 방문을 두드려도, 절대 열어주지 말 것.",
+      "violation_result": "그것이 방 안으로 들어온다."
+    },
+    {
+      "number": 2,
+      "text": "공용 냉장고의 이름 없는 반찬통은, 열지 말 것.",
+      "violation_result": "반찬통의 주인이 찾아온다."
+    },
+    {
+      "number": 3,
+      "text": "복도 끝 34호 문이 열려 있으면, 들여다보지 말 것.",
+      "violation_result": "34호의 다음 세입자가 된다."
+    },
+    {
+      "number": 4,
+      "text": "총무가 두드리면 열어도 됩니다. 총무는 안전해요.",
+      "violation_result": ""
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "쿵. 벽 치는 소리에 눈을 떴다. 새벽 2시, *고시원 방*이었다.",
+      "caption": "AM 2:00",
+      "image_prompt": "a tiny cramped Korean gosiwon room at night seen from a narrow bed, a small desk with a dim lamp, thin plywood walls, a narrow door, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the thin wall trembles from a thud, the desk lamp flickers, the camera lifts as if waking up, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "어제 이사 온 한 평짜리 방. 복도 끝 *34호*만 불이 켜져 있었다.",
+      "caption": "",
+      "image_prompt": "a long narrow gosiwon corridor at night with many identical thin doors on both sides, only the last door at the far end has light leaking under it, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push down the narrow corridor toward the lit door at the end, a ceiling light flickers, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "방문 안쪽에, 총무가 준 *생활 수칙*이 붙어 있었다.",
+      "caption": "",
+      "image_prompt": "an old yellowed paper taped on the inside of a thin plywood door in a dark tiny room, faded illegible printed lines, dim lamp light, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the taped paper, the lamp flickers, the door creaks slightly, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. 문밖에서 누가 속삭였다. \"*문 좀 열어줘*.\" 나는 이불을 덮어썼다.",
+      "caption": "",
+      "image_prompt": "a tiny dark gosiwon room, a person hiding completely under a blanket on a narrow bed facing the door, the shadow of two feet visible in the light under the door, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the shadow under the door shifts, the door handle turns slowly and stops, the blanket trembles, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "heartbeat",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 공용 냉장고에 *이름 없는 반찬통*이 있었다. 뚜껑이 들썩였다. 나는 문을 닫았다.",
+      "caption": "",
+      "image_prompt": "an open small refrigerator in a cramped shared kitchen at night, a plain plastic food container without any label on the middle shelf, cold light, dark room around, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the lid of the plastic container lifts slightly by itself, the fridge light flickers, the door swings shut, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "riser",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. 복도 끝 34호 문이 *조금 열려* 있었다. 나는 고개를 돌리고 지나갔다.",
+      "caption": "",
+      "image_prompt": "the end of a dark narrow gosiwon corridor, a thin door slightly ajar with pitch darkness inside and a pale eye peeking through the gap, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the door gap widens slowly as the camera pans away, the pale eye follows, subtle film grain, no cuts, no text",
+      "motion": "pan_left",
+      "sfx": "heartbeat",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번은 *손글씨*였다. 그때, 노크 소리. \"총무예요. 점검 좀 할게요.\"",
+      "caption": "",
+      "image_prompt": "close-up of the bottom of an old yellowed paper taped on a door, faded printed lines and one line of shaky blue ink scribbles added below, a flashlight beam on it, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the flashlight beam trembles over the handwritten line, the door behind shakes softly from knocking, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "나는 *문을 열었다*. 총무가 아니었다. \"이제 34호는 네 방이야.\"",
+      "caption": "",
+      "image_prompt": "a thin door opened onto a dark gosiwon corridor, a figure in a grey cardigan with a pale face and an unnaturally wide grin standing right outside, red emergency light tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the figure leans into the doorway toward the camera, its grin stretching wider, red light strobes, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 1
+    },
+    {
+      "stage": "끝",
+      "narration": "다음 날, 새로 온 사람의 방문에도 수칙이 붙었다. 4번 손글씨는, *내 글씨*였다.",
+      "caption": "다음 날",
+      "image_prompt": "an old yellowed paper taped on a different thin door in a grey morning-lit gosiwon corridor, faded printed lines and a line of shaky blue ink scribbles at the bottom, a pen on the floor, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the handwritten line, the corridor light dims, a door at the end creaks open, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 1,
+  "thumbnail_text": "총무가 왔다\n문을 열지 마",
+  "thumbnail_prompt": "grinning figure in a grey cardigan at an opened gosiwon door at night, red tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+  "description": "이사 첫날 고시원 방문 안쪽에 붙어 있던 생활 수칙. 마지막 줄만 손글씨였다.\n새벽에 총무가 문을 두드린다면, 당신은 열어주겠습니까?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#나폴리탄",
+    "#고시원",
+    "#고시원괴담",
+    "#공포",
+    "#shorts"
+  ]
+}
