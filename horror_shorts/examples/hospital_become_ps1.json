@@ -1,0 +1,137 @@
+{
+  "title": "대학병원 야간 병동, 7호실 호출벨",
+  "title_options": [
+    "빈 병실 7호실에서 호출벨이 울리면",
+    "새벽 4시 회진은 없습니다",
+    "지하 2층에서 올라온 엘리베이터는 타지 마세요"
+  ],
+  "hook": "삐. 호출벨 소리에 눈을 떴다.",
+  "rulebook_title": "야간 병동 인수인계 메모",
+  "rules": [
+    {
+      "number": 1,
+      "text": "비어 있는 7호실에서 호출벨이 울리면, 받지 말 것.",
+      "violation_result": "7호실 환자가 한 명 늘어난다."
+    },
+    {
+      "number": 2,
+      "text": "새벽에 링거대 바퀴 소리가 다가오면, 고개를 들지 말 것.",
+      "violation_result": "그것과 눈이 마주친다."
+    },
+    {
+      "number": 3,
+      "text": "엘리베이터가 지하 2층에서 올라오면, 타지 말 것.",
+      "violation_result": "영안실로 내려간다."
+    },
+    {
+      "number": 4,
+      "text": "새벽 4시 회진은 없다. 처음 보는 의사를 따라가지 말 것.",
+      "violation_result": "7호실 침대에 눕게 된다."
+    }
+  ],
+  "scenes": [
+    {
+      "stage": "기상",
+      "narration": "삐. 호출벨 소리에 눈을 떴다. 새벽 2시, *대학병원 간호사실*이었다.",
+      "caption": "AM 2:00",
+      "image_prompt": "a hospital nurse station at night seen from behind the desk, an old computer monitor glowing, a wall call-bell panel with one red light blinking, empty chairs, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the red call light blinks steadily, the monitor flickers, the camera lifts as if waking up at the desk, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "상황파악",
+      "narration": "야간 근무 첫날이었다. 병동 복도엔 *아무도* 없었다.",
+      "caption": "",
+      "image_prompt": "a long empty hospital ward corridor at night, a glowing green exit sign, flickering ceiling lights, an empty wheelchair against the wall, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push down the empty corridor, a ceiling light flickers, the wheelchair rolls a little by itself, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙발견",
+      "narration": "책상 위에, 선배가 남긴 *인수인계 메모*가 있었다.",
+      "caption": "",
+      "image_prompt": "a blank aged paper memo with only faint grey scribble lines lying on a hospital nurse station desk under a desk lamp, a pen and a clipboard, no title, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "slow push in toward the memo, the desk lamp flickers, the paper corner lifts slightly, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 0
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 1번. 빈 병실인 *7호실*에서 호출벨이 울렸다. 나는 받지 않았다.",
+      "caption": "",
+      "image_prompt": "an empty hospital room at night with a neatly made empty bed, the nurse call button on the wall glowing red, a half-drawn curtain, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the red call button pulses, the curtain sways although there is no wind, the empty bed sheet slowly dents, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "heartbeat",
+      "rule_number": 1
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 2번. 복도 끝에서 *링거대 바퀴* 소리가 다가왔다. 나는 차트만 내려다봤다.",
+      "caption": "",
+      "image_prompt": "a dark hospital corridor, a shadowy figure in a hospital gown far away pushing a metal IV drip stand toward the camera, face hidden in shadow, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the figure with the IV stand slowly approaches, the wheels squeak, the lights flicker one by one as it passes, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "riser",
+      "rule_number": 2
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 3번. 엘리베이터가 *지하 2층*에서 올라왔다. 문이 열렸다. 나는 타지 않았다.",
+      "caption": "",
+      "image_prompt": "hospital elevator doors sliding open at night, the inside lit with dim red light and completely empty, cold hallway in front, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the elevator doors open slowly onto the red-lit empty car, wait, then close again, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "static_burst",
+      "rule_number": 3
+    },
+    {
+      "stage": "수칙연출",
+      "narration": "수칙 4번. 새벽 4시, 처음 보는 의사가 손짓했다. \"*회진* 갑시다. 7호실부터.\"",
+      "caption": "",
+      "image_prompt": "a doctor in a white coat and surgical mask standing at the end of a dark hospital corridor, face in shadow, one hand raised beckoning, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the doctor slowly beckons with one hand and tilts his head, the corridor lights flicker, subtle film grain, no cuts, no text",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "rule_number": 4
+    },
+    {
+      "stage": "규칙위반",
+      "narration": "나는 *그를 따라갔다*. 7호실 침대가 비어 있었다. \"누우세요. 이제 당신 차례예요.\"",
+      "caption": "",
+      "image_prompt": "a doctor in a white coat with the mask pulled down showing an unnaturally wide pale grin, standing beside an empty hospital bed, red emergency light tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the doctor gestures to the empty bed and leans toward the camera, his grin widening, red light strobes, subtle film grain, no cuts, no text",
+      "motion": "shake",
+      "sfx": "hit",
+      "rule_number": 4
+    },
+    {
+      "stage": "끝",
+      "narration": "아침, 교대한 간호사가 7호실 호출벨을 들었다. *내가* 누르고 있었다.",
+      "caption": "AM 7:00",
+      "image_prompt": "a hospital room in grey morning light seen from the doorway, a figure lying motionless in the bed under a sheet, one hand pressing the red call button, face not visible, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+      "video_prompt": "the hand presses the call button again and again, the red light blinks, the camera slowly backs away, subtle film grain, no cuts, no text",
+      "motion": "static",
+      "sfx": "static_burst",
+      "rule_number": 0
+    }
+  ],
+  "violated_rule": 4,
+  "thumbnail_text": "새벽 4시\n회진은 없다",
+  "thumbnail_prompt": "grinning doctor with mask pulled down beside an empty hospital bed at night, red tint, dark gritty late-1990s PS1 survival horror game screenshot, low-poly 3D models, blurry low-resolution pixelated textures, heavy darkness, dim flickering light, fog, muted desaturated colors, uncanny mannequin-like characters fully clothed, faces hidden in shadow, VHS grain, eerie, vertical 9:16, no logos, no text, no letters, no UI, no watermark",
+  "description": "대학병원 야간 근무 첫날, 선배가 남긴 인수인계 메모 네 줄.\n새벽 4시에 처음 보는 의사가 회진을 가자고 한다면, 당신은 따라가겠습니까?",
+  "hashtags": [
+    "#괴담",
+    "#규칙괴담",
+    "#나폴리탄",
+    "#병원괴담",
+    "#야간근무",
+    "#공포",
+    "#shorts"
+  ]
+}
