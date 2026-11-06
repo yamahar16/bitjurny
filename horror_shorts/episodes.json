@@ -60,14 +60,15 @@
       "place": "gosiwon",
       "title": "고시원 생활 수칙, 4번만 손글씨였다",
       "ending": "twist"
+    },
+    {
+      "job": "20261106-004745-hospital",
+      "place": "hospital",
+      "title": "대학병원 야간 병동, 7호실 호출벨",
+      "ending": "become"
     }
   ],
   "backlog": [
-    {
-      "place_name": "대학병원 야간 병동",
-      "idea": "간호사 인수인계 메모. 비어있는 7호실 호출벨, 새벽 회진 온 처음 보는 의사, 엘리베이터 지하 2층.",
-      "ending": "become"
-    },
     {
       "place_name": "폐장 후 놀이공원",
       "idea": "야간 청소 알바 수칙. 혼자 도는 회전목마, 인형탈이 손을 흔들면, 퍼레이드 음악이 들리면.",
